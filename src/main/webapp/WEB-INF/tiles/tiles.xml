@@ -21,8 +21,9 @@
 		<put-attribute name="footer" value="/WEB-INF/views/common/footer.jsp" />
 	</definition>
  
-	<definition name="*.tiles" extends="tilesLayout">
-		<put-attribute name="content" value="/WEB-INF/jsp/{1}.jsp" />
+	<definition name="login.tiles" extends="tilesLayout2">		
+		<put-attribute name="title" value="로그인" />
+		<put-attribute name="content" value="/WEB-INF/views/login.jsp" />
 	</definition>
 	
 	

@@ -5,7 +5,7 @@
 <head>
 	<meta charset="UTF-8">
 	<title>aside</title>
-	<link rel="stylesheet" href="${contextPath}/resources/css/aside.css">
+	<link rel="stylesheet" href="/resources/css/aside.css">
 </head>
 <body>
 	<div class="aside">

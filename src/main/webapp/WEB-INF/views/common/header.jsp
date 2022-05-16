@@ -7,7 +7,7 @@
 <head>
 	<meta charset="UTF-8">
 	<title>header</title>
-	<link rel="stylesheet" href="${contextPath}/resources/css/header.css">
+	<link rel="stylesheet" href="src/main/webapp/resources/css/header.css">
 </head>
 <body>
 	<div class="header">
