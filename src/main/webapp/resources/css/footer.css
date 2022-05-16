@@ -1,0 +1,49 @@
+.footer {
+  background-color: #173153;
+  margin: auto;
+  margin-top: 50px;
+}
+
+.footer_sec {
+  width: 1280px;
+  height: 350px;
+  margin: auto; 
+}
+
+.information {
+  font-size: small;
+}
+
+.info_1 {
+  display: flex;
+  padding-top: 80px;
+}
+
+.info_1 div a {
+  color: #fff;
+  margin-right: 10px;
+  margin-top: 50px;
+}
+
+.info_2, .info_3 {
+  color: #fff;
+  margin-top: 30px;
+  font-weight: lighter;
+}
+
+.copy_and_icon {
+  display: flex;
+  justify-content: space-between;
+}
+
+.copy_and_icon ul img {
+  width: 23px;
+  height: 23px;
+  margin-top: 18px;
+  margin-left: 15px;
+}
+
+.copy_and_icon ul img:nth-child(1) {
+  width: 24px;
+  height: 24px;
+}

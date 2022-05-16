@@ -7,6 +7,7 @@
 
 	<!-- tiles 적용 -->
 	<definition name="tilesLayout" template="/WEB-INF/views/common/tilesLayout.jsp">
+		<put-attribute name="title" value="" />
 		<put-attribute name="siteTop" value="/WEB-INF/views/common/header.jsp" />
 		<put-attribute name="content" value="" />
 		<put-attribute name="siteAside" value="/WEB-INF/views/common/aside.jsp" />

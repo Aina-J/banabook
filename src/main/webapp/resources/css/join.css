@@ -1,0 +1,37 @@
+.box {
+  width: 304px;
+  height: 900px;
+  margin: auto;
+  margin-top: 50px;
+  text-align: center;
+}
+
+.box hr {
+  margin: 20px 0 50px 0;
+}
+
+.box div {
+  text-align: left;
+  font-weight: 600;
+  margin-top: 20px;
+  margin-bottom: 10px;
+}
+
+.sec {
+  width: 300px;
+  height: 30px;
+  border: 2px solid #173153;
+  border-radius: 5px;
+  padding: 5px;
+}
+
+.join_button {
+  padding: 13px 130px;
+  background-color: #173153;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  text-align: center;
+  font-size: 15px;
+  margin-top: 50px;
+}

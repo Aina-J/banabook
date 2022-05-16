@@ -1,0 +1,87 @@
+.contents {
+  width: 1280px;
+  margin: auto;
+  display: flex;
+}
+
+.aside {
+  width: 250px;
+  height: 300px;
+  margin-top: 50px;
+}
+
+.aside ul li {
+  margin-bottom: 30px;
+  font-weight: 600;
+}
+
+.aside_used {
+  width: 250px;
+  height: 300px;
+  margin-top: 50px;
+}
+
+.used {
+  padding: 10px 50px;
+  border-radius: 5px;
+  background-color: #173153;
+  color: #fff;
+}
+
+.banner_sec, .banner {
+  width: calc(1280px - 250px);
+  height: 350px;
+}
+
+.banner_arr_l, .banner_arr_r {
+  width: 30px;
+  height: 30px;
+  padding: 20px;
+  position: relative;
+  bottom: 220px;
+}
+
+.arr {
+  width: 1030px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.check {
+  width: 30px;
+  height: 30px;
+}
+
+.best {
+  font-size: 24px;
+  font-weight: 600;
+  background-color: #173153;
+  color: #fff;
+  margin-bottom: 40px;
+}
+
+.best_item {
+  width: calc(1280px - 250px);
+  height: 500px;
+  margin-top: 30px;
+}
+
+.best_item_ul {
+  display: flex;
+  justify-content: space-between;
+  text-align: center;
+}
+
+.best_item ul img {
+  width: 200px;
+  height: 250px;
+}
+
+.best_item_ul div {
+  padding: 10px 0;
+  margin-bottom: 50px;
+}
+
+.best_item_ul ul div li:nth-child(2) {
+  margin-top: 5px;
+}

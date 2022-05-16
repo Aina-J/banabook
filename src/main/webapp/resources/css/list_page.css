@@ -1,0 +1,72 @@
+.contents {
+  width: 1280px;
+  height: 1200px;
+  margin: auto;
+  display: flex;
+}
+
+.aside {
+  width: 250px;
+  height: 400px;
+  margin-top: 50px;
+}
+
+.aside ul li {
+  margin-bottom: 30px;
+  font-weight: 600;
+}
+
+.aside_used {
+  width: 250px;
+  height: 300px;
+  margin-top: 50px;
+}
+
+.used {
+  padding: 10px 50px;
+  border-radius: 5px;
+  background-color: #173153;
+  color: #fff;
+}
+
+.best_item {
+  width: calc(1280px - 250px);
+  height: auto;
+  margin-top: 30px;
+}
+
+.best_item_ul {
+  display: flex;
+  justify-content: space-between;
+  text-align: center;
+}
+
+.best_item ul img {
+  width: 200px;
+  height: 250px;
+}
+
+.best_item_ul div {
+  padding: 10px 0;
+  margin-bottom: 30px;
+}
+
+.item_page {
+  width: calc(1280px - 250px - 250px);
+  margin: auto;
+  padding-bottom: 10px;
+}
+
+.item_sec {
+  width: 1030px;
+  text-align: center;
+}
+
+.item_sec a {
+  padding-left: 20px;
+}
+
+.arrow_b_r {
+  width: 15px;
+  height: 15px;
+}
