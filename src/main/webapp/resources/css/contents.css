@@ -4,7 +4,7 @@
   display: flex;
 }
 
-.aside {
+/* .aside {
   width: 250px;
   height: 300px;
   margin-top: 50px;
@@ -26,7 +26,7 @@
   border-radius: 5px;
   background-color: #173153;
   color: #fff;
-}
+} */
 
 .banner_sec, .banner {
   width: calc(1280px - 250px);
