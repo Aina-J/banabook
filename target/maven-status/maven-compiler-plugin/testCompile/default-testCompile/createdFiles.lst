@@ -1,0 +1,3 @@
+com\banabook\persistence\MybatisTest.class
+com\banabook\persistence\DataSourceTest.class
+com\banabook\persistence\JDBCTest.class
