@@ -1,23 +1,17 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<!DOCTYPE html>
-<html>
-<head>
-	<link rel="stylesheet" href="resources/css/login.css">
-</head>
-<body>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<c:set var="contextPath" value="${ pageContext.request.contextPath}" />
 
-	<div class="box">
+<link rel="stylesheet" href="${contextPath}/resources/css/login.css">
+<div class="box">
 
-	    <div>아이디</div>
-	    <input class="box_id" type="text" name="id"><br>
-	
-	    <div>비밀번호</div>
-	    <input class="box_pw" type="password" name="pwd"><br>
-	
-	    <input class="button" type="submit" name="login" value="로그인">
+    <div>아이디</div>
+    <input class="box_id" type="text" name="id"><br>
 
-	</div>
+    <div>비밀번호</div>
+    <input class="box_pw" type="password" name="pwd"><br>
 
-</body>
-</html>
+    <input class="button" type="submit" name="login" value="로그인">
+
+</div>
