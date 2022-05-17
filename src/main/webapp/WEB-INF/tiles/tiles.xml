@@ -26,11 +26,17 @@
 		<put-attribute name="title" value="BANABOOK" />
 		<put-attribute name="contents" value="/WEB-INF/views/main.jsp" />
 	</definition>
- 	
-	<definition name="login.view" extends="tilesLayout2">		
-		<put-attribute name="title" value="로그인" />
-		<put-attribute name="content" value="/WEB-INF/views/login.jsp" />
+	
+	<definition name="*.view" extends="tilesLayout2">		
+		<put-attribute name="title" value="" />
+		<put-attribute name="content" value="/WEB-INF/views/{1}.jsp" />
 	</definition>
+	
+	<!-- 김나영 @ 22-05-17 나중에 작업할 코드입니다. -->
+<!-- 	<definition name="*.viewAside" extends="tilesLayout">		 -->
+<!-- 		<put-attribute name="title" value="" /> -->
+<!-- 		<put-attribute name="contents" value="/WEB-INF/views/{1}.jsp" /> -->
+<!-- 	</definition> -->
 	
 	
 	<!-- 타일즈 미 적용 -->
