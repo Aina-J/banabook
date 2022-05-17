@@ -36,7 +36,7 @@ public class HomeController {
 		return "home";
 	}
 	
-//	test용
+//	김나영 @ 22-05-17 main : test용
 	@RequestMapping(value = "/main", method = RequestMethod.GET)
     public String tilesLayout(Model model){
         return "main.view";
@@ -45,5 +45,10 @@ public class HomeController {
 	@RequestMapping(value = "/login", method = RequestMethod.GET)
 	public String login(Model model) {
 		return "login.view";
+	}
+	
+	@RequestMapping(value = "/join", method = RequestMethod.GET)
+	public String join(Model model) {
+		return "join.view";
 	}
 }
