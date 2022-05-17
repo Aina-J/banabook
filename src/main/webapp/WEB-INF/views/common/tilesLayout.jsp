@@ -8,6 +8,10 @@
 <head>
 	<meta charset="UTF-8">
 	<title><tiles:insertAttribute name="title"/></title>
+	
+	<link rel="stylesheet" href="resources/css/contents.css">
+	<link rel="stylesheet" href="resources/css/footer.css">
+	
 </head>
 <body>
 
@@ -15,9 +19,9 @@
 		<tiles:insertAttribute name="header"/>
 	</div>
 
-	<div class="content">
+	<div class="contents">
 		<tiles:insertAttribute name="aside"/>
-		<tiles:insertAttribute name="content"/>
+		<tiles:insertAttribute name="contents"/>
 	</div>
  
 	<div class="footer">
