@@ -5,9 +5,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="UTF-8">
-<title>footer</title>
-<link rel="stylesheet" href="${contextPath}/resources/css/footer.css">
+	<link rel="stylesheet" href="resources/css/footer.css">
 </head>
 <body>
 

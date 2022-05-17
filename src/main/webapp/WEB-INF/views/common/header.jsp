@@ -5,14 +5,12 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<meta charset="UTF-8">
-	<title>header</title>
-	<link rel="stylesheet" href="src/main/webapp/resources/css/header.css">
+	<link rel="stylesheet" href="resources/css/header.css">
 </head>
 <body>
 	<div class="header">
 		<div class="logo_sec">
-  			<a href="#"><img class="logo" src="${contextPath}/resources/img/logo.png" alt="로고"></a>
+  			<a href="#"><img class="logo" src="resources/img/logo.png" alt="로고"></a>
 		</div>
 		<div class="navi_sec">
 		  	<ul>

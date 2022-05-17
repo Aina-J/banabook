@@ -5,9 +5,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<meta charset="UTF-8">
-	<title>Login</title>
-	<link rel="stylesheet" href="src/main/webapp/resources/css/login.css">
+	<link rel="stylesheet" href="resources/css/login.css">
 </head>
 <body>
 
