@@ -1,3 +1,5 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
 <link rel="stylesheet" href="resources/css/footer.css">
 
 <div class="footer_sec">
@@ -9,7 +11,6 @@
 			<div><a href="#">처리방침</a></div>
 			<div><a href="#">이용안내</a></div>
 		</div>
-
 		<div class="info_2">
 		    상호 : (주)뚱바많이사조　대표 : 김뚱바　사업자등록번호 : 123-23-1234 <br>
 		    통신판매업신고번호 : 2022-충남천안-222 　<a href="#" style="color: #fff;">[사업자정보확인]</a> <br>
@@ -24,5 +25,4 @@
 	   		</div>
 	    </div>
 	</div>
-
 </div>
