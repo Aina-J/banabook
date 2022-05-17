@@ -20,16 +20,15 @@
 		<property name="password" value="BANA0126"></property>
 	</bean>
 
-	<bean id="datasource" class="com.zaxxer.hikari.HikariDataSource"
-		destroy-method="close">
+	<bean id="datasource" class="com.zaxxer.hikari.HikariDataSource" destroy-method="close">
 		<constructor-arg ref="hikariConfig"></constructor-arg>
 	</bean>
 
 	<!-- SQL SessionFactory 설정 / Connection 생성, SQL 전달 및 결과 리턴 -->
 	<bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
 		<property name="dataSource" ref="datasource"></property>
-	<!-- 	22-05-17 수정한 부분 	-->
-	<!-- model이랑 maper 경로 지정 추가 -->
+		<!-- 	22-05-17 수정한 부분 	-->
+		<!-- model이랑 maper 경로 지정 추가 -->
 		<property name="configLocation" value="classpath:mybatis/model/modelConfig.xml" />
  		<property name="mapperLocations" value="classpath:mybatis/mappers/*.xml" />
 	</bean>
