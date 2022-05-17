@@ -9,10 +9,14 @@
 	<title><tiles:insertAttribute name="title"/></title>
 </head>
 <body>
-	<tiles:insertAttribute name="header"/>
-	
+	<div class="header">
+		<tiles:insertAttribute name="header"/>
+	</div>
+
 	<tiles:insertAttribute name="content"/>
-	
-	<tiles:insertAttribute name="footer"/>
+ 
+	<div class="footer">
+		<tiles:insertAttribute name="footer"/>
+	</div>
 </body>
 </html>

@@ -44,6 +44,6 @@ public class HomeController {
 	
 	@RequestMapping(value = "/login", method = RequestMethod.GET)
 	public String login(Model model) {
-		return "login.tiles";
+		return "login.view";
 	}
 }
