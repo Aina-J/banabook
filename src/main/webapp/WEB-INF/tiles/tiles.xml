@@ -22,7 +22,7 @@
 	</definition>
  
  	
-	<definition name="login.tiles" extends="tilesLayout2">		
+	<definition name="login.view" extends="tilesLayout2">		
 		<put-attribute name="title" value="로그인" />
 		<put-attribute name="content" value="/WEB-INF/views/login.jsp" />
 	</definition>
@@ -33,17 +33,17 @@
 	</definition>
 	
 	
-		
 	<!-- 타일즈 미 적용 -->
-	<definition name="normalLayout" template="/WEB-INF/jsp/layout/NormalLayout.jsp">
+	<!-- 김나영 @ 22-05-17 지금 당장은 필요 없는 코드 입니다. 팝업창 만들게 되면 사용할 예정 -->
+	<definition name="NormalLayout" template="/WEB-INF/jsp/layout/NormalLayout.jsp">
 		<put-attribute name="NormalLayout" value="" />
 	</definition>
 	
-	<definition name="*.jsp" extends="normalForm">
+	<definition name="*.jsp" extends="NormalLayout">
 		<put-attribute name="NormalLayout" value="/WEB-INF/jsp/{1}.jsp" />
 	</definition>
 		
-	<definition name="*/*.jsp" extends="normalForm">
+	<definition name="*/*.jsp" extends="NormalLayout">
 		<put-attribute name="NormalLayout" value="/WEB-INF/jsp/{1}/{2}.jsp" />
 	</definition>
 	
