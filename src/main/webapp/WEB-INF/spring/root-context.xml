@@ -28,11 +28,23 @@
 	<!-- SQL SessionFactory 설정 / Connection 생성, SQL 전달 및 결과 리턴 -->
 	<bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
 		<property name="dataSource" ref="datasource"></property>
+	
+	<!-- 	22-05-17 수정한 부분 	-->
+	<!-- model이랑 maper 경로 지정 추가 -->
+		<property name="configLocation" value="classpath:mybatis/model/modelConfig.xml" />
+ 		<property name="mapperLocations" value="classpath:mybatis/mappers/*.xml" />
 	</bean>
 	
-	<!-- 5.16일 경로 수정해야 함 -->
-	<mybatis-spring:scan base-package="com.banabook.? (mapper)"/>
-    <context:component-scan base-package="com.banabook.? (model)"></context:component-scan>
-    <context:component-scan base-package="com.banabook.? (service)"></context:component-scan>
+	<!-- sqlSession 빈추가 -->
+	<bean id="sqlSession" class="org.mybatis.spring.SqlSessionTemplate">
+ 		<constructor-arg index="0" ref="sqlSessionFactory"></constructor-arg>
+ 	</bean>
 	
+	<!-- 5.16일 경로 수정해야 함 -->
+	<!--  mybatis-spring:scan base-package를 dao 인터페이스가 있는곳으로 지정 	-->
+	<!--  지정된 패키지의 모든 Mybatis 관련 어노테이션을 찾아주는 역할 	-->
+	<mybatis-spring:scan base-package="com.banabook.web.dao"/>
+    <context:component-scan base-package="com.banabook.? (model)"></context:component-scan>
+<!--     <context:component-scan base-package="com.banabook.web.service"></context:component-scan> -->
+	<!-- 	/ 22-05-17 수정한 부분 	-->
 </beans>

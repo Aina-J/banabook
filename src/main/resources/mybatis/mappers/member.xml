@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+		"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!--  namespace를 dao 인터페이스가 있는곳과 동일하게 지정 -->
+<mapper namespace="com.banabook.web.dao.MemberDAO">
+	
+	<!-- 	id와 dao의 메소드 명이 동일해야함 -->
+	<select id="selectAdmin" resultType="memberDTO">
+		select * from tb_member
+	</select>
+	
+</mapper>
