@@ -23,7 +23,7 @@ public class SellerMemberDAOImpl implements SellerMemberDAO {
 	}
 
 	@Override								
-	public List<MemberDTO> selectAllSellerInfo(Map sellerPageInfo) throws DataAccessException {			
+	public List<MemberDTO> selectAllSellerInfoPaging(Map sellerPageInfo) throws DataAccessException {			
 	 	List<MemberDTO> result = sqlSession.selectList("mapper.SellerMember.selectAllSellerInfo", sellerPageInfo);
 	 	return result;						
 	}

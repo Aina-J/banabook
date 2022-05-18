@@ -12,7 +12,7 @@
       	]]>
 	</select>
 	
-	<select id="selectAllSellerInfo" resultType="memberDTO" parameterType="java.util.Map">
+	<select id="selectAllSellerInfoPaging" resultType="memberDTO" parameterType="java.util.Map">
 		<![CDATA[
          select id, password, name, tel, address, com_name,	cr_no, entry 
 		 from (select rownum num, m.id, m.password, m.name, m.tel m.address, m.com_name, m.cr_no, m.entry 
@@ -24,14 +24,14 @@
 	<insert id="insertSellerMember" parameterType="memberDTO">
 		<![CDATA[
 		 insert into tb_member(id, authority_id, password, birth, name, tel, address, activation)
-		 values (#{id}, 30, #{password}, #{birth}, #{name}, #{tel}, #{address} , 1)
+		 values (#{id}, 30, #{password}, #{birth}, #{name}, #{tel}, #{address}, 1)
 		]]>
 	</insert>
 	
 	<update id="updateSellerMember" parameterType="memberDTO">
 		<![CDATA[
 		UPDATE tb_member SET name=#{name}, password=#{password}, tel=#{tel}, address=#{address}, com_name=#{com_name}
-		where id = #{id}
+		where id=#{id}
       	]]>
 	</update>
 
