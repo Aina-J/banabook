@@ -37,7 +37,7 @@ public class TestController {
 	protected  String view7(Model model) throws Exception {
 		return "mypage_edit.view";
 	}
-	@RequestMapping(value ="/list_page")
+	@RequestMapping(value ="/list_page", method=RequestMethod.GET)
 	protected String view8(Model model) {
 		return "list_page.view";
 	}

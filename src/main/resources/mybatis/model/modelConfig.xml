@@ -7,7 +7,7 @@
 	<typeAliases>
 		<typeAlias type="com.banabook.web.dto.MemberDTO" alias="memberDTO"></typeAlias>
 		<typeAlias type="com.banabook.web.dto.ProductDTO" alias="productDTO"></typeAlias>
-		<typeAlias type="com.banabook.web.dto.MylistDTO" alias="mylistDTO"></typeAlias>
+<!-- 		<typeAlias type="com.banabook.web.dto.MylistDTO" alias="mylistDTO"></typeAlias> -->
 	</typeAliases>
 	
 </configuration>

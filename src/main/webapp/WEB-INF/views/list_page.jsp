@@ -5,7 +5,14 @@
 <c:set var="contextPath" value="${ pageContext.request.contextPath}" />
 
 <link rel="stylesheet" href="${contextPath}/resources/css/list_page.css">
-    
+<c:forEach var="product" items="${ productList }">
+	${productList.code}
+	${productList.id}
+	${productList.name}
+	${productList.price}
+	${productList.representative}
+	${productList.details}
+</c:forEach>    
         <div class="wrap">
 
       <div class="best_item">

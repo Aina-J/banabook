@@ -7,6 +7,21 @@
 <head>
 	<c:set var="contextPath" value="${ pageContext.request.contextPath}" />
 	<link rel="stylesheet" href="${contextPath}/resources/css/join.css">
+	
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/js-sha256/0.9.0/sha256.js"></script>
+  <script>
+    $(function() {
+      bind();
+    });
+
+    function bind() {
+      $('input[name=join]:first').off('click').on('click', e => {
+        console.log(sha256($('input[name=pwd]').val()));
+      });
+    }
+  </script>
+	
 </head>
 <body>
 
