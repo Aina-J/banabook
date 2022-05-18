@@ -8,7 +8,7 @@
 		http://mybatis.org/schema/mybatis-spring http://mybatis.org/schema/mybatis-spring-1.2.xsd
 		http://www.springframework.org/schema/beans https://www.springframework.org/schema/beans/spring-beans.xsd
 		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.3.xsd">
-
+	
 	<!-- Root Context: defines shared resources visible to all other web components -->
 		
 	<bean id="hikariConfig" class="com.zaxxer.hikari.HikariConfig">
@@ -26,13 +26,22 @@
 	</bean>
 
 	<!-- SQL SessionFactory 설정 / Connection 생성, SQL 전달 및 결과 리턴 -->
-	<bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
-		<property name="dataSource" ref="datasource"></property>
+	<bean id="sqlSessionFactory"
+		class="org.mybatis.spring.SqlSessionFactoryBean">
+		<property name="dataSource" ref="dataSource" />
+		<property name="configLocation"
+			value="classpath:mybatis/model/modelConfig.xml" />
+		<property name="mapperLocations" value="classpath:mybatis/mappers/*.xml" />
+	</bean>
+
+	<bean id="sqlSession"
+		class="org.mybatis.spring.SqlSessionTemplate">
+		<constructor-arg index="0" ref="sqlSessionFactory"></constructor-arg>
 	</bean>
 	
-	<!-- 5.16일 경로 수정해야 함 -->
-	<mybatis-spring:scan base-package="com.banabook.? (mapper)"/>
-    <context:component-scan base-package="com.banabook.? (model)"></context:component-scan>
-    <context:component-scan base-package="com.banabook.? (service)"></context:component-scan>
+<!-- 	(5/16) 세부 경로 수정 필요 -->
+<!-- <mybatis-spring:scan base-package="com.banabook.? (mapper)"/> -->
+<!-- <context:component-scan base-package="com.banabook.? (model)"></context:component-scan> -->
+<!-- <context:component-scan base-package="com.banabook.? (service)"></context:component-scan> -->
 	
 </beans>
