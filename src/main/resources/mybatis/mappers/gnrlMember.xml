@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+      PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="mapper.gnrlMember">
+
+    <!-- 페이징 X -->
+	<select id="selectAllGnrlMemInfo" resultType="memberDTO">
+      <![CDATA[
+       select id, authority_id, password, birth, name, tel, address, activation
+ 	   from tb_member where authority_id = 30 
+      ]]>
+	</select>
+	
+	<!-- 페이징 O -->
+	<select id="selectAllGnrlMemInfoPaging" resultType="memberDTO" parameterType="java.util.Map">
+	
+      <![CDATA[
+         select id, password, birth, name, tel, address, activation
+		 from (select rownum num, m.id, m.password, m.birth, m.name, m.tel, m.address
+		 from tb_member m where authority_id = 30) 
+		 where num between #{offset} and #{end}   
+      ]]>
+	</select>
+    
+  	<insert id="insertMember"  parameterType="memberDTO">
+		<![CDATA[
+		 insert into tb_member(id, authority_id, password, birth, name, tel, address, activation)
+		 values (#{id}, 30, #{password}, #{birth}, #{name}, #{tel}, #{address}, 1)
+		]]>      
+	</insert>
+	
+	<select id="selectMemberID" resultMap="memberDTO">
+      <![CDATA[
+         select tb_member where #{id} = #{id} and authority_id = 30	  	
+      ]]>
+	</select>
+
+	<select id="selectMemberToID" resultMap="memberDTO">
+      <![CDATA[
+         select tb_member where #{id} = #{id} and authority_id = 30	 	
+      ]]>
+	</select>
+   
+   <update id="updateMember"  parameterType="memberDTO">
+     <![CDATA[
+     	 update tb_member set name=#{name}, password=#{password}, birth=#{birth}, tel=#{tel}, address=#{address}, 
+		 where id = #{id}
+      ]]>      
+   </update> 
+    
+    
+   <!-- 모든 회원 관련 Query -->
+   
+   	 <select id="selectAllLogin" resultType="memberDTO" parameterType="java.util.Map">
+     <![CDATA[
+	    select id, authority_id, password, birth, name, tel, address, com_name, cr_no, entry, activation 
+	    from tb_member where id=#{id} and password=#{password}
+      ]]>      
+   	</select> 
+    
+    <select id="selectAllInfo"  resultType="memberDTO" parameterType="java.util.Map">
+     <![CDATA[
+	    select id, authority_id, password, birth, name, tel, address, com_name, cr_no, entry, activation 
+	    from tb_member where id=#{id} and password=#{password}
+      ]]>      
+   	</select> 
+    
+    <update id="updateAllMemActv"  parameterType="memberDTO">
+     <![CDATA[
+	    update tb_member set activation=1 
+	    where id=#{id}
+      ]]>      
+   	</update> 
+    
+   <delete id="deleteAllMember"  parameterType="String">
+	<![CDATA[
+	   delete from  tb_member where id = #{id}
+	]]>      
+  	</delete>
+  	
+</mapper>
