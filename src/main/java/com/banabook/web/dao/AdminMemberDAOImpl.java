@@ -18,7 +18,14 @@ public class AdminMemberDAOImpl implements AdminMemberDAO {
 
 	@Override
 	public int updateSellerAprvl(MemberDTO sellerDTO) throws DataAccessException {
+<<<<<<< HEAD
 		int result = sqlSession.update("mapper.adminMember", memberDTO);
 		return result;
 	}
+=======
+		int result = sqlSession.update("mapper.adminMember", sellerDTO);
+		return result;
+	}
+	
+>>>>>>> 05d6f49e4d9fcfe2d568131d1273ade6f28f90e7
 }

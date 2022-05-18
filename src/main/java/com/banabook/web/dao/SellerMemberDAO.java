@@ -22,5 +22,8 @@ public interface SellerMemberDAO {
 	 /* Seller 회원 회원정보 수정 */
 	 public int updateSellerMember(MemberDTO dto) throws DataAccessException;
 
+<<<<<<< HEAD
 
+=======
+>>>>>>> 05d6f49e4d9fcfe2d568131d1273ade6f28f90e7
 }
