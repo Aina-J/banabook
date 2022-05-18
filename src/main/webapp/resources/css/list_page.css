@@ -37,8 +37,13 @@
 
 .best_item_ul {
   display: flex;
-  justify-content: space-between;
+  flex-wrap: wrap;
+/*   justify-content: space-between; */
   text-align: center;
+}
+
+.ul_margin {
+	margin: 0px 20px;
 }
 
 .best_item ul img {
