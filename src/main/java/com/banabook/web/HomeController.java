@@ -51,4 +51,10 @@ public class HomeController {
 	public String join(Model model) {
 		return "join.view";
 	}
+	
+	@RequestMapping(value = "/sellerJoin", method = RequestMethod.GET)
+	public String sellerJoin(Model model) {
+		return "join.view";
+	}
+	
 }
