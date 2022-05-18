@@ -13,7 +13,7 @@ public class TestController {
 	protected  String view1(Model model) throws Exception {
 		return "main.view";
 	}
-	@RequestMapping(value = "/join_menu", method = RequestMethod.GET)
+	@RequestMapping(value ="/join_menu")
 	protected String view2(Model model) {
 		return "join_menu.view";
 	}
@@ -29,28 +29,36 @@ public class TestController {
 	protected  String view5(Model model) throws Exception {
 		return "login.view";
 	}
-	@RequestMapping(value = "/list_page", method = RequestMethod.GET)
-	protected String view6(Model model) {
+	@RequestMapping(value="/mypage")
+	protected  String view6(Model model) throws Exception {
+		return "mypage.view";
+	}
+	@RequestMapping(value="/mypage_edit")
+	protected  String view7(Model model) throws Exception {
+		return "mypage_edit.view";
+	}
+	@RequestMapping(value ="/list_page")
+	protected String view8(Model model) {
 		return "list_page.view";
 	}
 	@RequestMapping(value="/detail")
-	protected  String view7(Model model) throws Exception {
+	protected  String view9(Model model) throws Exception {
 		return "detail.view";
 	}
-	@RequestMapping(value = "/cart", method = RequestMethod.GET)
-	protected String view8(Model model) {
+	@RequestMapping(value ="/cart")
+	protected String view10(Model model) {
 		return "cart.view";
 	}
-	@RequestMapping(value = "/qna", method = RequestMethod.GET)
-	protected String view9(Model model) {
+	@RequestMapping(value ="/qna")
+	protected String view11(Model model) {
 		return "qna.view";
 	}
-	@RequestMapping(value = "/qna_list", method = RequestMethod.GET)
-	protected String view10(Model model) {
+	@RequestMapping(value ="/qna_list")
+	protected String view12(Model model) {
 		return "qna_list.view";
 	}
-	@RequestMapping(value = "/order", method = RequestMethod.GET)
-	protected String view11(Model model) {
+	@RequestMapping(value ="/order")
+	protected String view13(Model model) {
 		return "order.view";
 	}
 	

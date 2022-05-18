@@ -38,7 +38,7 @@
           <a href="javascript:void(0)">3</a>
           <a href="javascript:void(0)">4</a>
           <a href="javascript:void(0)">5</a>
-          <a href="javascript:void(0)"><img class="arrow_b_r" src="asset/img/arrow_b_r.png" alt="페이지오른쪽화살표"></a>
+          <a href="javascript:void(0)"><img class="arrow_b_r" src="${contextPath}/resources/img/arrow_b_r.png" alt="페이지오른쪽화살표"></a>
         </div>
       </div>
       

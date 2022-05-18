@@ -57,6 +57,46 @@
 		<put-attribute name="content" value="/WEB-INF/views/my_page_edit.jsp" />
 	</definition>
 	
+	<definition name="list_page.view" extends="tilesLayout">		
+		<put-attribute name="title" value="상품목록 | BANABOOK" />
+		<put-attribute name="contents" value="/WEB-INF/views/list_page.jsp" />
+	</definition>
+	
+	<definition name="join_menu.view" extends="tilesLayout2">		
+		<put-attribute name="title" value="회원가입 | BANABOOK" />
+		<put-attribute name="content" value="/WEB-INF/views/join_menu.jsp" />
+	</definition>
+	
+	<definition name="cart.view" extends="tilesLayout2">		
+		<put-attribute name="title" value="장바구니 | BANABOOK" />
+		<put-attribute name="content" value="/WEB-INF/views/cart.jsp" />
+	</definition>
+	
+	<definition name="qna.view" extends="tilesLayout2">		
+		<put-attribute name="title" value="문의작성 | BANABOOK" />
+		<put-attribute name="content" value="/WEB-INF/views/qna.jsp" />
+	</definition>
+	
+	<definition name="qna_list.view" extends="tilesLayout2">		
+		<put-attribute name="title" value="문의목록 | BANABOOK" />
+		<put-attribute name="content" value="/WEB-INF/views/qna_list.jsp" />
+	</definition>
+	
+	<definition name="order.view" extends="tilesLayout2">		
+		<put-attribute name="title" value="주문내역 | BANABOOK" />
+		<put-attribute name="content" value="/WEB-INF/views/order.jsp" />
+	</definition>
+	
+	<definition name="mypage.view" extends="tilesLayout2">		
+		<put-attribute name="title" value="마이페이지 | BANABOOK" />
+		<put-attribute name="content" value="/WEB-INF/views/mypage.jsp" />
+	</definition>
+	
+	<definition name="mypage_edit.view" extends="tilesLayout2">		
+		<put-attribute name="title" value="회원정보수정 | BANABOOK" />
+		<put-attribute name="content" value="/WEB-INF/views/mypage_edit.jsp" />
+	</definition>
+	
 	<!-- 김나영 @ 22-05-17 나중에 작업할 코드입니다. -->
 <!-- 	<definition name="*.viewAside" extends="tilesLayout">		 -->
 <!-- 		<put-attribute name="title" value="" /> -->
