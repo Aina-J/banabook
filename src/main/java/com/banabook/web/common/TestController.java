@@ -23,7 +23,7 @@ public class TestController {
 	}
 	@RequestMapping(value="/seller_join")
 	protected  String view4(Model model) throws Exception {
-		return "sellerJoin.view";
+		return "seller_join.view";
 	}
 	@RequestMapping(value="/login")
 	protected  String view5(Model model) throws Exception {
