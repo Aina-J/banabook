@@ -35,7 +35,7 @@ public class TestController {
 	}
 	@RequestMapping(value="/my_page_edit")
 	protected  String view7(Model model) throws Exception {
-		return "my_page_edit.view";
+		return "my_page_edit";
 	}
 	@RequestMapping(value = "/cart", method = RequestMethod.GET)
 	protected String view8(Model model) {

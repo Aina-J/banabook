@@ -4,10 +4,9 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <c:set var="contextPath" value="${ pageContext.request.contextPath}" />
 
-<link rel="stylesheet" href="${contextPath}/resources/css/contents.css">
 <link rel="stylesheet" href="${contextPath}/resources/css/list_page.css">
     
-    <div class="wrap">
+        <div class="wrap">
 
       <div class="best_item">
 
