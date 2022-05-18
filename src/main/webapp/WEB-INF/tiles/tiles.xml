@@ -53,8 +53,28 @@
 	</definition>
 	
 	<definition name="my_page_edit.view" extends="tilesLayout2">		
-		<put-attribute name="title" value="마이페이지 | BANABOOK" />
+		<put-attribute name="title" value="회원정보수정 | BANABOOK" />
 		<put-attribute name="content" value="/WEB-INF/views/my_page_edit.jsp" />
+	</definition>
+	
+	<definition name="cart.view" extends="tilesLayout2">		
+		<put-attribute name="title" value="장바구니 | BANABOOK" />
+		<put-attribute name="content" value="/WEB-INF/views/cart.jsp" />
+	</definition>
+	
+	<definition name="qna.view" extends="tilesLayout2">		
+		<put-attribute name="title" value="질문과답변 | BANABOOK" />
+		<put-attribute name="content" value="/WEB-INF/views/qna.jsp" />
+	</definition>
+	
+	<definition name="qna_list.view" extends="tilesLayout2">		
+		<put-attribute name="title" value="질문과답변 | BANABOOK" />
+		<put-attribute name="content" value="/WEB-INF/views/qna_list.jsp" />
+	</definition>
+	
+	<definition name="order.view" extends="tilesLayout2">		
+		<put-attribute name="title" value="주문내역 | BANABOOK" />
+		<put-attribute name="content" value="/WEB-INF/views/order.jsp" />
 	</definition>
 	
 	<!-- 김나영 @ 22-05-17 나중에 작업할 코드입니다. -->

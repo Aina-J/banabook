@@ -13,29 +13,29 @@ public class TestController {
 	protected  String view1(Model model) throws Exception {
 		return "main.view";
 	}
-	@RequestMapping(value = "/join_menu", method = RequestMethod.GET)
+	@RequestMapping(value = "/detail", method = RequestMethod.GET)
 	protected String view2(Model model) {
-		return "join_menu.view";
+		return "detail.view";
+	}
+	@RequestMapping(value="/login")
+	protected  String view3(Model model) throws Exception {
+		return "login.view";
 	}
 	@RequestMapping(value="/join")
-	protected  String view3(Model model) throws Exception {
+	protected  String view4(Model model) throws Exception {
 		return "join.view";
 	}
 	@RequestMapping(value="/seller_join")
-	protected  String view4(Model model) throws Exception {
-		return "sellerJoin.view";
-	}
-	@RequestMapping(value="/login")
 	protected  String view5(Model model) throws Exception {
-		return "login.view";
+		return "seller_join.view";
 	}
-	@RequestMapping(value = "/list_page", method = RequestMethod.GET)
+	@RequestMapping(value = "/my_page", method = RequestMethod.GET)
 	protected String view6(Model model) {
-		return "list_page.view";
+		return "my_page.view";
 	}
-	@RequestMapping(value="/detail")
+	@RequestMapping(value="/my_page_edit")
 	protected  String view7(Model model) throws Exception {
-		return "detail.view";
+		return "my_page_edit.view";
 	}
 	@RequestMapping(value = "/cart", method = RequestMethod.GET)
 	protected String view8(Model model) {
