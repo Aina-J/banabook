@@ -24,4 +24,8 @@ public class MainController {
 	public String login(Model model) {
 		return "login.view";
 	}
+	@RequestMapping(value = "/detail", method = RequestMethod.GET)
+	public String detail(Model model) {
+		return "detail.view";
+	}
 }
