@@ -5,7 +5,8 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<link rel="stylesheet" href="resources/css/join.css">
+	<c:set var="contextPath" value="${ pageContext.request.contextPath}" />
+	<link rel="stylesheet" href="${contextPath}/resources/css/join.css">
 </head>
 <body>
 
