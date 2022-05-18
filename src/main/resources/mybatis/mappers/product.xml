@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="mapper.product">
+
+	<!-- tb_product에 모든 데이터 조회 -->
+	<select id="selectAllProduct" resultType="productDTO">
+		select * from tb_product
+	</select>
+	
+	<!-- tb_product에 특정 코드에 해당하는 데이터 조회 -->
+	<select id="selectCodeProduct" resultType="productDTO" parameterType="String">
+		select * from tb_product where code like '%' || #{code} || '%'
+	</select>
+	
+	<!-- tb_product에 특정 코드에 해당하는 데이터 조회 그런데 페이징을 곁들인 -->
+	<select id="selectCodePageProduct" resultType="productDTO" parameterType="java.util.Map">
+		select * from (select rownum num, p.* from tb_product p where code like '%' || #{code} || '%') where num between #{offset} and #{end}
+	</select>
+	
+	<!-- tb_product에 판매자가 파는 상품 데이터 조회 그런데 페이징을 곁들인 -->
+	<select id="selectSellerPageProduct" resultType="productDTO" parameterType="java.util.Map">
+		select * from (select rownum num, p.* from tb_product p where id = #{id}) where num between #{offset} and #{end}
+	</select>
+	
+	<!-- tb_product에 판매자가 파는 상품 몽땅 데이터 조회 -->
+	<select id="selectSellerProduct" resultType="productDTO" parameterType="String">
+		select * from tb_product where id = #{id}
+	</select>
+	
+	<!-- tb_product에 상품 데이터 삭제 -->
+	<delete id="deleteProduct" parameterType="String">
+		delete from tb_product where code = #{code}
+	</delete>
+	
+	<!-- tb_product에 상품 데이터 수정 -->
+	<update id="updateProduct" parameterType="productDTO">
+		update tb_product 
+		set name = #{name}, price = #{price}, representative = #{representative}, details = #{details}
+		where code = #{code}
+	</update>
+	
+	<!-- tb_product에 상품 데이터 삽입 --> 
+	<!-- **************************** 여기 쿼리 문제 있을 수 있을거 같음 시퀀스 쓴 부분이 약간 불안불안함 일단 쓰고 안되면 수정해야함 -->
+	<insert id="insertProduct" parameterType="productDTO"> 
+		insert into tb_product
+		(code, id, name, price, representative, details, like)
+		values (#{code} || '_' ||  ${code}_seq.nextval, #{id}, #{name}, #{price}, #{representative}, #{details}, 0)
+	</insert>
+
+</mapper>
