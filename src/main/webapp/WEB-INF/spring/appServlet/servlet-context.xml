@@ -49,7 +49,9 @@
 	<!--  ViewNameInterceptor interceptors-->
 	<interceptors>
 	  <interceptor>
-	    <mapping path="/**"/> 
+	    <mapping path="/*.do"/> 
+	    <mapping path="/*/*.do"/> 
+	    <mapping path="/*/*/*.do"/> 
 	      <beans:bean class="com.banabook.web.common.ViewNameInterceptor" />
 	  </interceptor>
 	</interceptors>

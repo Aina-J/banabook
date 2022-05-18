@@ -5,13 +5,13 @@ import javax.servlet.http.HttpServletResponse;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.handler.HandlerInterceptorAdapter;
 
-public class ViewNameInterceptor extends  HandlerInterceptorAdapter{
+public class ViewNameInterceptor extends  HandlerInterceptorAdapter {
 	   @Override
 	   public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler){
+		   System.out.println("preHandle 호출");
 		   try {
 			String viewName = getViewName(request);
 			request.setAttribute("viewName", viewName);
-			System.out.println("Handler InterceptorAdapter test / prehandle : " + viewName);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}

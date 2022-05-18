@@ -10,7 +10,7 @@
 </div>
 <div class="navi_sec">
 	<ul>
-	   	<li><a href="${contextPath}/main/login">LOGIN</a></li>
+	   	<li><a href="${contextPath}/form/login.do">LOGIN</a></li>
 	   	<li><a href="#">JOIN</a></li>
 	   	<li><a href="#">MY PAGE</a></li>
 	   	<li><a href="#">CART</a></li>
