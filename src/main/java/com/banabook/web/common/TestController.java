@@ -35,7 +35,7 @@ public class TestController {
 	}
 	@RequestMapping(value="/my_page_edit")
 	protected  String view7(Model model) throws Exception {
-		return "my_page_edit";
+		return "my_page_edit.view";
 	}
 	@RequestMapping(value = "/cart", method = RequestMethod.GET)
 	protected String view8(Model model) {
@@ -53,5 +53,12 @@ public class TestController {
 	protected String view11(Model model) {
 		return "order.view";
 	}
-	
+	@RequestMapping(value = "/join_menu", method = RequestMethod.GET)
+	protected String view13(Model model) {
+		return "join_menu.view";
+	}
+	@RequestMapping(value = "/list_page", method = RequestMethod.GET)
+	protected String view14(Model model) {
+		return "list_page.view";
+	}
 }

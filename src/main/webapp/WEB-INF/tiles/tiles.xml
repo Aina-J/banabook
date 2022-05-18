@@ -32,6 +32,11 @@
 		<put-attribute name="contents" value="/WEB-INF/views/detail.jsp" />
 	</definition>
 	
+	<definition name="list_page.view" extends="tilesLayout">		
+		<put-attribute name="title" value="메인 | BANABOOK" />
+		<put-attribute name="contents" value="/WEB-INF/views/list_page.jsp" />
+	</definition>
+	
 	<definition name="login.view" extends="tilesLayout2">		
 		<put-attribute name="title" value="로그인 | BANABOOK" />
 		<put-attribute name="content" value="/WEB-INF/views/login.jsp" />
@@ -74,6 +79,11 @@
 	<definition name="order.view" extends="tilesLayout2">		
 		<put-attribute name="title" value="주문내역 | BANABOOK" />
 		<put-attribute name="content" value="/WEB-INF/views/order.jsp" />
+	</definition>
+	
+	<definition name="join_menu.view" extends="tilesLayout2">		
+		<put-attribute name="title" value="주문내역 | BANABOOK" />
+		<put-attribute name="content" value="/WEB-INF/views/join_menu.jsp" />
 	</definition>
 	
 		<!-- 김나영 @ 22-05-17 나중에 작업할 코드입니다. -->
