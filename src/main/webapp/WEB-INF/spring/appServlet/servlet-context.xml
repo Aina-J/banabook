@@ -29,7 +29,8 @@
                 <beans:value>/WEB-INF/tiles/tiles.xml</beans:value>
             </beans:list>
         </beans:property>
-    </beans:bean>        
+    </beans:bean>  
+          
     <beans:bean id="tilesViewResolver" 
                 class="org.springframework.web.servlet.view.UrlBasedViewResolver">
         <beans:property name="viewClass" 
