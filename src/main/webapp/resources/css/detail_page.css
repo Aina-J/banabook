@@ -1,0 +1,105 @@
+.contents {
+  width: 1280px;
+  height: 500px;
+  margin: auto;
+  display: flex;
+}
+
+.aside {
+  width: 250px;
+  height: 400px;
+  margin-top: 50px;
+}
+
+.aside ul li {
+  margin-bottom: 30px;
+  font-weight: 600;
+}
+
+.aside_used {
+  width: 250px;
+  height: 300px;
+  margin-top: 50px;
+}
+
+.used {
+  padding: 10px 50px;
+  border-radius: 5px;
+  background-color: #173153;
+  color: #fff;
+}
+
+.thum {
+  display: flex;
+}
+
+.thum img {
+  width: 400px;
+  height: 400px;
+  margin-top: 50px;
+  margin-left: 50px;
+}
+
+.item_info {
+  width: 450px;
+  height: 400px;
+  margin-top: -40px;
+  margin-left: 50px;
+}
+
+.good_bt img {
+  width: 40px;
+  height: 40px;
+  position: relative;
+  right: 50px;
+}
+
+.item_info ul {
+  margin-top: 150px;
+}
+
+.item_info ul li:nth-child(1) {
+  font-size: 20px;
+  font-weight: 600;
+}
+
+.item_info ul li:nth-child(3) {
+  margin-top: 50px;
+}
+
+.cart_buy {
+  display: flex;
+  justify-content: flex-start;
+  margin-top: 50px;
+}
+
+.cart, .buy {
+  padding: 15px 50px;
+  background-color: #173153;
+  color: #fff;
+  cursor: pointer;
+}
+
+.buy {
+  margin-left: 30px;
+}
+
+.wrap {
+  width: 1280px;
+  height: 2000px;
+  margin: auto;
+}
+
+hr {
+  margin: 100px 0 50px 0;
+}
+
+.page_img {
+  width: 768px;
+  margin: auto;
+}
+
+.page_img img {
+  width: 768px;
+  margin-top: 20px;
+}

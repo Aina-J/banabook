@@ -1,0 +1,72 @@
+.mypage {
+  width: 1000px;
+  height: 800px;
+  margin: auto;
+  margin-top: 30px;
+}
+
+.mypage h2 {
+  padding-left: 20px;
+  margin-top: 50px;
+  margin-bottom: 10px;
+}
+
+/* 테이블 */
+
+.table_wrap table {
+  border-collapse: collapse;
+  width: 1000px;
+  margin: auto;
+  font-size: 13px;
+}
+
+.table_wrap th, .table_wrap td {
+  padding: 10px 0px;
+}
+
+.table_wrap table td {
+  text-align: center;
+}
+
+.table_wrap tr {
+  border-bottom: 1px solid #999;
+}
+
+thead tr th:nth-child(2), tbody tr td:nth-child(2) {
+  width: 450px;
+  text-align: left;
+}
+
+thead tr th:nth-child(3), tbody tr td:nth-child(3) {
+  width: 100px;
+}
+
+
+/* 버튼 */
+
+.item_page {
+  width: 1000px;
+  margin: auto;
+}
+
+.item_sec {
+  width: 1000px;
+  text-align: center;
+  margin-top: 50px;
+  
+}
+
+.item_sec button {
+  padding: 10px 25px;
+  background-color: #173153;
+  border: #173153;
+  border-radius: 5px;
+  color: #fff;
+  cursor: pointer;
+  margin-right: 10px;
+  float: right;
+}
+
+
+
+

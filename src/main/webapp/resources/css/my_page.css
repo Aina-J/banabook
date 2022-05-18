@@ -1,0 +1,30 @@
+.mypage {
+  width: 1000px;
+  height: 400px;
+  margin: auto;
+  margin-top: 30px;
+}
+
+.mypage h2 {
+  padding-left: 20px;
+  margin-top: 50px;
+  margin-bottom: 10px;
+}
+
+.my_menu {
+  display: flex;
+  justify-content: space-evenly;
+  width: 800px;
+  margin: auto;
+  margin-top: 50px;
+  font-size: 15px;
+  text-align: center;
+}
+
+.my_menu a {
+  width: 180px;
+  height: auto;
+  padding: 15px 10px;
+  background-color: #173153;
+  color: #fff;;
+}

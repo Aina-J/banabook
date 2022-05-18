@@ -28,11 +28,9 @@
 	<!-- SQL SessionFactory 설정 / Connection 생성, SQL 전달 및 결과 리턴 -->
 	<bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
 		<property name="dataSource" ref="datasource"></property>
+		<property name="configLocation" value="classpath:mybatis/model/modelConfig.xml" />
+ 		<property name="mapperLocations" value="classpath:mybatis/mappers/*.xml" />
 	</bean>
 	
-	<!-- 5.16일 경로 수정해야 함 -->
-	<mybatis-spring:scan base-package="com.banabook.? (mapper)"/>
-    <context:component-scan base-package="com.banabook.? (model)"></context:component-scan>
-    <context:component-scan base-package="com.banabook.? (service)"></context:component-scan>
-	
+
 </beans>
