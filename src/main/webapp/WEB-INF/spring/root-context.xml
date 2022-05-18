@@ -12,10 +12,8 @@
 	<!-- Root Context: defines shared resources visible to all other web components -->
 		
 	<bean id="hikariConfig" class="com.zaxxer.hikari.HikariConfig">
-		<property name="driverClassName"
-			value="oracle.jdbc.driver.OracleDriver"></property>
-		<property name="jdbcUrl"
-			value="jdbc:oracle:thin:@localhost:1521:XE"></property>
+		<property name="driverClassName" value="oracle.jdbc.driver.OracleDriver"></property>
+		<property name="jdbcUrl" value="jdbc:oracle:thin:@localhost:1521:XE"></property>
 		<property name="username" value="BANABOOK"></property>
 		<property name="password" value="BANA0126"></property>
 	</bean>
@@ -25,12 +23,19 @@
 		<constructor-arg ref="hikariConfig"></constructor-arg>
 	</bean>
 
-	<!-- SQL SessionFactory 설정 / Connection 생성, SQL 전달 및 결과 리턴 -->
+	<!-- SQL SessionFactory 설정 추가 / Connection 생성, SQL 전달 및 결과 리턴 -->
 	<bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
 		<property name="dataSource" ref="datasource"></property>
 		<property name="configLocation" value="classpath:mybatis/model/modelConfig.xml" />
  		<property name="mapperLocations" value="classpath:mybatis/mappers/*.xml" />
 	</bean>
 	
-
+	<bean id="sqlSession" class="org.mybatis.spring.SqlSessionTemplate">
+ 		<constructor-arg index="0" ref="sqlSessionFactory"></constructor-arg>
+ 	</bean>
+ 	
+<!-- 	 MyBatis가 동작할 때 모든 mapper들을 인식 할 수 있게 설정하는 기능 / 지정된 패키지의 모든 Mybatis 관련 어노테이션을 찾아 처리함 --> 
+<!-- 	<mybatis-spring:scan base-package="com.banabook.*.mappers"/> -->
+ 
+	
 </beans>

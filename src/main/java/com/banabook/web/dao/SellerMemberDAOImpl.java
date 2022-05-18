@@ -16,17 +16,10 @@ public class SellerMemberDAOImpl implements SellerMemberDAO {
 	@Autowired
 	private SqlSession sqlSession;
 
-<<<<<<< HEAD
-	@Override								//()가 비어있으면 매개변수가 없다
-	public List<MemberDTO> selectAllSellerInfo() throws DataAccessException {			// 매개변수 안적어도 됨
-	 	List<MemberDTO> result = sqlSession.selectList("mapper.SellerMember.selectAllSellerInfo");
-	 	return result;							//namespace다음에 id까지 적어줘야 찾아감
-=======
 	@Override							
 	public List<MemberDTO> selectAllSellerInfo() throws DataAccessException {			
 	 	List<MemberDTO> result = sqlSession.selectList("mapper.SellerMember.selectAllSellerInfo");
 	 	return result;							
->>>>>>> 05d6f49e4d9fcfe2d568131d1273ade6f28f90e7
 	}
 
 	@Override								
