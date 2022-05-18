@@ -42,9 +42,19 @@
 		<put-attribute name="content" value="/WEB-INF/views/join.jsp" />
 	</definition>
 	
-	<definition name="sellerJoin.view" extends="tilesLayout2">		
+	<definition name="seller_join.view" extends="tilesLayout2">		
 		<put-attribute name="title" value="회원가입(판매자) | BANABOOK" />
-		<put-attribute name="content" value="/WEB-INF/views/sellerJoin.jsp" />
+		<put-attribute name="content" value="/WEB-INF/views/seller_join.jsp" />
+	</definition>
+	
+	<definition name="my_page.view" extends="tilesLayout2">		
+		<put-attribute name="title" value="마이페이지 | BANABOOK" />
+		<put-attribute name="content" value="/WEB-INF/views/my_page.jsp" />
+	</definition>
+	
+	<definition name="my_page_edit.view" extends="tilesLayout2">		
+		<put-attribute name="title" value="마이페이지 | BANABOOK" />
+		<put-attribute name="content" value="/WEB-INF/views/my_page_edit.jsp" />
 	</definition>
 	
 	<!-- 김나영 @ 22-05-17 나중에 작업할 코드입니다. -->

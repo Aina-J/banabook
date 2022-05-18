@@ -31,6 +31,16 @@ public class TestController {
 	
 	@RequestMapping(value="/seller_join")
 	protected  String view6(Model model) throws Exception {
-		return "sellerJoin.view";
+		return "seller_join.view";
+	}
+	
+	@RequestMapping(value="/my_page")
+	protected  String view7(Model model) throws Exception {
+		return "my_page.view";
+	}
+
+	@RequestMapping(value="/my_page_edit")
+	protected  String view8(Model model) throws Exception {
+		return "my_page_edit.view";
 	}
 }
