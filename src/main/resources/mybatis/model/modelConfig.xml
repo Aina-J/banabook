@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8" ?>
+<?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE configuration
 	PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
 	"http://mybatis.org/dtd/mybatis-3-config.dtd">
@@ -9,6 +9,7 @@
 		<typeAlias type="com.banabook.web.domain.product.domain.ProductDTO" alias="productDTO"></typeAlias>
 		<typeAlias type="com.banabook.web.domain.mylist.domain.MylistDTO" alias="mylistDTO"></typeAlias>
 		<typeAlias type="com.banabook.web.domain.review.domain.ReviewDTO" alias="reviewDTO"></typeAlias>
+		<typeAlias type="com.banabook.web.domain.inquiry.domain.InquiryDTO" alias="InquiryDTO"></typeAlias>
 	</typeAliases>
 	
 </configuration>
