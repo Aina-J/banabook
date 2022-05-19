@@ -17,7 +17,7 @@
 			DB값 받아와서 화면에 뿌려주는것까지는 확인 완료입니다. -->
 		<c:forEach var="productList" items="${productList }">
 			<ul class="ul_margin">
-				<li><img src="${contextPath}/resources/img/thum/1.jpg" alt="이미지"></li>
+				<li><img src="${productList.representative }" alt="이미지"></li>
 				<div>
 					<li>${productList.name }</li>
 					<li>${productList.price }</li>
