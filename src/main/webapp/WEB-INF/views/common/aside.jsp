@@ -6,6 +6,7 @@
 <link rel="stylesheet" href="${contextPath}/resources/css/aside.css">
   
   <script>
+  
   $(function() {
       bind();
   })
@@ -21,6 +22,8 @@
         console.log($('.aside_used a').data("value"))
     );
   }
+ 
+  </script>
   
     <div class="aside">
       <ul>
