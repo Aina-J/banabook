@@ -9,7 +9,7 @@ import com.banabook.web.domain.review.domain.ReviewDTO;
 
 public interface ReviewDAO {
 	
-	/* 리뷰 입력 */
+	/* 리뷰 게시글 작성 */
 	public void insertReview(ReviewDTO rDTO)  throws DataAccessException;
 	
 	/* 리뷰 작성자 확인 (ID 매칭) */
