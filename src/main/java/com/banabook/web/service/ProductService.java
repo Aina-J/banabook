@@ -17,4 +17,9 @@ public class ProductService {
 	public List<ProductDTO> getProduct(){
 		return productDAO.selectAllProduct();
 	}
+	
+//	코드에 해당하는 상품 정보 호출
+	public List<ProductDTO> selectCodeProduct(String code){
+		return productDAO.selectCodeProduct(code);
+	}
 }
