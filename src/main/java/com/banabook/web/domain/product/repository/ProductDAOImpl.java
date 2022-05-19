@@ -1,4 +1,4 @@
-package com.banabook.web.domain.product.repository;
+ package com.banabook.web.domain.product.repository;
 
 import java.util.List;
 import java.util.Map;
