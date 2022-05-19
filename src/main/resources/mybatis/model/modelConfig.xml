@@ -8,6 +8,7 @@
 		<typeAlias type="com.banabook.web.domain.member.domain.MemberDTO" alias="memberDTO"></typeAlias>
 		<typeAlias type="com.banabook.web.domain.product.domain.ProductDTO" alias="productDTO"></typeAlias>
 		<typeAlias type="com.banabook.web.domain.mylist.domain.MylistDTO" alias="mylistDTO"></typeAlias>
+		<typeAlias type="com.banabook.web.domain.review.domain.ReviewDTO" alias="reviewDTO"></typeAlias>
 	</typeAliases>
 	
 </configuration>

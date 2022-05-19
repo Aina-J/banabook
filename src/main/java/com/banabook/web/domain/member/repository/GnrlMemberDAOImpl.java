@@ -1,7 +1,6 @@
 package com.banabook.web.domain.member.repository;
 
 import java.util.List;
-import java.util.Map;
 
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,11 +18,6 @@ public class GnrlMemberDAOImpl implements GnrlMemberDAO {
 	@Override							
 	public List<MemberDTO> selectAllGnrlMemInfo() throws DataAccessException {			
 		return sqlSession.selectList("mapper.GeneralMember.selectAllGnrlMemInfo");
-	}
-
-	@Override								
-	public List<MemberDTO> selectAllGnrlMemInfoPaging(MemberDTO dto) throws DataAccessException {			
-		return sqlSession.selectList("mapper.GeneralMember.selectAllGnrlMemInfoPaging", dto);						
 	}
 
 	@Override
@@ -54,8 +48,8 @@ public class GnrlMemberDAOImpl implements GnrlMemberDAO {
 	}
 	
 	@Override								
-	public List<MemberDTO> selectAllInfo(MemberDTO dto) throws DataAccessException {			
-		return sqlSession.selectList("mapper.GeneralMember.selectAllInfo", dto);						
+	public MemberDTO selectAllInfo(MemberDTO dto) throws DataAccessException {			
+		return (MemberDTO) sqlSession.selectList("mapper.GeneralMember.selectAllInfo", dto);						
 	}
 		
 	@Override
@@ -67,9 +61,5 @@ public class GnrlMemberDAOImpl implements GnrlMemberDAO {
 	public int deleteAllMember(String id) throws DataAccessException {
 		return sqlSession.delete("mapper.GeneralMember.deleteAllMember", id);
 	}
-
-
-
-
 
 }

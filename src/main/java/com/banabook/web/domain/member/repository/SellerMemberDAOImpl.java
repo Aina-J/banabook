@@ -34,10 +34,4 @@ public class SellerMemberDAOImpl implements SellerMemberDAO {
  	return result;						
 	}
 
-	@Override
-	public List<MemberDTO> selectAllSellerInfoPaging(MemberDTO dto) throws DataAccessException {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
 }

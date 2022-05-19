@@ -2,7 +2,6 @@ package com.banabook.web.domain.member.repository;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Map;
 
 import org.springframework.dao.DataAccessException;
 
@@ -10,15 +9,12 @@ import com.banabook.web.domain.member.domain.MemberDTO;
 
 public interface SellerMemberDAO {
 	
-	 /* Seller ȸ�� ��ȸ - ����¡ ó�� ������ */
+	 /* Seller 회원 조회  */
 	 public List<MemberDTO> selectAllSellerInfo() throws DataAccessException;
 	
-	 /* Seller ȸ�� ��ȸ - ����¡ ó�� ���� */
-	 public List<MemberDTO> selectAllSellerInfoPaging(MemberDTO dto) throws DataAccessException;
-
-	 /* Seller ȸ�� �߰� - Sel ȸ������ / ���� Info -> Member�� ���� */
+	 /* Seller 회원 추가 - Sel 회원가입 / 기존 Info -> Member로 수정 */
 	 public int insertSellerMember(MemberDTO dto) throws DataAccessException;
-	 
-	 /* Seller ȸ�� ȸ������ ���� */
+	   
+	 /* Seller 회원 회원정보 수정 */ 
 	 public int updateSellerMember(MemberDTO dto) throws DataAccessException;
 }

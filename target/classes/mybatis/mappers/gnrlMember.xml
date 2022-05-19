@@ -12,17 +12,6 @@
  	   from tb_member where authority_id = 30 
       ]]>
 	</select>
-	
-	<!-- 페이징 O -->
-	<select id="selectAllGnrlMemInfoPaging" resultType="memberDTO" parameterType="java.util.Map">
-	
-      <![CDATA[
-         select id, password, birth, name, tel, address, activation
-		 from (select rownum num, m.id, m.password, m.birth, m.name, m.tel, m.address
-		 from tb_member m where authority_id = 30) 
-		 where num between #{offset} and #{end}   
-      ]]>
-	</select>
     
   	<insert id="insertMember"  parameterType="memberDTO">
 		<![CDATA[
