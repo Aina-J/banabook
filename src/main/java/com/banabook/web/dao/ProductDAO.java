@@ -12,6 +12,8 @@ public interface ProductDAO {
 	public List<ProductDTO> selectAllProduct() throws DataAccessException;
 	//tb_product에 특정 코드에 해당하는 데이터 조회
 	public List<ProductDTO> selectCodeProduct(String code) throws DataAccessException;
+	//tb_product에 특정 코드에 해당하는 데이터 하나만 조회
+	public ProductDTO selectCodeProductOne(String code) throws DataAccessException;
 	//tb_product에 특정 코드에 해당하는 데이터 조회 그런데 페이징을 곁들인
 	public List<ProductDTO> selectCodePageProduct(Map productPageInfo) throws DataAccessException; //Map productPageInfo 에는 상품코드, 페이지 offset, 페이지 end 가 있어야 함
 	//tb_product에 판매자가 파는 상품 데이터 조회 그런데 페이징을 곁들인
