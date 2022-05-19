@@ -14,7 +14,7 @@ public interface SellerMemberDAO {
 	 public List<MemberDTO> selectAllSellerInfo() throws DataAccessException;
 	
 	 /* Seller 회원 조회 - 페이징 처리 포함 */
-	 public List<MemberDTO> selectAllSellerInfoPaging(Map sellerPageInfo) throws DataAccessException;
+	 public List<MemberDTO> selectAllSellerInfoPaging(MemberDTO dto) throws DataAccessException;
 
 	 /* Seller 회원 추가 - Sel 회원가입 / 기존 Info -> Member로 수정 */
 	 public int insertSellerMember(MemberDTO dto) throws DataAccessException;
