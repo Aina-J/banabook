@@ -21,13 +21,7 @@ public class SellerMemberDAOImpl implements SellerMemberDAO {
 	 	List<MemberDTO> result = sqlSession.selectList("mapper.SellerMember.selectAllSellerInfo");
 	 	return result;							
 	}
-
-	@Override								
-	public List<MemberDTO> selectAllSellerInfoPaging(Member DTO dto) throws DataAccessException {			
-	 	List<MemberDTO> result = sqlSession.selectList("mapper.SellerMember.selectAllSellerInfo", dto);
-	 	return result;						
-	}
-
+	
 	@Override
 	public int insertSellerMember(MemberDTO dto) throws DataAccessException {
 		int result = sqlSession.update("mapper.SellerMember.insertSellerMember", dto);

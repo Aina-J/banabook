@@ -11,15 +11,6 @@
 		com_name, cr_no, entry from tb_member where authority_id = 20 
       	]]>
 	</select>
-	
-	<select id="selectAllSellerInfoPaging" resultType="memberDTO" parameterType="java.util.Map">
-		<![CDATA[
-         select id, password, name, tel, address, com_name,	cr_no, entry 
-		 from (select rownum num, m.id, m.password, m.name, m.tel m.address, m.com_name, m.cr_no, m.entry 
-		 from tb_member m where authority_id = 20
-		 where num between #{offset} and #{end} 
-      	]]>
-	</select>
 
 	<insert id="insertSellerMember" parameterType="memberDTO">
 		<![CDATA[
