@@ -13,6 +13,7 @@ import com.banabook.web.domain.product.domain.ProductDTO;
 import com.banabook.web.domain.product.service.ProductService;
 
 @RestController
+@RequestMapping("/productApi")
 public class ProductControllerApi {
 
 	@Autowired

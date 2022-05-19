@@ -31,7 +31,7 @@ public class ProductDAOImplTest {
 		List<ProductDTO> list = dao.selectCodeProduct("novel");
 		assertThat(list.size(), is(2));
 		list = dao.selectCodeProduct("");
-		assertThat(list.size(), is(10));
+		assertThat(list.size(), is(0));
 	}
 
 }
