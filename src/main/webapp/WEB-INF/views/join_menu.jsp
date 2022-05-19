@@ -12,8 +12,8 @@
     <hr>
 
     <div class="select">
-      <a href="javascript:void(0)"><div class="box_select">일반회원가입</div></a>
-      <a href="javascript:void(0)"><div class="box_select">판매자 회원가입</div></a>
+      <a href="${contextPath}/join/joinForm"><div class="box_select">일반회원가입</div></a>
+      <a href="${contextPath}/join/sellerJoinForm"><div class="box_select">판매자 회원가입</div></a>
     </div>
 
   </div>
