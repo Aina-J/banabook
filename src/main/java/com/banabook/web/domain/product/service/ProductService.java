@@ -1,12 +1,12 @@
-package com.banabook.web.service;
+package com.banabook.web.domain.product.service;
 
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.banabook.web.dao.ProductDAO;
-import com.banabook.web.dto.ProductDTO;
+import com.banabook.web.domain.product.domain.ProductDTO;
+import com.banabook.web.domain.product.repository.ProductDAO;
 
 @Service
 public class ProductService {

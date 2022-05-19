@@ -1,4 +1,4 @@
-package com.banabook.web.dto;
+package com.banabook.web.domain.mylist.domain;
 
 public class MylistDTO {
 	private String mylist_id;	//마이리스트 아이디

@@ -1,4 +1,4 @@
-package com.banabook.web.dto;
+package com.banabook.web.domain.product.domain;
 
 public class ProductDTO {
 	private String code;			//상품코드

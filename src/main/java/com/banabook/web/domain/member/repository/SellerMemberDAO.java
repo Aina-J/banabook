@@ -1,4 +1,4 @@
-package com.banabook.web.dao;
+package com.banabook.web.domain.member.repository;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -6,19 +6,19 @@ import java.util.Map;
 
 import org.springframework.dao.DataAccessException;
 
-import com.banabook.web.dto.MemberDTO;
+import com.banabook.web.domain.member.domain.MemberDTO;
 
 public interface SellerMemberDAO {
 	
-	 /* Seller È¸¿ø Á¶È¸ - ÆäÀÌÂ¡ Ã³¸® ¹ÌÆ÷ÇÔ */
+	 /* Seller È¸ï¿½ï¿½ ï¿½ï¿½È¸ - ï¿½ï¿½ï¿½ï¿½Â¡ Ã³ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ */
 	 public List<MemberDTO> selectAllSellerInfo() throws DataAccessException;
 	
-	 /* Seller È¸¿ø Á¶È¸ - ÆäÀÌÂ¡ Ã³¸® Æ÷ÇÔ */
+	 /* Seller È¸ï¿½ï¿½ ï¿½ï¿½È¸ - ï¿½ï¿½ï¿½ï¿½Â¡ Ã³ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ */
 	 public List<MemberDTO> selectAllSellerInfoPaging(MemberDTO dto) throws DataAccessException;
 
-	 /* Seller È¸¿ø Ãß°¡ - Sel È¸¿ø°¡ÀÔ / ±âÁ¸ Info -> Member·Î ¼öÁ¤ */
+	 /* Seller È¸ï¿½ï¿½ ï¿½ß°ï¿½ - Sel È¸ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ / ï¿½ï¿½ï¿½ï¿½ Info -> Memberï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ */
 	 public int insertSellerMember(MemberDTO dto) throws DataAccessException;
 	 
-	 /* Seller È¸¿ø È¸¿øÁ¤º¸ ¼öÁ¤ */
+	 /* Seller È¸ï¿½ï¿½ È¸ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ */
 	 public int updateSellerMember(MemberDTO dto) throws DataAccessException;
 }

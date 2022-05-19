@@ -1,4 +1,4 @@
-package com.banabook.web.dto;
+package com.banabook.web.domain.member.domain;
 
 import java.sql.Date;
 

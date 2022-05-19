@@ -1,11 +1,11 @@
-package com.banabook.web.dao;
+package com.banabook.web.domain.product.repository;
 
 import java.util.List;
 import java.util.Map;
 
 import org.springframework.dao.DataAccessException;
 
-import com.banabook.web.dto.ProductDTO;
+import com.banabook.web.domain.product.domain.ProductDTO;
 
 public interface ProductDAO {
 	//tb_product에 모든 데이터 조회

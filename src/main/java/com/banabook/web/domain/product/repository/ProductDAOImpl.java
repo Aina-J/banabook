@@ -1,4 +1,4 @@
-package com.banabook.web.dao;
+package com.banabook.web.domain.product.repository;
 
 import java.util.List;
 import java.util.Map;
@@ -8,7 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataAccessException;
 import org.springframework.stereotype.Repository;
 
-import com.banabook.web.dto.ProductDTO;
+import com.banabook.web.domain.product.domain.ProductDTO;
 
 @Repository
 public class ProductDAOImpl implements ProductDAO {

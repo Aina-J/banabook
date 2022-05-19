@@ -1,4 +1,4 @@
-package com.banabook.web.dao;
+package com.banabook.web.domain.member.repository;
 
 import java.util.List;
 import java.util.Map;
@@ -8,7 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataAccessException;
 import org.springframework.stereotype.Repository;
 
-import com.banabook.web.dto.MemberDTO;
+import com.banabook.web.domain.member.domain.MemberDTO;
 
 @Repository
 public class SellerMemberDAOImpl implements SellerMemberDAO {
@@ -32,6 +32,12 @@ public class SellerMemberDAOImpl implements SellerMemberDAO {
 	public int updateSellerMember(MemberDTO dto) throws DataAccessException {			
  	int result = sqlSession.update("mapper.SellerMember.updateSellerMember", dto);
  	return result;						
+	}
+
+	@Override
+	public List<MemberDTO> selectAllSellerInfoPaging(MemberDTO dto) throws DataAccessException {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 }
