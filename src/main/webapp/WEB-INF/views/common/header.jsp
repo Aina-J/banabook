@@ -6,12 +6,12 @@
 <link rel="stylesheet" href="${contextPath}/resources/css/header.css">
 
 <div class="logo_sec">
-	<a href="#"><img class="logo" src="${contextPath}/resources/img/logo.png" alt="로고"></a>
+	<a href="${contextPath}/main"><img class="logo" src="${contextPath}/resources/img/logo.png" alt="로고"></a>
 </div>
 <div class="navi_sec">
 	<ul>
-	   	<li><a href="${contextPath}/form/login.do">LOGIN</a></li>
-	   	<li><a href="#">JOIN</a></li>
+	   	<li><a href="${contextPath}/login/loginForm">LOGIN</a></li>
+	   	<li><a href="${contextPath}/join/joinMenu">JOIN</a></li>
 	   	<li><a href="#">MY PAGE</a></li>
 	   	<li><a href="#">CART</a></li>
 	   	<li><a href="#">ORDER</a></li>

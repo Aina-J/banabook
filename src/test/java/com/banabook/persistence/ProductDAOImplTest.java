@@ -12,9 +12,8 @@ import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.test.context.web.WebAppConfiguration;
 
-import com.banabook.web.dao.ProductDAO;
-import com.banabook.web.dto.ProductDTO;
-
+import com.banabook.web.domain.product.domain.ProductDTO;
+import com.banabook.web.domain.product.repository.ProductDAO;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @WebAppConfiguration
@@ -22,20 +21,17 @@ import com.banabook.web.dto.ProductDTO;
 		"file:src/main/webapp/WEB-INF/spring/root-context.xml"
 		,"file:src/main/webapp/WEB-INF/spring/appServlet/servlet-context.xml"
 	})
-public class test0101 {
+public class ProductDAOImplTest {
 
 	@Autowired
 	ProductDAO dao;
-	
+
 	@Test
-	public void dbConn() {
-		List<ProductDTO> list =  dao.selectAllProduct();
+	public void selectCodeProductTest() {
+		List<ProductDTO> list = dao.selectCodeProduct("novel");
+		assertThat(list.size(), is(2));
+		list = dao.selectCodeProduct("");
 		assertThat(list.size(), is(10));
 	}
-	
-	@Test
-	public void getCodeProduct() {
-		List<ProductDTO> list =  dao.selectCodeProduct("novel");
-		assertThat(list.size(), is(2));
-	}
+
 }

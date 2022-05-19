@@ -11,7 +11,15 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	
 	<!-- tb_product에 특정 코드에 해당하는 데이터 조회 -->
 	<select id="selectCodeProduct" resultType="productDTO" parameterType="String">
-		select * from tb_product where code like '%' || #{code} || '%'
+		select * from tb_product
+		<where>
+			<if test="_parameter == ''">
+				code like ''
+			</if>
+			<if test="_parameter != ''">
+				code like #{code} || '%'
+			</if>
+		</where> 
 	</select>
 	
 	<!-- tb_product에 특정 코드에 해당하는 데이터 조회 그런데 페이징을 곁들인 -->
