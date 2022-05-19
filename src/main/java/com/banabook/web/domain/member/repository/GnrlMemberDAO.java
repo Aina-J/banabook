@@ -35,7 +35,7 @@ public interface GnrlMemberDAO {
 	// DTO�� �ִ� ���� ���� ���� ���� ���̸� Map�� ����ؾ������� �װ� �ƴ϶�� DTO�� �ְ� �ް� ��°� �� ����
 	 
 	 /* ��� ȸ��(�Ϲ�+����) ��ȸ */
-	 public MemberDTO selectAllInfo(MemberDTO dto) throws DataAccessException;
+	 public List<MemberDTO> selectAllInfo(MemberDTO dto) throws DataAccessException;
 	
 	 /* ��� ȸ��(�Ϲ�+����) ���� - ���� Ȱ��ȭ/��Ȱ��ȭ  */ 
 	 public int updateAllMemActv (String id) throws DataAccessException;
