@@ -35,6 +35,5 @@
  	
 <!-- MyBatis가 동작할 때 모든 mapper들을 인식 할 수 있게 설정하는 기능 / 지정된 패키지의 모든 Mybatis 관련 어노테이션을 찾아 처리함 --> 
 	<mybatis-spring:scan base-package="com.banabook.web.**.mapper"/> 
- 
-	
+
 </beans>

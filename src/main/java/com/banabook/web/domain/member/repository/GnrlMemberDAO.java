@@ -28,8 +28,14 @@ public interface GnrlMemberDAO {
 	 /* 모든 회원(일반+셀러) 로그인 */			
 	 public List<MemberDTO> selectAllLogin(MemberDTO dto) throws DataAccessException;	
 	 
+<<<<<<< HEAD
 	 public MemberDTO selectAllInfo(MemberDTO dto) throws DataAccessException;
 	
+=======
+	 /* 모든 회원(일반+셀러) 조회 */
+	 public MemberDTO selectAllInfo(MemberDTO dto) throws DataAccessException;
+
+>>>>>>> df688699f8492cbf4aedec6f1dd7c4653424a0a4
 	 /* 모든 회원(일반+셀러) 관리 - 상태 활성화/비활성화  */ 
 	 public int updateAllMemActv (String id) throws DataAccessException;
 

@@ -9,7 +9,6 @@ import org.springframework.stereotype.Repository;
 
 import com.banabook.web.domain.member.domain.MemberDTO;
 
-
 @Repository
 public class AdminMemberDAOImpl implements AdminMemberDAO {
 	
