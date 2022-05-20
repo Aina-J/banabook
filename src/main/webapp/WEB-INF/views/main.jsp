@@ -42,6 +42,7 @@
 	}
 	
 	function fnSucc(data) {
+		console.log("ajax Success!");
 		let html = "";
 		
 		if(data != null) {
@@ -64,7 +65,8 @@
 		    html += "<div class='item_sec'>"
 		    html += "<a href='javascript:void(0)'><img class='arrow_b_r' src='http://localhost:8080/web/resources/images/arrow_b_l.png' alt='페이지왼쪽화살표'></a>"
 		    for(let i = data.beginPage; i <= data.endPage; i++) {
-			    html += "<a href='javascript:void(0)'onclick='paging(" + i + ")'>" + i + "</a>"		    	
+		    	let code = data.data[0].code.substring(0, data.data[0].code.indexOf('_'));
+			    html += "<a href='javascript:void(0)' onclick=ajaxProductList(\"" + code + "?page=" + i + "\")>" + i + "</a>"		    	
 		    }
 		    html += "<a href='javascript:void(0)'><img class='arrow_b_r' src='http://localhost:8080/web/resources/images/arrow_b_r.png' alt='페이지오른쪽화살표'></a>"
 		    html += "</div>";
@@ -73,8 +75,8 @@
 		}
 	}
 	
-	function urlParser() {
-		let url = window.location.href();
+	function hello() {
+		console.log("hello!");
 	}
 	
 	// 돔을 만드는 메소드
