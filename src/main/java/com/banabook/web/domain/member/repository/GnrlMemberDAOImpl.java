@@ -13,7 +13,7 @@ import com.banabook.web.domain.member.domain.MemberDTO;
 public class GnrlMemberDAOImpl implements GnrlMemberDAO {
 	
 	@Autowired
-	private SqlSession sqlSession;
+	private SqlSession sqlSession; 
 
 	@Override							
 	public List<MemberDTO> selectAllGnrlMemInfo() throws DataAccessException {			
