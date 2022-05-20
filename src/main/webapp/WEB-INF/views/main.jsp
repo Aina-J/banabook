@@ -4,7 +4,7 @@
 <c:set var="contextPath" value="${ pageContext.request.contextPath}" />
 <link rel="stylesheet" href="${contextPath}/resources/css/contents.css">
 <link rel="stylesheet" href="${contextPath}/resources/css/list_page.css">
-<script src="${contextPath}/resources/js/paging.js"></script>
+
 
 <script>
 	$(function() {
