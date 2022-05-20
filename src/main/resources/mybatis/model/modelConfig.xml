@@ -4,7 +4,7 @@
 	"http://mybatis.org/dtd/mybatis-3-config.dtd">
 <configuration>
 	
-	<typeAliases>
+	<typeAliases> 
 		<typeAlias type="com.banabook.web.domain.member.domain.MemberDTO" alias="memberDTO"></typeAlias>
 		<typeAlias type="com.banabook.web.domain.product.domain.ProductDTO" alias="productDTO"></typeAlias>
 		<typeAlias type="com.banabook.web.domain.mylist.domain.MylistDTO" alias="mylistDTO"></typeAlias>
