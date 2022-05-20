@@ -108,37 +108,16 @@
     <div class="best">&nbsp; · BEST</div>
 
     <div class="best_item_ul">
-      <ul>
-        <li><img src="${contextPath}/resources/img/dummy300400.jpg" alt="이미지"></li>
-        <div>
-          <li>title</li>
-          <li>0</li>
-        </div>
-      </ul>
-
-      <ul>
-        <li><img src="${contextPath}/resources/img/dummy300400.jpg" alt="이미지"></li>
-        <div>
-          <li>title</li>
-          <li>0</li>
-        </div>
-      </ul>
-
-      <ul>
-        <li><img src="${contextPath}/resources/img/dummy300400.jpg" alt="이미지"></li>
-        <div>
-          <li>title</li>
-          <li>0</li>
-        </div>
-      </ul>
-
-      <ul>
-        <li><img src="${contextPath}/resources/img/dummy300400.jpg" alt="이미지"></li>
-        <div>
-          <li>title</li>
-          <li>0</li>
-        </div>
-      </ul>
-    </div>
+     
+      <div class="best_item_ul">
+    
+    		<ul>
+    			<c:forEach var="bestSeller" items="${ bestSellerList }" begin="0" end="3">
+    			<li><img src="${ bestSellerList.representative }" alt="베스트셀러"></li>
+    			<li>${ bestSellerList.name }</li>
+     			<li>${ bestSellerList.price }</li>
+       			</c:forEach>
+      		</ul>
+    	</div>
+  	</div>
   </div>
-</div>

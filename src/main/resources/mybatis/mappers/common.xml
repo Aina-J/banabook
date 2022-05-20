@@ -5,7 +5,6 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 
 <mapper namespace="com.banabook.web.global.common.bestseller.mapper.BestSellerDAO">
 
-    <!-- 앞단에서 index로 0부터 3까지 뿌려주세요 -->
 	<select id="selectBestSeller" resultType="bestsellerDTO">
      <![CDATA[
     select p.code, p.name, p.price, p.representative

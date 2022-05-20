@@ -21,15 +21,12 @@ public class CommonController {
 	}
 
 	@RequestMapping("/maintest") 
-	public String BestSellerforMain(Model model) {	// JSP로 리턴 1
-//	public @responseBody List main(Model model) { //JSON으로 돌려주기 2
+	public String BestSellerforMain(Model model) {	
 		List list = bestSellerService.getBestSellerforMain();
-		
-		model.addAttribute("list", list); // JSP로 리턴 2
-		return "main.view"; // // JSP로 리턴 3
-		
-//		return list;  //JSON으로 돌려주기 2
+		model.addAttribute("bestSellerList", list);
+		return "main.view"; 
 	}	
+	
 	
 	@RequestMapping("/login/loginForm")
 	public String loginForm(Model model) {
