@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="mapper.sellerMember">
+
+	<select id="selectAllSellerInfo" resultType="memberDTO">
+     	<![CDATA[
+        select id, authority_id, password, name, tel, address,
+		com_name, cr_no, entry from tb_member where authority_id = 20 
+      	]]>
+	</select>
+
+	<insert id="insertSellerMember" parameterType="memberDTO">
+		<![CDATA[
+		 insert into tb_member(id, authority_id, password, birth, name, tel, address, activation)
+		 values (#{id}, 30, #{password}, #{birth}, #{name}, #{tel}, #{address}, 1)
+		]]>
+	</insert>
+	
+	<update id="updateSellerMember" parameterType="memberDTO">
+		<![CDATA[
+		UPDATE tb_member SET name=#{name}, password=#{password}, tel=#{tel}, address=#{address}, com_name=#{com_name}
+		where id=#{id}
+      	]]>
+	</update>
+
+</mapper>

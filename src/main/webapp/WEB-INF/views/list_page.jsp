@@ -17,7 +17,7 @@
 		
 		<c:forEach var="productList" items="${productList }">
 			<ul class="ul_margin" onclick="location.href='${contextPath}/product/detail?code=${productList.code}'">
-				<li><img src="${productList.representative }" alt="이미지"></li>
+				<li><img src='${productList.representative }' alt='이미지'></li>
 				<div>
 					<li>${productList.name }</li>
 					<li>${productList.price }원</li>
