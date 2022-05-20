@@ -22,13 +22,13 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	
 	<select id="selectMemberID" resultType="memberDTO">
       <![CDATA[
-         select tb_member where #{id} = #{id} and authority_id = 30	  	
+         select id from tb_member where id = #{id} and authority_id = 30	  	
       ]]>
 	</select>
 
 	<select id="selectMemberToID" resultType="memberDTO">
       <![CDATA[
-         select tb_member where #{id} = #{id} and authority_id = 30	 	
+         select * from tb_member where id = #{id} and authority_id = 30	 	
       ]]>
 	</select>
    
