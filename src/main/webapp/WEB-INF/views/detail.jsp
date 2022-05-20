@@ -8,6 +8,80 @@
 <link rel="stylesheet" href="${contextPath}/resources/css/table_paging.css">
 
 
+
+<script>
+	$(function() {
+		init();
+	})
+	
+	function init() {
+		ajaxReviewList();
+	}
+	
+	function ajaxReviewList() {
+		let url = "http://localhost:8080/web/reviewApi/reviewApi/novel_1";
+		api(url, "get", null, fnSucc);
+	}
+	
+	function api(url, method, data, fnSucc, fnFail, fnComplete){
+		
+	    let option = {
+	        "url": url,
+	        "type": method,
+	        "contentType": "application/json; charset=utf-8;",
+	        "dataType": "json"
+	    }
+	    
+	    if(data != undefined) {
+	        option.data = data;
+	    }
+	    if(typeof fnSucc == "function") {
+	        option.success = fnSucc;
+	    }
+	    if(fnFail) option.fail = fnFail;
+	    if(fnComplete) option.complete = fnComplete;
+	        
+	    $.ajax(option);
+	}
+	
+	function fnSucc(data) {
+		console.log(data);
+		let html = "";
+		
+		if(data != null) {
+			// 돔 비우기
+			$('.review_sec').html("");
+			// 돔 만들기
+			
+			
+			html += "<h2>review</h2>";
+			html += "<table> ";
+			html += "	<thead> ";
+			html += "		<tr>";
+			html += "			<th>제목</th>";
+			html += "			<th>작성자</th>";
+			html += "			<th>작성일</th>";
+			html += "		</tr>";
+			html += "	</thead>";
+			html += "	<tbody>";
+			
+			for(let i = 0; i < data.length; i++) {
+				
+				html += "		<tr>";
+				html += "			<td><a href=\"javascript:void(0)\">" + data[i].title + "</a></td>";
+				html += "			<td>" + data[i].id + "</td>";
+				html += "			<td>" + data[i].write_date + "</td>";
+				html += "		</tr>";
+				
+			}
+			html += "	</tbody>";
+			html += "</table>";
+			
+		    $('.review_sec').append(html);
+		}
+	}
+</script>
+
 <div class="thum">
       <img src="${dto.representative}" alt="미드나잇">
 
@@ -45,54 +119,10 @@
 
     <hr>
 
-    <!-- QnA -->
+    <!-- Review -->
 
     <div class="review_sec">
 
-      <h2>review</h2>
-
-      <table>
-        <thead>
-          <tr>
-            <th>제목</th>
-            <th>작성자</th>
-            <th>작성일</th>
-          </tr>
-        </thead>
-
-        <tbody>
-          <tr>
-            <td><a href="#">배송이 빨라서 좋아요</a></td>
-            <td>user</td>
-            <td>0000-00-00</td>
-          </tr>
-
-          <tr>
-            <td><a href="#">배송이 빨라서 좋아요</a></td>
-            <td>user</td>
-            <td>0000-00-00</td>
-          </tr>
-
-          <tr>
-            <td><a href="#">배송이 빨라서 좋아요</a></td>
-            <td>user</td>
-            <td>0000-00-00</td>
-          </tr>
-
-          <tr>
-            <td><a href="#">배송이 빨라서 좋아요</a></td>
-            <td>user</td>
-            <td>0000-00-00</td>
-          </tr>
-
-          <tr>
-            <td><a href="#">배송이 빨라서 좋아요</a></td>
-            <td>user</td>
-            <td>0000-00-00</td>
-          </tr>
-        </tbody>
-
-      </table>
 
     </div>
 
