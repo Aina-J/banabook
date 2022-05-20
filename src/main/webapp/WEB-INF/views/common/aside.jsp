@@ -7,21 +7,23 @@
   
   <script>
   
-  $(function() {
-      bind();
-  })
-
-  function bind() {
-    $('.cate').each((idx, item) => {
-      $(item).off("click").on("click", e =>
-        console.log($(item).data("value"))
-        );
-    });
-
-    $('.aside_used a').off("click").on("click", e =>
-        console.log($('.aside_used a').data("value"))
-    );
-  }
+	  $(function() {
+	      bind_aside();
+	  })
+	
+	  function bind_aside() {
+	    $('.cate').each((idx, item) => {
+	    	$(item).off('click').on('click', e => {
+	    		_cate = $(item).data("value");
+	    		ajaxProductList(_cate);
+	    	})
+	    })
+	    
+	    $('.aside_used a').off("click").on("click", e => {
+	    	_cate = $('.aside_used a').data("value");
+	    	ajaxProductList(_cate);
+	    })
+	  }
  
   </script>
   
