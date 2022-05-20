@@ -5,7 +5,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 
 <mapper namespace="com.banabook.web.domain.inquery.mapper.InquiryDAO"> 
 
-	<select id="selectProctDetailPage" parameterType="String" resultType="InquiryDTO">
+	<select id="selectProctDetailPage" parameterType="String" resultType="inquiryDTO">
     	<![CDATA[
     	select * from
 		(with tmp (inquiry_id, id, code, title, content, write_date, pi_id) as 
@@ -18,18 +18,31 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
       	]]>      
 	</select> 
 	
-	<select id="selectToInquiry_id" parameterType="int" resultType="InquiryDTO">
+	<select id="selectToInquiry_id" parameterType="int" resultType="inquiryDTO">
     	<![CDATA[
     	select * from tb_inquiry where inquiry_id=#{inquiry_id}
       	]]>      
 	</select> 
 											
-	<insert id="insertMemberInquiry" parameterType="InquiryDTO">
+	<insert id="insertMemberInquiry" parameterType="inquiryDTO">
     	<![CDATA[
 	    insert into tb_inquiry (inquiry_id, id, code, title, content, write_date, pi_id)
 		values (inquiry_id_seq.nextval, #{id}, #{code}, #{title}, #{content}, sysdate, #{pi_id})
       	]]>      
 	</insert> 
+	
+	<select id="selectAllInquiryPosts" parameterType="String" resultType="inquiryDTO">
+    	<![CDATA[
+       	select * from
+     	(with tmp (inquiry_id, id, code, title, content, write_date, pi_id) as 
+      	(select inquiry_id, id, code, title, content, write_date, pi_id from tb_inquiry where pi_id = 0 
+      	and id=#{id} union all 
+      	select b.inquiry_id, b.id, b.code, b.title, b.content, b.write_date, b.pi_id from tmp t, tb_inquiry b 
+      	where b.pi_id = t.inquiry_id)
+      	search depth first by pi_id set p_sort
+      	select rownum num, tmp.* from tmp order by p_sort) 
+        ]]>          
+	</select> 
 	
 	<select id="checkInquiryforSeller" parameterType="String" resultType="String">
     	<![CDATA[
@@ -47,7 +60,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
       	]]>      
 	</select> 
 	
-	<insert id="insertSellerAnswerInquiry" parameterType="InquiryDTO">
+	<insert id="insertSellerAnswerInquiry" parameterType="inquiryDTO">
     	<![CDATA[
 	    insert into tb_inquiry (inquiry_id, id, code, title, content, write_date, pi_id)
 		values (inquiry_id_seq.nextval, #{id}, #{code}, #{title}, #{content}, sysdate, #{pi_id})
@@ -69,7 +82,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
     	]]>      
      </delete>     
      
-     <select id="fullListInquiryBoard" parameterType="String" resultType="InquiryDTO">
+     <select id="fullListInquiryBoard" parameterType="String" resultType="inquiryDTO">
     	<![CDATA[
    		with tmp (inquiry_id, id, code, title, content, write_date, pi_id, name) as (
 		select i.inquiry_id, i.id, i.code, i.title, i.content, i.write_date, i.pi_id, p.name
