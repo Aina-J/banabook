@@ -19,7 +19,6 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import com.banabook.web.domain.inquiry.domain.InquiryDTO;
 import com.banabook.web.domain.inquiry.mapper.InquiryDAO;
 import com.banabook.web.domain.inquiry.service.InquiryService;
-import com.spring.ex01.service.MemberService;
 
 @Controller
 @RequestMapping(value="/inquiry/*")
