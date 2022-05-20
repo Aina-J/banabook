@@ -103,3 +103,7 @@ hr {
   width: 768px;
   margin-top: 20px;
 }
+
+.content {
+  display: none;
+}

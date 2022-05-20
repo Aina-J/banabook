@@ -7,8 +7,6 @@
 <link rel="stylesheet" href="${contextPath}/resources/css/detail_page.css">
 <link rel="stylesheet" href="${contextPath}/resources/css/table_paging.css">
 
-
-
 <script>
 	$(function() {
 		init();
@@ -65,13 +63,17 @@
 			html += "	</thead>";
 			html += "	<tbody>";
 			
-			for(let i = 0; i < data.length; i++) {
+			for(let i = 1; i <= data.length; i++) {
 				
 				html += "		<tr>";
-				html += "			<td><a href=\"javascript:void(0)\">" + data[i].title + "</a></td>";
+				html += "			<td class=\"title[" + i + "]\"><a href=\"javascript:void(0)\" onclick=\"openContent('" + i + "')\">" + data[i].title + "</a></td>";
 				html += "			<td>" + data[i].id + "</td>";
 				html += "			<td>" + data[i].write_date + "</td>";
 				html += "		</tr>";
+				html += "		<tr class=\"content content" + i + ">";
+				html += "			<td colspan=\"3\" class=\"content[" + i + "]\">" + data[i].content + "</td>";
+				html += "		</tr>";
+				
 				
 			}
 			html += "	</tbody>";
@@ -80,6 +82,17 @@
 		    $('.review_sec').append(html);
 		}
 	}
+	
+	// 리뷰 본문 조회하는 함수
+	function openContent(title){
+
+        let content_list = document.querySelectorAll(".content");
+        
+        for(let i=1; i<=content_list.length; i++) {
+            document.querySelector(".content" + i).style.display = "none";
+        }
+        document.querySelector(".content" + title).style.display = "block";
+    }         
 </script>
 
 <div class="thum">
