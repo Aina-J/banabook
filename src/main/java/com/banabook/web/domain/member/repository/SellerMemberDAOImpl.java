@@ -18,19 +18,19 @@ public class SellerMemberDAOImpl implements SellerMemberDAO {
 
 	@Override							
 	public List<MemberDTO> selectAllSellerInfo() throws DataAccessException {			
-	 	List<MemberDTO> result = sqlSession.selectList("mapper.SellerMember.selectAllSellerInfo");
+	 	List<MemberDTO> result = sqlSession.selectList("mapper.sellerMember.selectAllSellerInfo");
 	 	return result;							
 	}
 	
 	@Override
 	public int insertSellerMember(MemberDTO dto) throws DataAccessException {
-		int result = sqlSession.update("mapper.SellerMember.insertSellerMember", dto);
+		int result = sqlSession.update("mapper.sellerMember.insertSellerMember", dto);
 		return result;
 	}
 
 	@Override								
 	public int updateSellerMember(MemberDTO dto) throws DataAccessException {			
- 	int result = sqlSession.update("mapper.SellerMember.updateSellerMember", dto);
+ 	int result = sqlSession.update("mapper.sellerMember.updateSellerMember", dto);
  	return result;						
 	}
 
