@@ -3,16 +3,20 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <c:set var="contextPath" value="${ pageContext.request.contextPath}" />
 <link rel="stylesheet" href="${contextPath}/resources/css/contents.css">
+<link rel="stylesheet" href="${contextPath}/resources/css/list_page.css">
+<script src="${contextPath}/resources/js/paging.js"></script>
 
 <script>
 	$(function() {
 		init();
 	})
 	
-	function init() {}
+	function init() {
+		
+	}
 	
 	function ajaxProductList(cate) {
-		let url = "http://localhost:8090/web/productApi/main/" + cate;
+		let url = "http://localhost:8080/web/productApi/main/" + cate;
 		api(url, "get", null, fnSucc);
 	}
 	
@@ -38,7 +42,6 @@
 	}
 	
 	function fnSucc(data) {
-		console.log(data);
 		let html = "";
 		
 		if(data != null) {
@@ -46,31 +49,35 @@
 			$('.wrap').html("");
 			// 돔 만들기
 		    html += "<div class='best_item'>";
-		    html += "<div class='best_item_ul'>";
-		    for(let i = 0; i < data.length; i++) {
-		    	html += "<ul class='ul_margin' onclick='location.href="+ "\"#\"" +"'>";
-		    	html += "<li><img src='" + data[i].representative + "' alt='이미지'></li>";
-		    	html += "<div>";
-		    	html += "<li>" + data[i].name + "</li>";
-		    	html += "<li>" + data[i].price + "원</li>";
-		    	html += "</div>"
-		    	html += "</ul>";
+		    html += "<div class='best_item_list'>";
+		    for(let i = 0; i < data.data.length; i++) {
+		    	html += "<div class='items' onclick='location.href=\"http://localhost:8080/web/product/list?code="+ data.data[i].code +"\"'>";
+		    	html += "<div><img src='" + data.data[i].representative + "' alt='이미지'></div>";
+		    	html += "<div class='item_info'>";
+		    	html += "<div>" + data.data[i].name + "</div>";
+		    	html += "<div>" + data.data[i].price + "원</div>";
+			    html += "</div></div>";
 		    }
 		    html += "</div></div>";
+
 		    html += "<div class='item_page'>"
 		    html += "<div class='item_sec'>"
-		    html += "<a href='javascript:void(0)'><img class='arrow_b_r' src='asset/img/arrow_b_l.png' alt='페이지왼쪽화살표'></a>"
-		    html += "<a href='javascript:void(0)'>6</a>"
-		    html += "<a href='javascript:void(0)'>7</a>"
-		    html += "<a href='javascript:void(0)'>8</a>"
-		    html += "<a href='javascript:void(0)'>9</a>"
-		    html += "<a href='javascript:void(0)'>10</a>"
-		    html += "<a href='javascript:void(0)'><img class='arrow_b_r' src='asset/img/arrow_b_r.png' alt='페이지오른쪽화살표'></a>"
+		    html += "<a href='javascript:void(0)'><img class='arrow_b_r' src='http://localhost:8080/web/resources/images/arrow_b_l.png' alt='페이지왼쪽화살표'></a>"
+		    for(let i = data.beginPage; i <= data.endPage; i++) {
+			    html += "<a href='javascript:void(0)'onclick='paging(" + i + ")'>" + i + "</a>"		    	
+		    }
+		    html += "<a href='javascript:void(0)'><img class='arrow_b_r' src='http://localhost:8080/web/resources/images/arrow_b_r.png' alt='페이지오른쪽화살표'></a>"
 		    html += "</div>";
 		    
 		    $('.wrap').append(html);
 		}
 	}
+	
+	function urlParser() {
+		let url = window.location.href();
+	}
+	
+	// 돔을 만드는 메소드
 </script>
 
 <div class="wrap">

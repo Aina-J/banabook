@@ -1,6 +1,6 @@
 .contents {
   width: 1280px;
-  height: 1200px;
+  height: 1100px;
   margin: auto;
   display: flex;
 }
@@ -29,32 +29,33 @@
   color: #fff;
 }
 
+/* 책 리스트 */
+
 .best_item {
   width: calc(1280px - 250px);
-  height: auto;
   margin-top: 30px;
 }
 
-.best_item_ul {
-  display: flex;
-  flex-wrap: wrap;
-/*   justify-content: space-between; */
+.best_item_list {
   text-align: center;
+  display: grid;
+	grid-template-columns: repeat(4, 200px);
+	grid-template-rows: repeat(0px, auto);
+	column-gap: 50px;
+	row-gap: 50px;
 }
 
-.ul_margin {
-	margin: 0px 20px;
-}
-
-.best_item ul img {
+.best_item img {
   width: 200px;
   height: 250px;
 }
 
-.best_item_ul div {
-  padding: 10px 0;
-  margin-bottom: 30px;
+.items {
+  width: 200px;
+  height: 300px;
 }
+
+/* 페이징 */
 
 .item_page {
   width: calc(1280px - 250px - 250px);
@@ -71,7 +72,7 @@
   padding-left: 20px;
 }
 
-.arrow_b_r {
+.arrow_b_r, .arrow_b_l {
   width: 15px;
   height: 15px;
 }
