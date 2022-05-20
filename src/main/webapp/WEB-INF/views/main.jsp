@@ -2,34 +2,28 @@
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <c:set var="contextPath" value="${ pageContext.request.contextPath}" />
+<link rel="stylesheet" href="${contextPath}/resources/css/contents.css">
 
-<script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
 <script>
 	$(function() {
 		init();
-		bind();
 	})
-
-	function init() {
-		
-	}
-
-	function bind() {
-		$(".banner").off("click").on("click",function(){
-			let url = "http://localhost:8090/web/productApi/main/novel";
-			api(url, "get", null, fnSucc);
-		})
+	
+	function init() {}
+	
+	function ajaxProductList(cate) {
+		let url = "http://localhost:8090/web/productApi/main/" + cate;
+		api(url, "get", null, fnSucc);
 	}
 	
 	function api(url, method, data, fnSucc, fnFail, fnComplete){
+		
 	    let option = {
 	        "url": url,
 	        "type": method,
-	        "contentType": "application/json; charset=utf-8",
+	        "contentType": "application/json; charset=utf-8;",
 	        "dataType": "json"
 	    }
-	        
-	    console.log(option);
 	    
 	    if(data != undefined) {
 	        option.data = data;
@@ -43,36 +37,42 @@
 	    $.ajax(option);
 	}
 	
-
 	function fnSucc(data) {
-		console.log("data:" +  data);
-		console.log(data[0].name);
-        
-// 		$(".wrap").html("");
-// 		if (obj.length != 0) {
-   
-// 			let html = "";
-// 			for(let i = 0; i < obj.length; i++) {
-// 				html += "   <div class=\"best_item\">"
-// 				html += "   <div class=\"best_item_ul\"> "
-// 				html += "      <ul class=\"ul_margin\" onclick=\"location.href=\"'${contextPath}/product/detail?code='" + obj[0].code + ">  "       
-// 				html += "         <li><img class=\"thumbnail\"> alt=\"이미지\"></li>  "
-// 				html += "               $(\".thumbnail\").attr('src', "+ obj[0].representative + "); "
-// 				html += "         <div>  "
-// 				html += "            <li>" + obj[0].name + "</li>  "
-// 				html += "            <li>" + obj[0].price + "원</li>  "
-// 				html += "         </div>  "
-// 				html += "      </ul>  "
-// 				html += "   </div>  "
-// 				html += "   </div>  "          
-// 			}
-// 			$(".wrap").append(html);
-// 		}
+		console.log(data);
+		let html = "";
+		
+		if(data != null) {
+			// 돔 비우기
+			$('.wrap').html("");
+			// 돔 만들기
+		    html += "<div class='best_item'>";
+		    html += "<div class='best_item_ul'>";
+		    for(let i = 0; i < data.length; i++) {
+		    	html += "<ul class='ul_margin' onclick='location.href="+ "\"#\"" +"'>";
+		    	html += "<li><img src='" + data[i].representative + "' alt='이미지'></li>";
+		    	html += "<div>";
+		    	html += "<li>" + data[i].name + "</li>";
+		    	html += "<li>" + data[i].price + "원</li>";
+		    	html += "</div>"
+		    	html += "</ul>";
+		    }
+		    html += "</div></div>";
+		    html += "<div class='item_page'>"
+		    html += "<div class='item_sec'>"
+		    html += "<a href='javascript:void(0)'><img class='arrow_b_r' src='asset/img/arrow_b_l.png' alt='페이지왼쪽화살표'></a>"
+		    html += "<a href='javascript:void(0)'>6</a>"
+		    html += "<a href='javascript:void(0)'>7</a>"
+		    html += "<a href='javascript:void(0)'>8</a>"
+		    html += "<a href='javascript:void(0)'>9</a>"
+		    html += "<a href='javascript:void(0)'>10</a>"
+		    html += "<a href='javascript:void(0)'><img class='arrow_b_r' src='asset/img/arrow_b_r.png' alt='페이지오른쪽화살표'></a>"
+		    html += "</div>";
+		    
+		    $('.wrap').append(html);
+		}
 	}
 </script>
 
-
-<link rel="stylesheet" href="${contextPath}/resources/css/contents.css">
 <div class="wrap">
   <div class="banner_sec">
     <img class="banner" src="${contextPath}/resources/img/banner.jpg" alt="메인배너">
