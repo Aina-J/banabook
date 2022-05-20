@@ -22,4 +22,10 @@ public class InquiryServiceImpl implements InquiryService {
 		return inquiryDAO.selectProctDetailPage(code);
 	}
 
+	@Override
+	public InquiryDTO selectToInquiry_id(int inquiry_id) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
 }
