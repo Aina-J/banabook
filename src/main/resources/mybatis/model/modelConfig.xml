@@ -11,6 +11,7 @@
 		<typeAlias type="com.banabook.web.domain.review.domain.ReviewDTO" alias="reviewDTO"></typeAlias>
 		<typeAlias type="com.banabook.web.domain.inquiry.domain.InquiryDTO" alias="inquiryDTO"></typeAlias>
 		<typeAlias type="com.banabook.web.domain.order.domain.OrderDTO" alias="orderDTO"></typeAlias>
+		<typeAlias type="com.banabook.web.global.common.bestseller.domain.BestSellerDTO" alias="bestsellerDTO"></typeAlias>		
 	</typeAliases>
 	
 </configuration>

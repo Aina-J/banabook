@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.banabook.web.global.common.bestseller.mapper.BestSellerDAO">
+
+    <!-- 앞단에서 index로 0부터 3까지 뿌려주세요 -->
+	<select id="selectBestSeller" resultType="bestsellerDTO">
+     <![CDATA[
+    select p.code, p.name, p.price, p.representative
+    from tb_product p, tb_mylist l
+    where p.code = l.code
+    order by l.amount desc
+      ]]>
+	</select>
+
+</mapper>
