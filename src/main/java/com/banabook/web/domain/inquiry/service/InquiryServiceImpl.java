@@ -28,4 +28,34 @@ public class InquiryServiceImpl implements InquiryService {
 		return null;
 	}
 
+	@Override
+	public int insertMemberInquiry(InquiryDTO idto) {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
+	@Override
+	public List<InquiryDTO> checkInquiryforSeller(String sellerId) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public int insertSellerAnswerInquiry(InquiryDTO idto) {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
+	@Override
+	public int deleteInquiryToId(String id) {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
+	@Override
+	public List<InquiryDTO> fullListInquiryBoard(String code) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
 }

@@ -9,4 +9,14 @@ public interface InquiryService {
 	List<InquiryDTO> selectProctDetailPage(String code);
 	
 	InquiryDTO selectToInquiry_id(int inquiry_id);
+	
+	int insertMemberInquiry(InquiryDTO idto);
+	
+	List<InquiryDTO> checkInquiryforSeller(String sellerId);
+	
+	int insertSellerAnswerInquiry(InquiryDTO idto);
+	
+	int deleteInquiryToId(String id);
+	
+	List<InquiryDTO> fullListInquiryBoard(String code);
 }

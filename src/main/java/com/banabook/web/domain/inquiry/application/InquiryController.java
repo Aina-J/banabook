@@ -33,43 +33,48 @@ public class InquiryController {
 	public String inquiry(
 			Locale locale, Model model, 
 			@RequestParam("code") String code) throws Exception {
-		  List qna_list = inquiryService.selectProctDetailPage(code);
-		  model.addAttribute("qna_list", qna_list);
+		List qna_list = inquiryService.selectProctDetailPage(code);
+		model.addAttribute("qna_list", qna_list);
 		  
 		  return "qna_list";
 	}
 	
 	// 문의 게시글로 이동
 	@RequestMapping(value = "/inquiryView", method = RequestMethod.GET)
-	public String inquiryView(
+	public InquiryDTO inquiryView(
 			Locale locale, Model model, 
-			@RequestParam("code") String code) throws Exception {
-		  List qna_list = inquiryService.selectProctDetailPage(code);
-		  model.addAttribute("qna_list", qna_list);
-		  
-		  return "qna_list";
+			@RequestParam("inquiry_id") int inquiry_id) throws Exception {
+		InquiryDTO dto = inquiryService.selectToInquiry_id(inquiry_id);
+		return dto;
 	}
 	
-	
-	
-	
-	// qna 작성
-	@ResponseBody
+	// 문의 게시글 작성
 	@RequestMapping(value = "/qna", method = RequestMethod.POST)
-	public String qna(Locale locale, Model model, HttpServletRequest request) throws Exception {
+	public int inquiryReg(Locale locale, Model model, HttpServletRequest request) throws Exception {
 		InquiryDTO dto = new InquiryDTO();
 		dto.setName(request.getParameter("name"));
 		dto.setContent(request.getParameter("content"));
 		dto.setCode(request.getParameter("code"));
+		dto.setPi_id("0");
 //		dto.setWrite_date(Date.valueOf("date"));
-		return null;
 		
 //		if(inquiryService.qna(dto) == 1) {
 //			return "Y";
 //		}else {
 //			return "N";
 //		}
+		int result = inquiryService.insertMemberInquiry(dto);
+		return result;
 	}
+	
+	
+	
+	
+	
+	
+	
+	
+	
 	
 	
 }
