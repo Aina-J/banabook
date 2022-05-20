@@ -53,11 +53,6 @@ public class InquiryController {
 	
 	
 	
-	
-	
-	
-	
-	
 	// qna 작성
 	@ResponseBody
 	@RequestMapping(value = "/qna", method = RequestMethod.POST)
@@ -67,12 +62,13 @@ public class InquiryController {
 		dto.setContent(request.getParameter("content"));
 		dto.setCode(request.getParameter("code"));
 //		dto.setWrite_date(Date.valueOf("date"));
+		return null;
 		
-		if(service.qna(dto) == 1) {
-			return "Y";
-		}else {
-			return "N";
-		}
+//		if(inquiryService.qna(dto) == 1) {
+//			return "Y";
+//		}else {
+//			return "N";
+//		}
 	}
 	
 	
