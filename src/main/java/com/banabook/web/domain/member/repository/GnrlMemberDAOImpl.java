@@ -17,49 +17,49 @@ public class GnrlMemberDAOImpl implements GnrlMemberDAO {
 
 	@Override							
 	public List<MemberDTO> selectAllGnrlMemInfo() throws DataAccessException {			
-		return sqlSession.selectList("mapper.GeneralMember.selectAllGnrlMemInfo");
+		return sqlSession.selectList("mapper.gnrlMember.selectAllGnrlMemInfo");
 	}
 
 	@Override
 	public int insertMember(MemberDTO dto) throws DataAccessException {
-		return sqlSession.insert("mapper.GeneralMember.insertMember", dto);
+		return sqlSession.insert("mapper.gnrlMember.insertMember", dto);
 	}
 
 	@Override
 	public MemberDTO selectMemberID(String id) throws DataAccessException {
-		MemberDTO checkIdDupl  = sqlSession.selectOne("mapper.GeneralMember.selectMemberID", id);
+		MemberDTO checkIdDupl  = sqlSession.selectOne("mapper.gnrlMember.selectMemberID", id);
 		return checkIdDupl;
 	}
 	
 	@Override
 	public MemberDTO selectMemberToID(String id) throws DataAccessException {
-		MemberDTO srchMembyId = sqlSession.selectOne("mapper.GeneralMember.selectMemberToID", id);
+		MemberDTO srchMembyId = sqlSession.selectOne("mapper.gnrlMember.selectMemberToID", id);
 		return srchMembyId;
 	}
 	
 	@Override
 	public int updateMember(MemberDTO dto) throws DataAccessException {
-		return sqlSession.update("mapper.GeneralMember.updateMember");
+		return sqlSession.update("mapper.gnrlMember.updateMember");
 	}
 	
 	@Override								
 	public List<MemberDTO> selectAllLogin(MemberDTO dto) throws DataAccessException {			
-		return sqlSession.selectList("mapper.GeneralMember.selectAllLogin", dto);						
+		return sqlSession.selectList("mapper.gnrlMember.selectAllLogin", dto);						
 	}
 	
 	@Override								
 	public MemberDTO selectAllInfo(MemberDTO dto) throws DataAccessException {			
-		return (MemberDTO) sqlSession.selectList("mapper.GeneralMember.selectAllInfo", dto);						
+		return (MemberDTO) sqlSession.selectList("mapper.gnrlMember.selectAllInfo", dto);						
 	}
 		
 	@Override
 	public int updateAllMemActv(String id) throws DataAccessException {
-		return sqlSession.update("mapper.GeneralMember.updateAllMemActv", id);
+		return sqlSession.update("mapper.gnrlMember.updateAllMemActv", id);
 	}
 	
 	@Override
 	public int deleteAllMember(String id) throws DataAccessException {
-		return sqlSession.delete("mapper.GeneralMember.deleteAllMember", id);
+		return sqlSession.delete("mapper.gnrlMember.deleteAllMember", id);
 	}
 
 }
