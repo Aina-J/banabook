@@ -9,7 +9,7 @@
 
 
 <div class="thum">
-      <img src="${productList[0].representative}" alt="미드나잇">
+      <img src="${dto.representative}" alt="미드나잇">
 
       <div class="item_info">
 
@@ -18,8 +18,8 @@
             <img src="${contextPath}/resources/img/good_a.png" alt="좋아요버튼">
           </div>
 
-          <li>${productList[0].name}</li>
-          <li>${productList[0].price}</li>
+          <li>${dto.name}</li>
+          <li>${dto.price}</li>
           <li>수량</li>
           <li><input type="number" name="quantity" min="1" max="99" step="1" value="1"></li>
         </ul>
@@ -40,7 +40,7 @@
     <hr>
 
     <div class="page_img">
-      <img src="${productList[0].details}" alt="미드나잇">
+      <img src="${dto.details}" alt="미드나잇">
     </div>
 
     <hr>
