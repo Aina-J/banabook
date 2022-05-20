@@ -31,7 +31,7 @@
 
 /* 책 리스트 */
 
-.best_item {
+.list_item {
   width: calc(1280px - 250px);
   margin-top: 30px;
 }
@@ -45,7 +45,7 @@
 	row-gap: 50px;
 }
 
-.best_item img {
+.list_item .best_item_list img {
   width: 200px;
   height: 250px;
 }

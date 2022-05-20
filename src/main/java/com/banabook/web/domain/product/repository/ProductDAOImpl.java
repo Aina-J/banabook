@@ -28,7 +28,7 @@ public class ProductDAOImpl implements ProductDAO {
 
 	@Override
 	public ProductDTO selectCodeProductOne(String code) throws DataAccessException {
-		return sqlSession.selectOne("mapper.product.selectCodeProduct", code);
+		return sqlSession.selectOne("mapper.product.selectCodeProductOne", code);
 	}
 	
 	@Override

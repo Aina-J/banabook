@@ -17,6 +17,7 @@ import org.springframework.web.bind.annotation.RestController;
 import com.banabook.web.domain.product.domain.ProductDTO;
 import com.banabook.web.domain.product.service.ProductService;
 import com.banabook.web.global.common.Paging;
+import com.banabook.web.global.config.aop.LoginCheck;
 
 @RestController
 @RequestMapping("/productApi")
@@ -44,6 +45,8 @@ public class ProductControllerApi {
 		map.put("beginPage", paging.getBeginPage());
 		map.put("endPage", paging.getEndPage());
 		map.put("section", paging.getSection());
+		map.put("next", paging.isNext());
+		map.put("pre", paging.isPrev());
 		map.put("data", resultList);
 		
 		return map;

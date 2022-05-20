@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import com.banabook.web.domain.product.domain.ProductDTO;
 import com.banabook.web.domain.product.service.ProductService;
+import com.banabook.web.global.config.aop.LoginCheck;
 
 @Controller
 public class ProductController {

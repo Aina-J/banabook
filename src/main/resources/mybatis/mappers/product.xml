@@ -23,6 +23,10 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		</where> 
 	</select>
 	
+	<select id="selectCodeProductOne" resultType="productDTO" parameterType="String">
+		select * from tb_product where code like #{code}
+	</select>
+	
 	<!-- tb_product에 특정 코드에 해당하는 데이터 조회 그런데 페이징을 곁들인 -->
 	<select id="selectCodePageProduct" resultType="productDTO" parameterType="java.util.Map">
 		select * from (select rownum num, p.* from tb_product p where code like '%' || #{code} || '%') where num between #{offset} and #{end}

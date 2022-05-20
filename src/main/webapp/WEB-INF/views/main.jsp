@@ -49,7 +49,7 @@
 			// 돔 비우기
 			$('.wrap').html("");
 			// 돔 만들기
-		    html += "<div class='best_item'>";
+		    html += "<div class='list_item'>";
 		    html += "<div class='best_item_list'>";
 		    for(let i = 0; i < data.data.length; i++) {
 		    	html += "<div class='items' onclick='location.href=\"http://localhost:8080/web/product/list?code="+ data.data[i].code +"\"'>";
@@ -63,12 +63,20 @@
 
 		    html += "<div class='item_page'>"
 		    html += "<div class='item_sec'>"
-		    html += "<a href='javascript:void(0)'><img class='arrow_b_r' src='http://localhost:8080/web/resources/images/arrow_b_l.png' alt='페이지왼쪽화살표'></a>"
-		    for(let i = data.beginPage; i <= data.endPage; i++) {
-		    	let code = data.data[0].code.substring(0, data.data[0].code.indexOf('_'));
-			    html += "<a href='javascript:void(0)' onclick=ajaxProductList(\"" + code + "?page=" + i + "\")>" + i + "</a>"		    	
+	    	let code = data.data[0].code.substring(0, data.data[0].code.indexOf('_'));
+		    console.log(code);
+		    if(data.pre) {
+		    	html += "<a href='javascript:void(0)' onclick=ajaxProductList(\"" + code + "?page=" + (data.beginPage - 1) + "\")><img class='arrow_b_r' src='http://localhost:8080/web/resources/images/arrow_b_l.png' alt='페이지왼쪽화살표'></a>";
+		    } else {
+		    	
 		    }
-		    html += "<a href='javascript:void(0)'><img class='arrow_b_r' src='http://localhost:8080/web/resources/images/arrow_b_r.png' alt='페이지오른쪽화살표'></a>"
+		    for(let i = data.beginPage; i <= data.endPage; i++) {
+			    html += "<a href='javascript:void(0)' onclick=ajaxProductList(\"" + code + "?page=" + i + "\")>" + i + "</a>";		    	
+		    }
+		    console.log(data.endPage);
+		    if(data.next) {		    	
+			    html += "<a href='javascript:void(0)' onclick=ajaxProductList(\"" + code + "?page=" + (data.endPage + 1) + "\")><img class='arrow_b_r' src='http://localhost:8080/web/resources/images/arrow_b_r.png' alt='페이지오른쪽화살표'></a>";
+		    }
 		    html += "</div>";
 		    
 		    $('.wrap').append(html);

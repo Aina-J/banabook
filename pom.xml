@@ -191,6 +191,27 @@
 		    <artifactId>jackson-databind</artifactId>
 		    <version>2.13.3</version>
 		</dependency>
+		
+		<!-- AOP -->
+		<!-- https://mvnrepository.com/artifact/org.springframework/spring-aop -->
+		<dependency>
+		    <groupId>org.springframework</groupId>
+		    <artifactId>spring-aop</artifactId>
+		    <version>5.3.20</version>
+		</dependency>
+		<dependency>
+			<groupId>org.aspectj</groupId>
+			<artifactId>aspectjrt</artifactId>
+			<version>1.8.6</version>
+		</dependency>
+		<dependency>
+			<groupId>org.aspectj</groupId>
+			<artifactId>aspectjweaver</artifactId>
+			<version>1.8.6</version>
+		</dependency>
+			
+		
+		
 	</dependencies>
 	<build>
 		<plugins>
