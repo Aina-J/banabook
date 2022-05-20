@@ -17,15 +17,6 @@ public class MemberService {
 	AdminMemberDAO admdao;
 	@Autowired
 	SellerMemberDAO smdao;
-	public void insertMember(MemberDTO memberDTO) {
-		// TODO Auto-generated method stub
-		
-	}
-
-	public boolean isIdUnique(String id) {
-		// TODO Auto-generated method stub
-		return false;
-	}
 	
 	public MemberDTO getMemberInfoToid(String id) {
 		return gmdao.selectMemberToID(id);
