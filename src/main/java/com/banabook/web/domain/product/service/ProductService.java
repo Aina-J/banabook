@@ -22,4 +22,9 @@ public class ProductService {
 	public List<ProductDTO> selectCodeProduct(String code){
 		return productDAO.selectCodeProduct(code);
 	}
+	
+	// 코드에 해당하는 상품 정보 1개만 호출
+	public ProductDTO selectCodeProductOne(String code){
+		return productDAO.selectCodeProductOne(code);
+	}
 }
