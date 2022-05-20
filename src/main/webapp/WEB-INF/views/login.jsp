@@ -14,12 +14,46 @@
   function bind() {
     $('input[name=login]:first').off('click').on('click', e => {
       console.log(sha256($('input[name=pwd]').val()));
+      
+      /**************************************/
+      console.log($('input[name=id]').val());
+      let id = $('input[name=id]').val();
+      let pw = $('input[name=pwd]').val();
+      if(id == '' || pw == ''){
+    	  alert("아이디 또는 비밀번호를 입력해주세요.");
+    	  document.location.href='${contextPath}/login/loginForm';
+      }else{
+			$(function(){
+				let url = "http://localhost:8080/web/member/loginConfirm";
+  				
+  				let data = {
+  					id: id,
+  					password: sha256(pw)
+  				}
+  				
+  				$.ajax({
+  					url: url,
+  					type: "post",
+  					contentType: "application/json",
+  					data: JSON.stringify(data),
+  					success : function(data){
+  						console.log("login 확인");
+  						document.location.href='${contextPath}/main';
+  					},
+  					fail : function(data){
+  						console.log("fail, ", data);
+  					},
+  					complete: function(data){
+  						console.log("comp", data);
+  					}
+  				})
+  			});
+      }
     });
   }
 </script>
 
 <div class="box">
-
     <div>아이디</div>
     <input class="box_id" type="text" name="id"><br>
 

@@ -7,7 +7,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 
 	<!-- tb_product에 모든 데이터 조회 -->
 	<select id="selectAllProduct" resultType="productDTO">
-		select * from tb_product
+		select * from tb_product order by code;
 	</select>
 	
 	<!-- tb_product에 특정 코드에 해당하는 데이터 조회 -->
