@@ -16,9 +16,4 @@ public class SellerMemberService {
 		return sellerDAO.insertSellerMember(dto);
 	}
 
-	public boolean isIdUnique(String id) {
-		// TODO Auto-generated method stub
-		return false;
-	}
-
 }
