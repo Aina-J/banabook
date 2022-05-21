@@ -1,9 +1,5 @@
 package com.banabook.web.domain.member.application;
 
-import java.sql.Date;
-
-import java.text.SimpleDateFormat;
-
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
@@ -61,7 +57,7 @@ public class GnrlMemberController {
 			
 			// 로그인 정보 없을시 로그인 화면으로 이동
 			if(id == "" || id == null ) {
-				return "login/loginForm.view";
+				return "login.view";
 			} else {
 			return "my_page.view";
 			}
@@ -118,7 +114,13 @@ public class GnrlMemberController {
 			) {
 		HttpSession session = request.getSession();
 		String id = (String) session.getAttribute("id");
+		
+		// 로그인 정보 없을시 로그인 화면으로 이동
+		if(id == "" || id == null ) {
+			return "login.view";
+		} else {
 		model.addAttribute(id);
 		return "qna_list.view";
+		}
 	}
 }
