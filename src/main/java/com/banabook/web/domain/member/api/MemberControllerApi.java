@@ -31,32 +31,32 @@ public class MemberControllerApi {
 			,Model model
 			,@PathVariable("id") String id
 			) {
+		
+		System.out.println("page : " + req.getParameter("page"));
 		List<InquiryDTO> InquiryList = service.selectAllInquiryPosts(id);
-		
-		System.out.println(InquiryList.size());
-		
 		if(InquiryList.size() == 0) {
 			Map map = new HashMap();
 			map.put("data", "0");
 			return map;
 		} else {
-		Paging paging = new Paging(InquiryList.size());
-		paging.paging(Integer.parseInt(req.getParameter("page")));
-		
-		List<InquiryDTO> resultList = new ArrayList();
-		for(int i = paging.getBeginRow() - 1; i < paging.getEndRow(); i++) {
-			resultList.add(InquiryList.get(i));
-		}
-		
-		Map map = new HashMap();
-		map.put("beginPage", paging.getBeginPage());
-		map.put("endPage", paging.getEndPage());
-		map.put("section", paging.getSection());
-		map.put("next", paging.isNext());
-		map.put("pre", paging.isPrev());
-		map.put("data", resultList);
-		
-		return map;
+				Paging paging = new Paging(InquiryList.size());
+				paging.paging(Integer.parseInt(req.getParameter("page")));
+			
+				List<InquiryDTO> resultList = new ArrayList();
+				for(int i = paging.getBeginRow() - 1; i < paging.getEndRow(); i++) {
+					resultList.add(InquiryList.get(i));
+				}
+				
+				Map map = new HashMap();
+				map.put("beginPage", paging.getBeginPage());
+				map.put("endPage", paging.getEndPage());
+				map.put("section", paging.getSection());
+				map.put("next", paging.isNext());
+				map.put("pre", paging.isPrev());
+				map.put("data", resultList);
+			
+
+			return map;
 		}
 		
 	}
