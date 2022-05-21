@@ -36,7 +36,7 @@ public class MemberController {
 		session.setAttribute("authority_id", dto.getAuthority_id());
 		session.setAttribute("name", dto.getName());
 
-		return "main";
+		return "main.view";
 	}
 
 

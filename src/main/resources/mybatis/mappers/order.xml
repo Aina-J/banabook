@@ -7,11 +7,12 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 
 	<!-- tb_order에 주문코드에 해당하는 주문정보, 주문한 회원 id, 상품정보, 상품판매자 조회  -->
 	<select id="selectOrderInfo" resultType="orderDTO" parameterType="String">
-		select o.order_code, o.orderer, o.order_date, o.receiver, o.receiver_tel, o.shipping_address, l.mylist_id, l.id, l.code, l.sort, l.amount, p.id as seller_id, p.name as product_name, p.price
-		from tb_order o, tb_mylist l, tb_product p
+		select o.order_code, o.orderer, o.order_date, o.receiver, o.receiver_tel, o.shipping_address, l.mylist_id, l.id, l.code, l.sort, l.amount, p.id as seller_id, p.name as product_name, p.price, s.name as sort_name
+		from tb_order o, tb_mylist l, tb_product p, tb_mylistsort s
 		where o.order_code = l.order_code
 		and l.code = p.code
-		and o.order_code = #{order_code}
+        and l.sort = s.sort
+		and l.id = #{id}
 	</select>
 
 </mapper>

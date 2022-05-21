@@ -25,13 +25,15 @@
         </thead>
 
         <tbody>
+        <c:forEach var="item" items="${ orders }">
           <tr>
-            <td>2022-05-01</td>
-            <td><a href="javascript:void(0)">title</a></td>
-            <td><input style="width: 50px; text-align: center;" type="number" name="quantity" min="1" max="99" step="1" value="1"></td>
-            <td>0</td>
-            <td>배송완료</td>
+            <td>${ item.order_date }</td>
+            <td><a href="javascript:void(0)">${ item.product_name }</a></td>
+            <td><input style="width: 50px; text-align: center;" type="number" name="quantity" min="1" max="99" step="1" value="${ item.amount }"></td>
+            <td>${ item.price }</td>
+            <td>${ item.sort_name }</td>
           </tr>
+        </c:forEach>
         </tbody>
       </table>
 

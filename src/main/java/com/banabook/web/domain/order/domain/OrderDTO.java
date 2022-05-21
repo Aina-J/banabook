@@ -18,11 +18,15 @@ public class OrderDTO {
 	private String seller_id;
 	private String product_name;
 	private int price;
+	private String sort_name;
 	public OrderDTO() {
+		super();
+		// TODO Auto-generated constructor stub
 	}
 	public OrderDTO(String order_code, String orderer, Date order_date, String receiver, String receiver_tel,
 			String shipping_address, String mylist_id, String id, String code, int sort, int amount, String seller_id,
-			String product_name, int price) {
+			String product_name, int price, String sort_name) {
+		super();
 		this.order_code = order_code;
 		this.orderer = orderer;
 		this.order_date = order_date;
@@ -37,6 +41,7 @@ public class OrderDTO {
 		this.seller_id = seller_id;
 		this.product_name = product_name;
 		this.price = price;
+		this.sort_name = sort_name;
 	}
 	public String getOrder_code() {
 		return order_code;
@@ -121,5 +126,11 @@ public class OrderDTO {
 	}
 	public void setPrice(int price) {
 		this.price = price;
+	}
+	public String getSort_name() {
+		return sort_name;
+	}
+	public void setSort_name(String sort_name) {
+		this.sort_name = sort_name;
 	}
 }
