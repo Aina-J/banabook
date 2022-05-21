@@ -193,16 +193,28 @@
 		</dependency>
 		
 		<!-- AOP -->
-		<!-- https://mvnrepository.com/artifact/org.springframework.boot/spring-boot-starter-aop -->
 		<dependency>
-		    <groupId>org.springframework.boot</groupId>
-		    <artifactId>spring-boot-starter-aop</artifactId>
-		    <version>2.6.6</version>
+		    <groupId>org.springframework</groupId>
+		    <artifactId>spring-aop</artifactId>
+		    <version>${org.springframework-version}</version>
 		</dependency>
-
-			
-		
-		
+		<dependency>
+		    <groupId>org.aspectj</groupId>
+		    <artifactId>aspectjrt</artifactId>
+		    <version>1.9.9.1</version>
+		    <scope>runtime</scope>
+		</dependency>
+		<dependency>
+		    <groupId>org.aspectj</groupId>
+		    <artifactId>aspectjweaver</artifactId>
+		    <version>1.9.9.1</version>
+		    <scope>runtime</scope>
+		</dependency>
+		<dependency>
+		    <groupId>org.aspectj</groupId>
+		    <artifactId>aspectjtools</artifactId>
+		    <version>1.9.9.1</version>
+		</dependency>		
 	</dependencies>
 	<build>
 		<plugins>

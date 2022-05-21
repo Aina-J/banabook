@@ -66,28 +66,23 @@
           let code = data.data[0].code.substring(0, data.data[0].code.indexOf('_'));
           console.log(code);
           if(data.pre) {
+        	  // 이전 버튼 만들기
              html += "<a href='javascript:void(0)' onclick=ajaxProductList(\"" + code + "?page=" + (data.beginPage - 1) + "\")><img class='arrow_b_r' src='http://localhost:8080/web/resources/images/arrow_b_l.png' alt='페이지왼쪽화살표'></a>";
-          } else {
-             
           }
           for(let i = data.beginPage; i <= data.endPage; i++) {
+        	 // 페이징 버튼 만들기, 버튼 클릭하면 page=? 파라미터 추가해서 다시 ajax 호출
              html += "<a href='javascript:void(0)' onclick=ajaxProductList(\"" + code + "?page=" + i + "\")>" + i + "</a>";             
           }
           console.log(data.endPage);
-          if(data.next) {             
-             html += "<a href='javascript:void(0)' onclick=ajaxProductList(\"" + code + "?page=" + (data.endPage + 1) + "\")><img class='arrow_b_r' src='http://localhost:8080/web/resources/images/arrow_b_r.png' alt='페이지오른쪽화살표'></a>";
+          if(data.next) {
+        	  // 다음 버튼 만들기
+			html += "<a href='javascript:void(0)' onclick=ajaxProductList(\"" + code + "?page=" + (data.endPage + 1) + "\")><img class='arrow_b_r' src='http://localhost:8080/web/resources/images/arrow_b_r.png' alt='페이지오른쪽화살표'></a>";
           }
-          html += "</div>";
+          html += "</div></div>";
           
           $('.wrap').append(html);
       }
    }
-   
-   function hello() {
-      console.log("hello!");
-   }
-   
-   // 돔을 만드는 메소드
 </script>
 
 <div class="wrap">

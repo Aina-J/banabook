@@ -17,7 +17,6 @@ import org.springframework.web.bind.annotation.RestController;
 import com.banabook.web.domain.product.domain.ProductDTO;
 import com.banabook.web.domain.product.service.ProductService;
 import com.banabook.web.global.common.Paging;
-import com.banabook.web.global.config.aop.LoginCheck;
 
 @RestController
 @RequestMapping("/productApi")

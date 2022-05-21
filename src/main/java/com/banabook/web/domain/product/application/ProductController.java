@@ -11,7 +11,6 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import com.banabook.web.domain.product.domain.ProductDTO;
 import com.banabook.web.domain.product.service.ProductService;
-import com.banabook.web.global.config.aop.LoginCheck;
 
 @Controller
 public class ProductController {
@@ -22,7 +21,6 @@ public class ProductController {
 	ProductService productService;
 	
 	/* 해당 카테고리 상품목록에서 상품상세페이지로 이동 */
-	@LoginCheck
 	@RequestMapping(value="/product/list", method=RequestMethod.GET)
 	public String productList(Model model,
 			@RequestParam("code") String code
