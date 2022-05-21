@@ -24,7 +24,7 @@ public class SellerMemberController {
 	public String insertSeller(
 			Model model,
 			@RequestParam("id") String id,
-			@RequestParam("pw") String pw,
+			@RequestParam("pw") String password,
 			@RequestParam("com_name") String com_name,
 			@RequestParam("cr_no") String cr_no,
 			@RequestParam("name") String name,
@@ -35,7 +35,7 @@ public class SellerMemberController {
 		
 		MemberDTO dto = new MemberDTO();
 		dto.setId(id);
-		dto.setPassword(pw);
+		dto.setPassword(password);
 		dto.setCom_name(com_name);
 		dto.setCr_no(cr_no);
 		dto.setName(name);
