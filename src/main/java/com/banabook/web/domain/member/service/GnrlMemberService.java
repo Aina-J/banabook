@@ -21,8 +21,4 @@ public class GnrlMemberService {
 		return memberDAO.selectMemberID(id);
 	}
 
-	public int updateMember(MemberDTO memberDTO) {
-		return memberDAO.updateMember(memberDTO);
-	}
-
 }

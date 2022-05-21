@@ -1,7 +1,6 @@
 package com.banabook.web.domain.member.application;
 
 import java.sql.Date;
-import java.text.SimpleDateFormat;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -35,9 +34,6 @@ public class SellerMemberController {
 		
 		// String date값을 sql Date 값으로 변환
 		Date birth_date = Date.valueOf(birth);
-		// DB에 있는 date 형식으로 변경
-		SimpleDateFormat filter = new SimpleDateFormat("yyyy-MM-dd");
-		filter.format(birth_date);
 		
 		MemberDTO dto = new MemberDTO();
 		dto.setId(id);

@@ -1,10 +1,8 @@
 package com.banabook.web.domain.member.application;
 
 import java.sql.Date;
-import java.text.SimpleDateFormat;
 
 import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -23,7 +21,6 @@ public class GnrlMemberController {
 	@Autowired
 	GnrlMemberService service;
 	
-	// 회원 가입 진행
 	@RequestMapping(value="/joinConfirm", method=RequestMethod.POST)
 	public String insertMember(
 			Model model,
@@ -35,6 +32,10 @@ public class GnrlMemberController {
 			@RequestParam("birth") String birth
 			) {
 		
+		System.out.println(id);
+		System.out.println(pw);
+		System.out.println(name);
+		System.out.println(tel);
 		// String date값을 sql Date 값으로 변환
 		Date birth_date = Date.valueOf(birth);
 		
@@ -47,73 +48,9 @@ public class GnrlMemberController {
 		dto.setBirth(birth_date);
 		
 		int confirm = service.insertMember(dto);
+		System.out.println("MESSAGE : 회원가입 성공" + confirm);
 		
-		if(confirm == 1) {
-			System.out.println("MESSAGE : 회원가입 성공 / 등록된 회원 수 : " + confirm);
-		} else {
-			System.out.println("MESSAGE : 회원가입 실패 / 등록된 회원 수 : " + confirm);
-		}
 		return "main.view";
 	}
-	
-	// 회원 수정페이지 진입
-	@RequestMapping(value="/edit", method=RequestMethod.POST)
-	public String enterMemberEdit(Model model, HttpServletRequest request) {
-		
-		HttpSession session = request.getSession();
-		String id = (String) session.getAttribute("id");
-		model.addAttribute("id", id);
-		return "my_page_edit.view";
-	}
-	
-	// 회원 수정 요청
-	@RequestMapping(value="/editConfirm", method=RequestMethod.POST)
-	public String updateMember(
-			Model model,
-			HttpServletRequest request,
-			@RequestParam("pw") String pw,
-			@RequestParam("name") String name,
-			@RequestParam("tel") String tel,
-			@RequestParam("address") String address,
-			@RequestParam("birth") String birth
-			) {
-		
-		// 세션에서 아이디 정보 불러옴
-		HttpSession session = request.getSession();
-		String id = (String) session.getAttribute("id");
-		
-		// String date값을 sql Date 값으로 변환
-		Date birth_date = Date.valueOf(birth);
-		// DB에 있는 date 형식으로 변경
-		SimpleDateFormat filter = new SimpleDateFormat("yyyy-MM-dd");
-		filter.format(birth_date);
-		
-		MemberDTO dto = new MemberDTO();
-		dto.setId(id);
-		dto.setPassword(pw);
-		dto.setName(name);
-		dto.setTel(tel);
-		dto.setAddress(address);
-		dto.setBirth(birth_date);
-		int result = service.updateMember(dto);
-		if(result == 1) {
-			System.out.println("MESSAGE : 회원정보 수정 완료 ");
-		} else {
-			System.out.println("MESSAGE : 회원정보 수정 실패 ");
-		}
-		
-		return "my_page.view";
-	}
-	
-	// 회원이 작성한 문의 게시글 리스트 출력
-	@RequestMapping(value="/loadInquiry", method=RequestMethod.GET)
-	public String loadInquiry(
-			Model model,
-			HttpServletRequest request
-			) {
-		HttpSession session = request.getSession();
-		String id = (String) session.getAttribute("id");
-		model.addAttribute(id);
-		return "qna_list.view";
-	}
+
 }

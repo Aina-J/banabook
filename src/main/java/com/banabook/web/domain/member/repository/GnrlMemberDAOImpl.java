@@ -39,7 +39,7 @@ public class GnrlMemberDAOImpl implements GnrlMemberDAO {
 	
 	@Override
 	public int updateMember(MemberDTO dto) throws DataAccessException {
-		return sqlSession.update("mapper.gnrlMember.updateMember", dto);
+		return sqlSession.update("mapper.gnrlMember.updateMember");
 	}
 	
 	@Override								
