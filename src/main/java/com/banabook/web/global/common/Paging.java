@@ -9,7 +9,7 @@ public class Paging {
     private int totalPage;			// 전체 페이지
     private int beginPage;  		// 페이지 출력 시작
     private int endPage;    		// 페이지 출력 끝
-    private int displayRow =12;  	// 한 페이지에 몇 개의 행이 표시될 것인가 (선택 set)
+    private int displayRow =5;  	// 한 페이지에 몇 개의 행이 표시될 것인가 (선택 set)
     private int displayPage =5;  	// 한 페이지에 몇 개의 페이지 버튼이 표시될 것인가 (선택 set)
     boolean prev; 					// 이전 버튼의 활성화 여부
     boolean next; 					// 다음 버튼의 활성화 여부
