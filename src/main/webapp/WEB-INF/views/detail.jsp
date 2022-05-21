@@ -43,7 +43,7 @@
 	}
 	
 	function fnSucc(data) {
-		console.log(data);
+		console.log(JSON.stringify(data));
 		let html = "";
 		
 		if(data != null) {
@@ -53,7 +53,7 @@
 			
 			
 			html += "<h2>review</h2>";
-			html += "<table> ";
+			html += "<table border=\"1\"> ";
 			html += "	<thead> ";
 			html += "		<tr>";
 			html += "			<th>제목</th>";
@@ -63,15 +63,15 @@
 			html += "	</thead>";
 			html += "	<tbody>";
 			
-			for(let i = 1; i <= data.length; i++) {
+			for(let i = 0; i < data.length; i++) {
 				
 				html += "		<tr>";
-				html += "			<td class=\"title[" + i + "]\"><a href=\"javascript:void(0)\" onclick=\"openContent('" + i + "')\">" + data[i].title + "</a></td>";
+				html += "			<td class=\"title" + i + "\""+"><a href=\"javascript:void(0)\" onclick=\"openContent('" + i + "')\">" + data[i].title + "</a></td>";
 				html += "			<td>" + data[i].id + "</td>";
 				html += "			<td>" + data[i].write_date + "</td>";
 				html += "		</tr>";
-				html += "		<tr class=\"content content" + i + ">";
-				html += "			<td colspan=\"3\" class=\"content[" + i + "]\">" + data[i].content + "</td>";
+				html += "		<tr class=\"content content" + i +"\""+">";
+				html += "			<td colspan='3'>" + data[i].content + "</td>";
 				html += "		</tr>";
 				
 				
@@ -83,16 +83,7 @@
 		}
 	}
 	
-	// 리뷰 본문 조회하는 함수
-	function openContent(title){
-
-        let content_list = document.querySelectorAll(".content");
-        
-        for(let i=1; i<=content_list.length; i++) {
-            document.querySelector(".content" + i).style.display = "none";
-        }
-        document.querySelector(".content" + title).style.display = "block";
-    }         
+	
 </script>
 
 <div class="thum">
@@ -156,4 +147,20 @@
       </div>
     </div>
   </div>
+  
+  <script>
+  
+  
+// 리뷰 제목 클릭하면 본문 보여주는 기능
+	function openContent(title) {
+	
+		let content_list = document.querySelectorAll(".content");
+	
+		for (let i = 0; i < content_list.length; i++) {
+			console.log(document.querySelector(".content" + i));
+			document.querySelector(".content" + i).style.display = "none";
+		}
+		document.querySelector(".content" + title).style.display = "block";
+	}
 
+  </script>
