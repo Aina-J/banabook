@@ -6,6 +6,7 @@
 <link rel="stylesheet" href="${contextPath}/resources/css/contents.css">
 <link rel="stylesheet" href="${contextPath}/resources/css/detail_page.css">
 <link rel="stylesheet" href="${contextPath}/resources/css/table_paging.css">
+<link rel="stylesheet" href="${contextPath}/resources/css/review.css">
 
 <script>
 	$(function() {
@@ -17,9 +18,10 @@
 	}
 	
 	function ajaxReviewList() {
-		let url = "http://localhost:8080/web/reviewApi/reviewApi/novel_1";
+		let url = "http://localhost:8080/web/reviewApi/reviewApi/${dto.code}";
 		api(url, "get", null, fnSucc);
 	}
+	
 	
 	function api(url, method, data, fnSucc, fnFail, fnComplete){
 		
@@ -44,6 +46,7 @@
 	
 	function fnSucc(data) {
 		console.log(JSON.stringify(data));
+		
 		let html = "";
 		
 		if(data != null) {
@@ -63,21 +66,49 @@
 			html += "	</thead>";
 			html += "	<tbody>";
 			
-			for(let i = 0; i < data.length; i++) {
+			for(let i = 0; i < data.data.length; i++) {
 				
 				html += "		<tr>";
-				html += "			<td class=\"title" + i + "\""+"><a href=\"javascript:void(0)\" onclick=\"openContent('" + i + "')\">" + data[i].title + "</a></td>";
-				html += "			<td>" + data[i].id + "</td>";
-				html += "			<td>" + data[i].write_date + "</td>";
+				html += "			<td class=\"title" + i + "\""+"><a href=\"javascript:void(0)\" onclick=\"openContent('" + i + "')\">" + data.data[i].title + "</a></td>";
+				html += "			<td>" + data.data[i].id + "</td>";
+				html += "			<td>" + data.data[i].write_date + "</td>";
 				html += "		</tr>";
 				html += "		<tr class=\"content content" + i +"\""+">";
-				html += "			<td colspan='3'>" + data[i].content + "</td>";
+				html += "			<td colspan='3'>" + data.data[i].content + "</td>";
 				html += "		</tr>";
 				
 				
 			}
 			html += "	</tbody>";
 			html += "</table>";
+			
+			
+	        html += "<div class='item_page'>"
+	        html += "	<div class='item_sec'>"
+	        let code = data.data[0].code.substring(0, data.data[0].code.indexOf('_'));
+	        console.log(code);
+	        if(data.pre) {
+	        	  // 이전 버튼 만들기
+	           html += "<a href='javascript:void(0)' onclick=ajaxReviewList(\"" + code + "?page=" + (data.beginPage - 1) + "\")><img class='arrow_b_r' src='http://localhost:8080/web/resources/images/arrow_b_l.png' alt='페이지왼쪽화살표'></a>";
+	        }
+	        for(let i = data.beginPage; i <= data.endPage; i++) {
+	        	 // 페이징 버튼 만들기, 버튼 클릭하면 page=? 파라미터 추가해서 다시 ajax 호출
+	           html += "<a href='javascript:void(0)' onclick=ajaxReviewList(\"" + code + "?page=" + i + "\")>" + i + "</a>";             
+	        }
+	        console.log(data.endPage);
+	        if(data.next) {
+	        	  // 다음 버튼 만들기
+	    	html += "<a href='javascript:void(0)' onclick=ajaxReviewList(\"" + code + "?page=" + (data.endPage + 1) + "\")><img class='arrow_b_r' src='http://localhost:8080/web/resources/images/arrow_b_r.png' alt='페이지오른쪽화살표'></a>";
+	        }
+	        html += "</div>";
+	        
+	        // 리뷰 등록하기 버튼
+	        html += "<div class=\"edit_bt\">";
+	        html += "	<input onclick=\"openInsertForm()\" type=\"submit\" value=\"등록하기\"></input>";
+	        html += "</div>";
+	        
+	        html += "</div>";
+			
 			
 		    $('.review_sec').append(html);
 		}
@@ -123,35 +154,56 @@
 
     <hr>
 
+
     <!-- Review -->
 
     <div class="review_sec">
-
-
+	<!-- 자바스크립트에서 append해줍니다. -->
     </div>
+    
+    
+	<!-- Paging -->
 
+    
+    
+    
+	<!-- Review 작성 form -->
+	  <div class="review">
+	
+	    <h2>Review 작성</h2>
+	
+	    <hr style="border: solid 1px #173153;">
+	
+	    <form method="post" id="review_form">
+	
+	      <div class="write_sec">
+	        <span>제목</span>
+	        <input type="text" name="title" placeholder="제목을 입력해 주세요.">
+	      </div>
+	
+	      <div class="write_sec_2">
+	        <span>내용</span>
+	        <input type="text" name="content" placeholder="내용을 입력해 주세요.">
+	      </div>
+	
+	      <div class="edit_bt_review">
+	        <input id="btn_insert" type="submit" value="리뷰 등록하기"></input>
+	      </div>
+	
+	    </form>
+	  </div>
 
-    <div class="item_page">
-      <div class="item_sec">
-        <a href="#"><img class="arrow_b_l" src="${contextPath}/resources/img/arrow_b_l.png" alt="왼쪽화살표"></a>
-        <a href="#">1</a>
-        <a href="#">2</a>
-        <a href="#">3</a>
-        <a href="#">4</a>
-        <a href="#">5</a>
-        <a href="#"><img class="arrow_b_r" src="${contextPath}/resources/img/arrow_b_r.png" alt="오른쪽화살표"></a>
-      </div>
-
-      <div class="edit_bt">
-        <input type="submit" value="등록하기"></input>
-      </div>
-    </div>
   </div>
+
   
   <script>
   
+	/* 작성하기 버튼 누르면 작성 폼을 보여주는 기능 */
+	function openInsertForm() {
+		document.querySelector(".review").style.display = "block";
+	}
   
-// 리뷰 제목 클릭하면 본문 보여주는 기능
+	/* 리뷰 제목 클릭하면 본문 보여주는 기능 */
 	function openContent(title) {
 	
 		let content_list = document.querySelectorAll(".content");
@@ -162,5 +214,22 @@
 		}
 		document.querySelector(".content" + title).style.display = "block";
 	}
+	
+	/* 리뷰 등록하기 버튼을 누르면 DB에 저장되는 기능 */
+    $("#btn_insert").click(function () {
+
+      if ( $("input[name='title']").val() == "" || $("input[name='title']").val() == null) {
+        alert('제목을 입력해주세요.');
+        return;
+      } else if ($("input[name='content']").val() == "" || $("input[name='content']").val() == null) {
+        alert('내용을 입력해주세요.');
+        return;
+      } else {
+        $("input[name='title']").val();
+        $("input[name='content']").val();
+        $("#review_form").attr("action", "/web/review/insert?code=");
+        $("#review_form").submit();
+      }
+    })
 
   </script>

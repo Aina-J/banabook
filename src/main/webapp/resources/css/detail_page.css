@@ -86,7 +86,7 @@
 
 .wrap {
   width: 1280px;
-  height: 2000px;
+  height: 3000px;
   margin: auto;
 }
 
@@ -107,4 +107,26 @@ hr {
 .content {
   display: none;
   padding: 30px;
+}
+
+/* 페이징 */
+
+.item_page {
+  width: calc(1280px - 250px - 250px);
+  margin: auto;
+  padding-bottom: 10px;
+}
+
+.item_sec {
+  width: 1030px;
+  text-align: center;
+}
+
+.item_sec a {
+  padding-left: 20px;
+}
+
+.arrow_b_r, .arrow_b_l {
+  width: 15px;
+  height: 15px;
 }
