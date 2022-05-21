@@ -2,6 +2,8 @@ package com.banabook.web.domain.inquiry.service;
 
 import java.util.List;
 
+import org.springframework.dao.DataAccessException;
+
 import com.banabook.web.domain.inquiry.domain.InquiryDTO;
 
 
@@ -19,4 +21,6 @@ public interface InquiryService {
 	int deleteInquiryToId(String id);
 	
 	List<InquiryDTO> fullListInquiryBoard(String code);
+	
+	List<InquiryDTO> selectAllInquiryPosts(String id);
 }

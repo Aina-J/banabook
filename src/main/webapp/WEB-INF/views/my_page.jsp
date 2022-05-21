@@ -12,13 +12,13 @@
     <hr style="border: solid 1px #173153;">
 
     <div class="my_menu">
-      <a href="javascript:void(0)">회원정보수정</a>
+      <a href="${contextPath}/general/edit">회원정보수정</a>
       <a href="javascript:void(0)">장바구니</a>
     </div>
 
     <div class="my_menu">
       <a href="javascript:void(0)">주문내역</a>
-      <a href="javascript:void(0)">문의내역</a>
+      <a href="${contextPath}/general/loadInquiry">문의내역</a>
     </div>
 
   </div>

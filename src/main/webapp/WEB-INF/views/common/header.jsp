@@ -12,7 +12,7 @@
 	<ul>
 	   	<li><a href="${contextPath}/login/loginForm">LOGIN</a></li>
 	   	<li><a href="${contextPath}/join/joinMenu">JOIN</a></li>
-	   	<li><a href="#">MY PAGE</a></li>
+	   	<li><a href="${contextPath}/general/mypage">MY PAGE</a></li>
 	   	<li><a href="#">CART</a></li>
 	   	<li><a href="#">ORDER</a></li>
 	   	<li><a href="#">Q & A</a></li>

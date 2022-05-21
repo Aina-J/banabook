@@ -58,4 +58,9 @@ public class InquiryServiceImpl implements InquiryService {
 		return null;
 	}
 
+	@Override
+	public List<InquiryDTO> selectAllInquiryPosts(String id) {
+		return inquiryDAO.selectAllInquiryPosts(id);
+	}
+
 }

@@ -32,7 +32,7 @@ $(document).ready(function(){
 		let encrypt_check = sha256($("input[name='pw_check']").val());
 		$("input[name='pw']").val(encrypt);
 		$("input[name='pw_check']").val(encrypt_check);
- 		$("#edit_form").attr("action", "/web/member/joinConfirm");
+ 		$("#edit_form").attr("action", "/web/general/joinConfirm");
  		$("#edit_form").submit();
 		} 
 	})

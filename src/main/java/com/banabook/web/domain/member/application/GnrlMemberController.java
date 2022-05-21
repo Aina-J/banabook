@@ -17,7 +17,7 @@ import com.banabook.web.domain.member.domain.MemberDTO;
 import com.banabook.web.domain.member.service.GnrlMemberService;
 
 @Controller
-@RequestMapping("/member/*")
+@RequestMapping("/general/*")
 public class GnrlMemberController {
 	
 	@Autowired
@@ -58,9 +58,22 @@ public class GnrlMemberController {
 		}
 		return "main.view";
 	}
-	
+	// 회원 마이페이지 진입
+		@RequestMapping(value="/mypage", method=RequestMethod.GET)
+		public String enterMypage(Model model, HttpServletRequest request) {
+			HttpSession session = request.getSession();
+			String id = (String) session.getAttribute("id");
+			
+			// 로그인 정보 없을시 로그인 화면으로 이동
+			if(id == "" || id == null ) {
+				return "login/loginForm.view";
+			} else {
+			return "my_page.view";
+			}
+		}
+		
 	// 회원 수정페이지 진입
-	@RequestMapping(value="/edit", method=RequestMethod.POST)
+	@RequestMapping(value="/edit", method=RequestMethod.GET)
 	public String enterMemberEdit(Model model, HttpServletRequest request) {
 		
 		HttpSession session = request.getSession();
@@ -108,15 +121,15 @@ public class GnrlMemberController {
 		return "my_page.view";
 	}
 	
-//	// 회원이 작성한 문의 게시글 리스트 출력
-//	@RequestMapping(value="/loadInquiry", method=RequestMethod.GET)
-//	public String loadInquiry(
-//			Model model,
-//			HttpServletRequest request
-//			) {
-//		HttpSession session = request.getSession();
-//		String id = (String) session.getAttribute("id");
-//		model.addAttribute(id);
-//		return "qna_list.view";
-//	}
+	// 회원이 작성한 문의 게시글 리스트 출력
+	@RequestMapping(value="/loadInquiry", method=RequestMethod.GET)
+	public String loadInquiry(
+			Model model,
+			HttpServletRequest request
+			) {
+		HttpSession session = request.getSession();
+		String id = (String) session.getAttribute("id");
+		model.addAttribute(id);
+		return "qna_list.view";
+	}
 }
