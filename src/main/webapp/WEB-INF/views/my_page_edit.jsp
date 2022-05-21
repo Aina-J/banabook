@@ -4,7 +4,8 @@
 <c:set var="contextPath" value="${ pageContext.request.contextPath}" />
 
 <link rel="stylesheet" href="${contextPath}/resources/css/my_page_edit.css">
-
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/js-sha256/0.9.0/sha256.js"></script>
 <script>
 
 $(document).ready(function(){
@@ -32,7 +33,7 @@ $(document).ready(function(){
 		let encrypt_check = sha256($("input[name='pw_check']").val());
 		$("input[name='pw']").val(encrypt);
 		$("input[name='pw_check']").val(encrypt_check);
- 		$("#edit_form").attr("action", "/web/general/joinConfirm");
+ 		$("#edit_form").attr("action", "/web/general/editConfirm");
  		$("#edit_form").submit();
 		} 
 	})
@@ -45,7 +46,7 @@ $(document).ready(function(){
     <h2>회원정보수정</h2>
 
     <hr>
-	<form method="post" id="edit_form">
+	<form method="POST" id="edit_form">
     <div>아이디</div>
     <div style="font-weight: 400;">${id}</div><br>
 

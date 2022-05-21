@@ -1,12 +1,10 @@
 package com.banabook.web.domain.member.domain;
 
-import java.sql.Date;
-
 public class MemberDTO {
 	private String id;			// 회원아이디(일반회원, 판매자회원, 관리자)
 	private int authority_id;	// 권한아이디(일반회원, 판매자회원, 관리자)
 	private String password;	// 비밀번호(일반회원, 판매자회원, 관리자)
-	private Date birth;			// 생년월일(일반회원, 판매자회원, 관리자)
+	private String birth;			// 생년월일(일반회원, 판매자회원, 관리자)
 	private String name;		// 회원 이름(일반회원,관리자), 대표자명(판매자회원)
 	private String tel;			// 전화번호(일반회원, 판매자회원, 관리자)
 	private String address;		// 주소(일반회원, 판매자회원, 관리자)
@@ -16,7 +14,7 @@ public class MemberDTO {
 	private int activation;		// 활성화(일반회원, 판매자회원, 관리자)
 	public MemberDTO() {
 	}
-	public MemberDTO(String id, int authority_id, String password, Date birth, String name, String tel, String address,
+	public MemberDTO(String id, int authority_id, String password, String birth, String name, String tel, String address,
 			String com_name, String cr_no, Integer entry, Integer activation) {
 		this.id = id;
 		this.authority_id = authority_id;
@@ -48,10 +46,10 @@ public class MemberDTO {
 	public void setPassword(String password) {
 		this.password = password;
 	}
-	public Date getBirth() {
+	public String getBirth() {
 		return birth;
 	}
-	public void setBirth(Date birth) {
+	public void setBirth(String birth) {
 		this.birth = birth;
 	}
 	public String getName() {

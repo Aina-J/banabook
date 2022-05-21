@@ -1,6 +1,7 @@
 package com.banabook.web.domain.member.application;
 
 import java.sql.Date;
+
 import java.text.SimpleDateFormat;
 
 import javax.servlet.http.HttpServletRequest;
@@ -24,7 +25,7 @@ public class GnrlMemberController {
 	GnrlMemberService service;
 	
 	// 회원 가입 진행
-	@RequestMapping(value="/joinConfirm", method=RequestMethod.POST)
+	@RequestMapping(value="/joinConfirm", method=RequestMethod.GET)
 	public String insertMember(
 			Model model,
 			@RequestParam("id") String id,
@@ -34,20 +35,14 @@ public class GnrlMemberController {
 			@RequestParam("address") String address,
 			@RequestParam("birth") String birth
 			) {
-		
-		// String date값을 sql Date 값으로 변환
-		Date birth_date = Date.valueOf(birth);
-		// date값을 DB 형식으로 변경
-		SimpleDateFormat filter = new SimpleDateFormat("yyyy-MM-dd");
-		filter.format(birth_date);
-		
+
 		MemberDTO dto = new MemberDTO();
 		dto.setId(id);
 		dto.setPassword(pw);
 		dto.setName(name);
 		dto.setTel(tel);
 		dto.setAddress(address);
-		dto.setBirth(birth_date);
+		dto.setBirth(birth);
 		
 		int confirm = service.insertMember(dto);
 		
@@ -87,7 +82,7 @@ public class GnrlMemberController {
 	public String updateMember(
 			Model model,
 			HttpServletRequest request,
-			@RequestParam("pw") String pw,
+			@RequestParam("pw") String password,
 			@RequestParam("name") String name,
 			@RequestParam("tel") String tel,
 			@RequestParam("address") String address,
@@ -98,19 +93,13 @@ public class GnrlMemberController {
 		HttpSession session = request.getSession();
 		String id = (String) session.getAttribute("id");
 		
-		// String date값을 sql Date 값으로 변환
-		Date birth_date = Date.valueOf(birth);
-		// date값을 DB 형식으로 변경
-		SimpleDateFormat filter = new SimpleDateFormat("yyyy-MM-dd");
-		filter.format(birth_date);
-		
 		MemberDTO dto = new MemberDTO();
 		dto.setId(id);
-		dto.setPassword(pw);
+		dto.setPassword(password);
 		dto.setName(name);
 		dto.setTel(tel);
 		dto.setAddress(address);
-		dto.setBirth(birth_date);
+		dto.setBirth(birth);
 		int result = service.updateMember(dto);
 		if(result == 1) {
 			System.out.println("MESSAGE : 회원정보 수정 완료 ");
