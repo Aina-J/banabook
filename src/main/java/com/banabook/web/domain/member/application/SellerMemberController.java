@@ -112,8 +112,12 @@ public class SellerMemberController {
 		return "main.view";
 	}
 	
-	@RequestMapping(value="/manageInquiry", method=RequestMethod.POST)
-	public String manageInquiry(Model model) {
-		return "main.view";
+	@RequestMapping(value="/manageInquiry", method=RequestMethod.GET)
+	public String manageInquiry(Model model,
+			HttpServletRequest request) {
+		HttpSession session = request.getSession();
+		String id = (String) session.getAttribute("id");
+		model.addAttribute("id", id);
+		return "seller_qna_list.view";
 	}
 }
