@@ -12,7 +12,10 @@
    })
    
    function init() {
-      
+      if(getParam('_cate') != '' && getParam('_cate') != null) {
+    	  let _cate = getParam('_cate');
+    	  ajaxProductList(_cate + "?page=1");
+      }
    }
    
    function ajaxProductList(cate) {
@@ -83,6 +86,17 @@
           $('.wrap').append(html);
       }
    }
+   
+   function getParam(sname) {
+	    var params = location.search.substr(location.search.indexOf("?") + 1);
+	    var sval = "";
+	    params = params.split("&");
+	    for (var i = 0; i < params.length; i++) {
+	        temp = params[i].split("=");
+	        if ([temp[0]] == sname) { sval = temp[1]; }
+	    }
+	    return sval;
+	}
 </script>
 
 <div class="wrap">

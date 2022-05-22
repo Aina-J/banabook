@@ -8,10 +8,11 @@
   <script>
   
 	  $(function() {
+	      bind_aside();
 		  if(window.location.href == "http://localhost:8080/web/main") {
-		      bind_aside();
 		      $('.aside ul li a').each((idx, item) => {
-		    	 $(item).attr('href', 'javascript:void(0)'); 
+		    	 $(item).attr('href', 'javascript:void(0)');
+		    	 bind_aside();
 		      });
 		  }
 	  })
@@ -34,12 +35,12 @@
   
     <div class="aside">
       <ul>
-        <li class="cate" data-value="novel?page=1"><a href="http://localhost:8080/web/main">· 소설/시</a></li>
-        <li class="cate" data-value="essay?page=1"><a href="http://localhost:8080/web/main">· 에세이</a></li>
-        <li class="cate" data-value="magazine?page=1"><a href="javascript:void(0)">· 잡지/매거진</a></li>
-        <li class="cate" data-value="comic?page=1"><a href="javascript:void(0)">· 만화</a></li>
-        <li class="cate" data-value="kid?page=1"><a href="javascript:void(0)">· 어린이</a></li>
-        <li class="cate" data-value="reference?page=1"><a href="javascript:void(0)">· 참고서</a></li>
+        <li class="cate" data-value="novel?page=1"><a href="http://localhost:8080/web/main?_cate=novel">· 소설/시</a></li>
+        <li class="cate" data-value="essay?page=1"><a href="http://localhost:8080/web/main?_cate=essay">· 에세이</a></li>
+        <li class="cate" data-value="magazine?page=1"><a href="http://localhost:8080/web/main?_cate=magazine">· 잡지/매거진</a></li>
+        <li class="cate" data-value="comic?page=1"><a href="http://localhost:8080/web/main?_cate=comic">· 만화</a></li>
+        <li class="cate" data-value="kid?page=1"><a href="http://localhost:8080/web/main?_cate=kid">· 어린이</a></li>
+        <li class="cate" data-value="reference?page=1"><a href="http://localhost:8080/web/main?_cate=novel">· 참고서</a></li>
       </ul>
 	<div class="aside_used">
 		<a class="used" href="#">중고서적</a>

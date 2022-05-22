@@ -13,7 +13,7 @@ public class ProductService {
 
 	@Autowired
 	ProductDAO productDAO;
-	
+
 	public List<ProductDTO> getProduct(){
 		return productDAO.selectAllProduct();
 	}

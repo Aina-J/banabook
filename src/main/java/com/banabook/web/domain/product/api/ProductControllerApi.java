@@ -33,6 +33,7 @@ public class ProductControllerApi {
 			) {
 		List<ProductDTO> productList = service.selectCodeProduct(category);
 		Paging paging = new Paging(productList.size());
+		paging.setDisplayRow(12);
 		paging.paging(Integer.parseInt(req.getParameter("page")));
 		
 		List<ProductDTO> resultList = new ArrayList();
