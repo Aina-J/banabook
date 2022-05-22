@@ -11,6 +11,20 @@
   margin-bottom: 10px;
 }
 
+.inquiry {
+  display: none;
+  width: 1000px;
+  height: 800px;
+  margin: auto;
+  margin-top: 30px;
+}
+
+.inquiry h2 {
+  padding-left: 20px;
+  margin-top: 50px;
+  margin-bottom: 10px;
+}
+
 .write_sec, .write_sec_2 {
   width: 900px;
   margin: auto;
@@ -41,13 +55,13 @@
   border-radius: 5px;
 }
 
-.edit_bt {
+.edit_bt_inquiry {
   width: 500px;
   position: relative;
   left: 440px;
 }
 
-.edit_bt input {
+.edit_bt_inquiry input {
   width: 150px;
   height: 50px;
   margin-top: 50px;
