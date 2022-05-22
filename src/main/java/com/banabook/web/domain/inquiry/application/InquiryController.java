@@ -7,10 +7,15 @@ import java.util.Locale;
 
 import javax.inject.Inject;
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -19,14 +24,19 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import com.banabook.web.domain.inquiry.domain.InquiryDTO;
 import com.banabook.web.domain.inquiry.mapper.InquiryDAO;
 import com.banabook.web.domain.inquiry.service.InquiryService;
+import com.banabook.web.domain.product.service.ProductService;
 
 @Controller
 @RequestMapping(value="/inquiry/*")
 public class InquiryController {
 	
+	private static final Logger logger = LoggerFactory.getLogger(InquiryController.class);
+	
 	@Autowired
 	InquiryService inquiryService;
 	
+	@Autowired
+	ProductService pservice;
 	
 	// 상품 상세페이지 이동
 	@RequestMapping(value = "/inquiry", method = RequestMethod.GET)
@@ -49,32 +59,29 @@ public class InquiryController {
 	}
 	
 	// 문의 게시글 작성
-	@RequestMapping(value = "/qna", method = RequestMethod.POST)
-	public int inquiryReg(Locale locale, Model model, HttpServletRequest request) throws Exception {
-		InquiryDTO dto = new InquiryDTO();
-		dto.setName(request.getParameter("name"));
-		dto.setContent(request.getParameter("content"));
-		dto.setCode(request.getParameter("code"));
-		dto.setPi_id("0");
-//		dto.setWrite_date(Date.valueOf("date"));
+	
+	@PostMapping(value="/insert/{code}")
+	public String inquiryReg(Model model,	@RequestParam Integer inquiry_id, 
+			   HttpServletRequest request,  @PathVariable("code") String code,
+			   @RequestParam String title, 	@RequestParam String content,
+			   @RequestParam String pi_id)	 {
 		
-//		if(inquiryService.qna(dto) == 1) {
-//			return "Y";
-//		}else {
-//			return "N";
-//		}
-		int result = inquiryService.insertMemberInquiry(dto);
-		return result;
-	}
+			logger.info("문의글이 등록됩니다");
+			logger.info(title);
+			logger.info(code);
+			
+			HttpSession session = request.getSession();
+			String id = (String) session.getAttribute("id");
 	
-	
-	
-	
-	
-	
-	
-	
-	
-	
+			InquiryDTO dto = new InquiryDTO();
+			dto.setInquiry_id(inquiry_id);
+			dto.setId(id);
+			dto.setCode(code);
+			dto.setTitle(title);
+			dto.setContent(content);
+			dto.setPi_id("0");
+			inquiryService.insertMemberInquiry(dto);
+			return "detail.view";	
+	}	
 	
 }

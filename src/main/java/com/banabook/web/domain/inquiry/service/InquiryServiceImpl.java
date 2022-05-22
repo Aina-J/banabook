@@ -9,8 +9,7 @@ import com.banabook.web.domain.inquiry.domain.InquiryDTO;
 import com.banabook.web.domain.inquiry.mapper.InquiryDAO;
 
 
-
-@Service // component써도 되는데 service에는 service쓰는게 관행이다
+@Service 
 public class InquiryServiceImpl implements InquiryService {
 
 	@Autowired
@@ -30,8 +29,7 @@ public class InquiryServiceImpl implements InquiryService {
 
 	@Override
 	public int insertMemberInquiry(InquiryDTO idto) {
-		// TODO Auto-generated method stub
-		return 0;
+		return inquiryDAO.insertMemberInquiry(idto);
 	}
 
 	@Override
