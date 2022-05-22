@@ -60,6 +60,11 @@
 		<put-attribute name="content" value="/WEB-INF/views/item_seller.jsp" />
 	</definition>
 	
+	<definition name="seller_qna_list.view" extends="tilesLayout4">		
+		<put-attribute name="title" value="판매자 문의관리 | BANABOOK" />
+		<put-attribute name="content" value="/WEB-INF/views/seller_qna_list.jsp" />
+	</definition>
+	
 	<definition name="detail.view" extends="tilesLayout">		
 		<put-attribute name="title" value="메인 | BANABOOK" />
 		<put-attribute name="contents" value="/WEB-INF/views/detail.jsp" />
