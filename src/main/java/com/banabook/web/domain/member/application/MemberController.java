@@ -35,8 +35,14 @@ public class MemberController {
 		session.setAttribute("id", dto.getId());
 		session.setAttribute("authority_id", dto.getAuthority_id());
 		session.setAttribute("name", dto.getName());
-
-		return "main.view";
+		int Authority = dto.getAuthority_id();
+		if(Authority == 30) {
+			return "main.view";
+		} else if(Authority == 20) {
+			return "seller_main.view";
+		} else {
+			return "main.view";
+		}
 	}
 
 

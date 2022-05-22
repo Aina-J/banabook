@@ -1,0 +1,50 @@
+* {
+  font-family: 'Noto Sans KR', sans-serif;
+  list-style: none;
+  text-decoration: none;
+  border-collapse: collapse;
+  margin: 0px;
+  padding: 0px;
+  color: #173153;
+}
+
+.header {
+  display: flex;
+  width: 1280px;
+  margin: auto;
+  height: 200px;
+}
+
+.contents {
+  width: 1280px;
+  margin: auto;
+  display: flex;
+}
+
+.logo_sec {
+  width: 900px;
+}
+
+.logo {
+  width: 280px;
+  height: 100px;
+  margin-top: 50px;
+}
+
+.seller_user {
+  text-align: right;
+}
+
+.seller_login {
+  width: calc(1280px - 900px);
+  height: 200px;
+  margin-top: 60px;
+}
+
+.seller_login a {
+  padding: 15px 40px;
+  color: #fff;
+  background-color: #173153;
+  border-radius: 5px;
+  float: right;
+}
