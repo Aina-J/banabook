@@ -17,8 +17,13 @@
 		ajaxReviewList();
 	}
 	
-	function ajaxReviewList() {
-		let url = "http://localhost:8080/web/reviewApi/reviewApi/${dto.code}";
+	function ajaxReviewList(page) {
+	    if(typeof page == "undefined" || page == null || page == ""){
+	    	data = 1;
+	    } else {
+	    	data = page;
+	    }
+		let url = "http://localhost:8080/web/reviewApi/reviewApi/${dto.code}?page=" + data;
 		api(url, "get", null, fnSucc);
 	}
 	
@@ -56,7 +61,7 @@
 			
 			
 			html += "<h2>review</h2>";
-			html += "<table border=\"1\"> ";
+			html += "<table> ";
 			html += "	<thead> ";
 			html += "		<tr>";
 			html += "			<th>제목</th>";
@@ -74,7 +79,7 @@
 				html += "			<td>" + data.data[i].write_date + "</td>";
 				html += "		</tr>";
 				html += "		<tr class=\"content content" + i +"\""+">";
-				html += "			<td colspan='3'>" + data.data[i].content + "</td>";
+				html += "			<td colspan='3'>" + "내용 : " + data.data[i].content + "</td>";
 				html += "		</tr>";
 				
 				
@@ -82,23 +87,23 @@
 			html += "	</tbody>";
 			html += "</table>";
 			
-			
+			// 페이징
 	        html += "<div class='item_page'>"
 	        html += "	<div class='item_sec'>"
 	        let code = data.data[0].code.substring(0, data.data[0].code.indexOf('_'));
 	        console.log(code);
 	        if(data.pre) {
 	        	  // 이전 버튼 만들기
-	           html += "<a href='javascript:void(0)' onclick=ajaxReviewList(\"" + code + "?page=" + (data.beginPage - 1) + "\")><img class='arrow_b_r' src='http://localhost:8080/web/resources/images/arrow_b_l.png' alt='페이지왼쪽화살표'></a>";
+	           html += "<a href='javascript:void(0)' onclick=ajaxReviewList(\"" + (data.beginPage - 1) + "\")><img class='arrow_b_r' src='http://localhost:8080/web/resources/images/arrow_b_l.png' alt='페이지왼쪽화살표'></a>";
 	        }
 	        for(let i = data.beginPage; i <= data.endPage; i++) {
 	        	 // 페이징 버튼 만들기, 버튼 클릭하면 page=? 파라미터 추가해서 다시 ajax 호출
-	           html += "<a href='javascript:void(0)' onclick=ajaxReviewList(\"" + code + "?page=" + i + "\")>" + i + "</a>";             
+	           html += "<a href='javascript:void(0)' onclick=ajaxReviewList(\"" + i + "\")>" + i + "</a>";             
 	        }
 	        console.log(data.endPage);
 	        if(data.next) {
 	        	  // 다음 버튼 만들기
-	    	html += "<a href='javascript:void(0)' onclick=ajaxReviewList(\"" + code + "?page=" + (data.endPage + 1) + "\")><img class='arrow_b_r' src='http://localhost:8080/web/resources/images/arrow_b_r.png' alt='페이지오른쪽화살표'></a>";
+	    	html += "<a href='javascript:void(0)' onclick=ajaxReviewList(\"" + (data.endPage + 1) + "\")><img class='arrow_b_r' src='http://localhost:8080/web/resources/images/arrow_b_r.png' alt='페이지오른쪽화살표'></a>";
 	        }
 	        html += "</div>";
 	        
@@ -109,8 +114,16 @@
 	        
 	        html += "</div>";
 			
-			
 		    $('.review_sec').append(html);
+		    
+		} else if(data.data[0] == 0) {
+	    	// 돔 비우기
+	        $('.review_sec').html("");
+	        // 돔 만들기
+	           	html += "<tr>";
+	           	html += "   <td colspan=\"3\" style=\"text-align: center;\"> 등록된 문의가 없습니다. </a></td>";
+	           	html += "</tr>";
+	        $('.review_sec').append(html);
 		}
 	}
 	
@@ -174,7 +187,7 @@
 	
 	    <hr style="border: solid 1px #173153;">
 	
-	    <form method="post" id="review_form">
+	    <form method="POST" id="review_form">
 	
 	      <div class="write_sec">
 	        <span>제목</span>
@@ -187,7 +200,7 @@
 	      </div>
 	
 	      <div class="edit_bt_review">
-	        <input id="btn_insert" type="submit" value="리뷰 등록하기"></input>
+	        <input id="btn_insert" value="리뷰 등록하기"></input>
 	      </div>
 	
 	    </form>
@@ -208,6 +221,9 @@
 	
 		let content_list = document.querySelectorAll(".content");
 	
+		console.log("content_list는 " + content_list.length);
+		
+		
 		for (let i = 0; i < content_list.length; i++) {
 			console.log(document.querySelector(".content" + i));
 			document.querySelector(".content" + i).style.display = "none";
@@ -225,9 +241,7 @@
         alert('내용을 입력해주세요.');
         return;
       } else {
-        $("input[name='title']").val();
-        $("input[name='content']").val();
-        $("#review_form").attr("action", "/web/review/insert?code=");
+        $("#review_form").attr("action", "/web/review/insert/${dto.code}");
         $("#review_form").submit();
       }
     })
