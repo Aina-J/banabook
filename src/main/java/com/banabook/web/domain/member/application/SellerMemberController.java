@@ -3,6 +3,9 @@ package com.banabook.web.domain.member.application;
 import java.sql.Date;
 import java.text.SimpleDateFormat;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -12,6 +15,8 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import com.banabook.web.domain.member.domain.MemberDTO;
 import com.banabook.web.domain.member.service.SellerMemberService;
+import com.banabook.web.domain.product.domain.ProductDTO;
+import com.banabook.web.domain.product.service.ProductService;
 
 @Controller
 @RequestMapping("/seller/*")
@@ -19,6 +24,8 @@ public class SellerMemberController {
 	
 	@Autowired
 	SellerMemberService service;
+	@Autowired
+	ProductService productService;
 	
 	@RequestMapping(value="/joinConfirm", method=RequestMethod.POST)
 	public String insertSeller(
@@ -48,5 +55,65 @@ public class SellerMemberController {
 		
 		return "main.view";
 	}
-
+	
+	@RequestMapping(value="/mypage", method=RequestMethod.GET)
+	public String mypage(Model model) {
+		return "seller_mypage.view";
+	}
+	
+	@RequestMapping(value="/manageProduct", method=RequestMethod.GET)
+	public String manageProduct(Model model) {
+		model.addAttribute("message", "empty");
+		return "seller_manageProduct.view";
+	}
+	
+	@RequestMapping(value="/uploadProduct", method=RequestMethod.POST)
+	public String uploadProduct(Model model,
+		@RequestParam("code") String code,
+		@RequestParam("name") String name,
+		@RequestParam("price") String price,
+		@RequestParam("representative") String representative,
+		@RequestParam("details") String details,
+		HttpServletRequest request
+		) {
+		
+		HttpSession session = request.getSession();
+		String id = (String) session.getAttribute("id");
+		
+		int confirm = 0;
+		try {
+			ProductDTO dto = new ProductDTO();
+			dto.setId(id);
+			dto.setCode(code);
+			dto.setName(name);
+			dto.setPrice(Integer.parseInt(price));
+			dto.setRepresentative(representative);
+			dto.setDetails(details);
+			confirm = productService.insertProduct(dto);
+			
+			System.out.println();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		if(confirm == 0) {
+			model.addAttribute("message", "error");
+			System.out.println("MESSAGE : 제품 등록 실패 / 등록된 제품 수 : " + confirm);
+			return "seller_manageProduct.view";
+		} else {
+			model.addAttribute("message", "success");
+			System.out.println("MESSAGE : 제품 등록 실패 / 등록된 제품 수 : " + confirm);
+			return "seller_manageProduct.view";
+		}
+			
+	}
+	
+	@RequestMapping(value="/manageReview", method=RequestMethod.POST)
+	public String manageReview(Model model) {
+		return "main.view";
+	}
+	
+	@RequestMapping(value="/manageInquiry", method=RequestMethod.POST)
+	public String manageInquiry(Model model) {
+		return "main.view";
+	}
 }

@@ -27,4 +27,8 @@ public class ProductService {
 	public ProductDTO selectCodeProductOne(String code){
 		return productDAO.selectCodeProductOne(code);
 	}
+	
+	public int insertProduct(ProductDTO dto) {
+		return productDAO.insertProduct(dto);
+	}
 }
