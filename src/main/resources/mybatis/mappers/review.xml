@@ -32,7 +32,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		
 	<select id="selectReviewList" parameterType="String" resultType="reviewDTO">
     	<![CDATA[
-    	select * from tb_review where code = #{code} 
+    	select review_id, id, code, title, content, to_char(write_date, 'YYYY-MM-DD')as write_date from tb_review where code = #{code} 
       	]]>      
 	</select> 
 	
