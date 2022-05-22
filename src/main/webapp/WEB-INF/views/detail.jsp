@@ -147,6 +147,43 @@
 	}
 	
 	
+	/* 작성하기 버튼 누르면 작성 폼을 보여주는 기능 */
+	function openInsertForm() {
+		document.querySelector(".review").style.display = "block";
+	}
+  
+	/* 리뷰 제목 클릭하면 본문 보여주는 기능 */
+	function openContent(title) {
+		
+		let content_list = document.querySelectorAll(".content");
+		console.log("content_list는 " + content_list.length);
+		
+		if (document.querySelector(".content" + title).style.display === "none") {
+			for (let i = 0; i < content_list.length; i++) {
+				console.log(document.querySelector(".content" + i));
+				document.querySelector(".content" + i).style.display = "none";
+			}
+			document.querySelector(".content" + title).style.display = "block";
+		} else { 
+			document.querySelector(".content" + title).style.display = "none";
+		}
+	}
+	
+	/* 리뷰 등록하기 버튼을 누르면 DB에 저장되는 기능 */
+	$("#btn_insert").click(function () {
+		if ( $("input[name='title']").val() == "" || $("input[name='title']").val() == null) {
+			alert('제목을 입력해주세요.');
+			return;
+		} else if ($("input[name='content']").val() == "" || $("input[name='content']").val() == null) {
+			alert('내용을 입력해주세요.');
+			return;
+		} else {
+			$("#review_form").attr("action", "/web/review/insert/${dto.code}");
+			$("#review_form").submit();
+		}
+	})
+	
+	
 </script>
 
 <div class="thum">
@@ -186,18 +223,9 @@
 
     <hr>
 
-
     <!-- Review -->
-
     <div class="review_sec">
-	<!-- 자바스크립트에서 append해줍니다. -->
     </div>
-    
-    
-	<!-- Paging -->
-
-    
-    
     
 	<!-- Review 작성 form -->
 	  <div class="review">
@@ -226,43 +254,3 @@
 	  </div>
 
   </div>
-
-  
-  <script>
-  
-	/* 작성하기 버튼 누르면 작성 폼을 보여주는 기능 */
-	function openInsertForm() {
-		document.querySelector(".review").style.display = "block";
-	}
-  
-	/* 리뷰 제목 클릭하면 본문 보여주는 기능 */
-	function openContent(title) {
-	
-		let content_list = document.querySelectorAll(".content");
-	
-		console.log("content_list는 " + content_list.length);
-		
-		
-		for (let i = 0; i < content_list.length; i++) {
-			console.log(document.querySelector(".content" + i));
-			document.querySelector(".content" + i).style.display = "none";
-		}
-		document.querySelector(".content" + title).style.display = "block";
-	}
-	
-	/* 리뷰 등록하기 버튼을 누르면 DB에 저장되는 기능 */
-    $("#btn_insert").click(function () {
-
-      if ( $("input[name='title']").val() == "" || $("input[name='title']").val() == null) {
-        alert('제목을 입력해주세요.');
-        return;
-      } else if ($("input[name='content']").val() == "" || $("input[name='content']").val() == null) {
-        alert('내용을 입력해주세요.');
-        return;
-      } else {
-        $("#review_form").attr("action", "/web/review/insert/${dto.code}");
-        $("#review_form").submit();
-      }
-    })
-
-  </script>
