@@ -17,7 +17,6 @@ public class InquiryServiceImpl implements InquiryService {
 	
 	@Override
 	public List<InquiryDTO> selectProctDetailPage(String code) {
-		
 		return inquiryDAO.selectProctDetailPage(code);
 	}
 
@@ -40,8 +39,7 @@ public class InquiryServiceImpl implements InquiryService {
 
 	@Override
 	public int insertSellerAnswerInquiry(InquiryDTO idto) {
-		// TODO Auto-generated method stub
-		return 0;
+		return inquiryDAO.insertSellerAnswerInquiry(idto);
 	}
 
 	@Override
