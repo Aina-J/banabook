@@ -58,8 +58,8 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	<!-- **************************** 여기 쿼리 문제 있을 수 있을거 같음 시퀀스 쓴 부분이 약간 불안불안함 일단 쓰고 안되면 수정해야함 -->
 	<insert id="insertProduct" parameterType="productDTO"> 
 		insert into tb_product
-		(code, id, name, price, representative, details, like_p)
-		values (#{code} || '_' || ${code}_seq.nextval, #{id}, #{name}, #{price}, #{representative}, #{details}, 0)
+		(code, id, name, price, representative, details, like)
+		values (#{code} || '_' ||  ${code}_seq.nextval, #{id}, #{name}, #{price}, #{representative}, #{details}, 0)
 	</insert>
 
 </mapper>

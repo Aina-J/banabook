@@ -28,7 +28,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 
 	<select id="selectMemberToID" resultType="memberDTO">
       <![CDATA[
-         select id, authority_id, password, birth, name, tel, address, activation from tb_member where id = #{id}	 	
+         select id, authority_id, password, birth, name, tel, address, activation from tb_member where id = #{id} and authority_id = 30	 	
       ]]>
 	</select>
    
