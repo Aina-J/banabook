@@ -112,5 +112,21 @@ public class InquiryController {
 
 			return "detail.view";	
 	}
-			
+	
+	
+	// 게시글 지우기
+	
+	@RequestMapping(value="/qna/delete", method = RequestMethod.GET) 
+	public String qnaDelete (HttpServletRequest request) {
+		
+		HttpSession session = request.getSession();
+		String id = (String) session.getAttribute("id");
+		
+		inquiryService.deleteInquiryToId(id);
+		
+		logger.info("문의글이 지워졌습니다");
+		
+		return "detail.view";
+	}
+		
 }	
