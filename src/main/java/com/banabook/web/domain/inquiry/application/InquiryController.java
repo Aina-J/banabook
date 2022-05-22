@@ -27,7 +27,7 @@ import com.banabook.web.domain.inquiry.service.InquiryService;
 import com.banabook.web.domain.product.service.ProductService;
 
 @Controller
-@RequestMapping(value="/inquiry/*")
+@RequestMapping(value="/qna/*")
 public class InquiryController {
 	
 	private static final Logger logger = LoggerFactory.getLogger(InquiryController.class);
@@ -39,36 +39,32 @@ public class InquiryController {
 	ProductService pservice;
 	
 	// 상품 상세페이지 이동
-	@RequestMapping(value = "/inquiry", method = RequestMethod.GET)
-	public String inquiry(
-			Locale locale, Model model, 
-			@RequestParam("code") String code) throws Exception {
-		List qna_list = inquiryService.selectProctDetailPage(code);
-		model.addAttribute("qna_list", qna_list);
-		  
-		  return "qna_list";
-	}
-	
-	// 문의 게시글로 이동
-	@RequestMapping(value = "/inquiryView", method = RequestMethod.GET)
-	public InquiryDTO inquiryView(
-			Locale locale, Model model, 
-			@RequestParam("inquiry_id") int inquiry_id) throws Exception {
-		InquiryDTO dto = inquiryService.selectToInquiry_id(inquiry_id);
-		return dto;
-	}
+//	@RequestMapping(value = "/inquiry", method = RequestMethod.GET)
+//	public String inquiry(
+//			Locale locale, Model model, 
+//			@RequestParam("code") String code) throws Exception {
+//		List qna_list = inquiryService.selectProctDetailPage(code);
+//		model.addAttribute("qna_list", qna_list);
+//		  
+//		  return "qna_list";
+//	}
+//	
+//	// 문의 게시글로 이동
+//	@RequestMapping(value = "/inquiryView", method = RequestMethod.GET)
+//	public InquiryDTO inquiryView(
+//			Locale locale, Model model, 
+//			@RequestParam("inquiry_id") int inquiry_id) throws Exception {
+//		InquiryDTO dto = inquiryService.selectToInquiry_id(inquiry_id);
+//		return dto;
+//	}
 	
 	// 문의 게시글 작성
 	
-	@PostMapping(value="/insert/{code}")
-	public String inquiryReg(Model model,	@RequestParam Integer inquiry_id, 
-			   HttpServletRequest request,  @PathVariable("code") String code,
-			   @RequestParam String title, 	@RequestParam String content,
-			   @RequestParam String pi_id)	 {
-		
-			logger.info("문의글이 등록됩니다");
-			logger.info(title);
-			logger.info(code);
+	@PostMapping(value="/meminsert/{code}")
+	public String inquiryReg(Model model,	HttpServletRequest request,  
+	  @RequestParam Integer inquiry_id, 	@PathVariable("code") String code,
+	  @RequestParam String title, 			@RequestParam String content,
+	  @RequestParam String pi_id)	 {
 			
 			HttpSession session = request.getSession();
 			String id = (String) session.getAttribute("id");
@@ -81,7 +77,40 @@ public class InquiryController {
 			dto.setContent(content);
 			dto.setPi_id("0");
 			inquiryService.insertMemberInquiry(dto);
+			
+			logger.info("문의글이 등록됩니다");
+			logger.info(title);
+			logger.info(code);
+			
 			return "detail.view";	
 	}	
 	
-}
+	
+	// 판매자용 문의게시글 답글 작성
+
+//	@PostMapping(value="/selinsert/{code}")
+//	public String inquiryReg(Model model, InquiryDTO dto,  HttpServletRequest request) {
+	
+	@PostMapping(value="/selinsert/{code}")
+	public String inquiryReply(Model model, HttpServletRequest request,
+		@RequestParam Integer inquiry_id, @PathVariable("code") String code,
+		@RequestParam String title, 	  @RequestParam String content,
+		@RequestParam String pi_id) {
+	
+			HttpSession session = request.getSession();
+			String id = (String) session.getAttribute("id");
+			
+			InquiryDTO dto = new InquiryDTO();
+			dto.setId(id);
+			dto.setCode(code);
+			dto.setTitle(title);
+			dto.setContent(content);
+			dto.setPi_id(String.valueOf(inquiry_id));
+			inquiryService.insertSellerAnswerInquiry(dto);
+			
+			logger.info("문의글이 등록됩니다");
+
+			return "detail.view";	
+	}
+			
+}	
