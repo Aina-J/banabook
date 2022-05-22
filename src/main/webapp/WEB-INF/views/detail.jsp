@@ -54,12 +54,40 @@
 		
 		let html = "";
 		
-		if(data != null) {
+		
+		if(data.data[0] == 0) {
+    	// 돔 비우기
+        $('.review_sec').html("");
+        // 돔 만들기
+        	html += "<h2>review</h2>";
+			html += "<table> ";
+			html += "	<thead> ";
+			html += "		<tr>";
+			html += "			<th>제목</th>";
+			html += "			<th>작성자</th>";
+			html += "			<th>작성일</th>";
+			html += "		</tr>";
+			html += "	</thead>";
+			html += "	<tbody>";
+           	html += "		<tr>";
+           	html += " 	  		<td colspan=\"3\" style=\"text-align: center;\"> 등록된 리뷰가 없습니다. </a></td>";
+           	html += "		</tr>";
+			html += "	</tbody>";
+			html += "</table>";
+			
+	        // 리뷰 등록하기 버튼
+	        html += "<div class=\"edit_bt\">";
+	        html += "	<input onclick=\"openInsertForm()\" type=\"submit\" value=\"등록하기\"></input>";
+	        html += "</div>";
+	        
+	        html += "</div>";
+	        
+        $('.review_sec').append(html);
+        
+		} else if(data != null) {
 			// 돔 비우기
 			$('.review_sec').html("");
 			// 돔 만들기
-			
-			
 			html += "<h2>review</h2>";
 			html += "<table> ";
 			html += "	<thead> ";
@@ -81,7 +109,6 @@
 				html += "		<tr class=\"content content" + i +"\""+">";
 				html += "			<td colspan='3'>" + "내용 : " + data.data[i].content + "</td>";
 				html += "		</tr>";
-				
 				
 			}
 			html += "	</tbody>";
@@ -116,14 +143,6 @@
 			
 		    $('.review_sec').append(html);
 		    
-		} else if(data.data[0] == 0) {
-	    	// 돔 비우기
-	        $('.review_sec').html("");
-	        // 돔 만들기
-	           	html += "<tr>";
-	           	html += "   <td colspan=\"3\" style=\"text-align: center;\"> 등록된 문의가 없습니다. </a></td>";
-	           	html += "</tr>";
-	        $('.review_sec').append(html);
 		}
 	}
 	
