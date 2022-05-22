@@ -45,7 +45,7 @@
 	<!-- 	판메자 매인 페이지 -->
 	<definition name="seller_main.view" extends="tilesLayout3">		
 		<put-attribute name="title" value="판매자 메인 | BANABOOK" />
-		<put-attribute name="contents" value="/WEB-INF/views/seller_main.jsp" />
+		<put-attribute name="contents" value="/WEB-INF/views/main.jsp" />
 	</definition>
 	
 	<!-- 	판매자 마이페이지 -->
