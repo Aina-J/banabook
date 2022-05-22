@@ -8,7 +8,7 @@ public class ReviewDTO {
 	private String code;
 	private String title;
 	private String content;
-	private Date write_date;
+	private String write_date;
 	
 	public String getReview_id() {
 		return review_id;
@@ -40,10 +40,10 @@ public class ReviewDTO {
 	public void setContent(String content) {
 		this.content = content;
 	}
-	public Date getWrite_date() {
+	public String getWrite_date() {
 		return write_date;
 	}
-	public void setWrite_date(Date write_date) {
+	public void setWrite_date(String write_date) {
 		this.write_date = write_date;
 	}
 }
