@@ -33,8 +33,7 @@ public class InquiryServiceImpl implements InquiryService {
 
 	@Override
 	public List<InquiryDTO> checkInquiryforSeller(String sellerId) {
-		// TODO Auto-generated method stub
-		return null;
+		return inquiryDAO.checkInquiryforSeller(sellerId);
 	}
 
 	@Override

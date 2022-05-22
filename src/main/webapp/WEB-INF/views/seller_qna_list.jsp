@@ -21,7 +21,7 @@
 	      } else {
 	    	  data = page;
 	      }
-	      let url = "http://localhost:8080/web/memberApi/inquiry/${id}?page="+data;
+	      let url = "http://localhost:8080/web/memberApi/sellerInquiry/${id}?page="+data;
 	      api(url, "GET", null, fnSucc);
 	   }
    	
@@ -58,7 +58,7 @@
              	html += "<tr>";
             	html += "   <td>1</td>";
              	html += "   <td onclick=\"openContentForm()\" > 등록된 문의가 없습니다. </a></td>";
- 	        	html += "   <td> X </td>";
+ 	        	html += "   <td></td>";
              	html += " </tr>";
            $('#inquiry').append(html);
       } else if(data.data[0] != 0 || data != null) {
@@ -119,7 +119,7 @@
    	
     /* 문의 제목 클릭하면 본문 보여주는 기능 */
     function openContentForm(num) {
-    		let count = document.querySelectorAll(".count").length
+    		let count = document.querySelectorAll(".count").length;
     	    for (let i = 0; i < count ; i++) {
     	       console.log(document.querySelector(".content" + i));
     	       document.querySelector(".content" + i).style.display = "none";
