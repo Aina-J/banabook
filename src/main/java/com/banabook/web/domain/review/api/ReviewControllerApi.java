@@ -6,15 +6,18 @@ import java.util.List;
 import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.banabook.web.domain.member.domain.MemberDTO;
 import com.banabook.web.domain.product.domain.ProductDTO;
 import com.banabook.web.domain.review.domain.ReviewDTO;
 import com.banabook.web.domain.review.service.ReviewService;
@@ -40,12 +43,7 @@ public class ReviewControllerApi {
 		Paging paging = new Paging(reviewList.size());
 		System.out.println("paging은 : " + paging);
 		
-        if(req.getParameter("page")==null) {
-            int page = 1;
-            paging.paging(page);
-         } else {
-            paging.paging(Integer.parseInt(req.getParameter("page")));
-         }
+		paging.paging(Integer.parseInt(req.getParameter("page")));
 		
 		List<ReviewDTO> resultList = new ArrayList();
 		for(int i = paging.getBeginRow() - 1; i < paging.getEndRow(); i++) {
@@ -65,6 +63,38 @@ public class ReviewControllerApi {
 		System.out.println("-----------여기 코드--------------" + code);
 		
 		return map;
+		
 	}
+	
+	
+	// 리뷰 작성 메서드
+	@RequestMapping(value="/reviewInsertApi/{code}", method=RequestMethod.POST)
+	public @ResponseBody String insertReview(
+			HttpServletRequest req,
+			Model model
+			,@PathVariable("code") String code
+			,@RequestParam("title") String title
+			,@RequestParam("content") String content
+			) {
+		
+		HttpSession session = req.getSession();
+		String id = (String) session.getAttribute("id");
+		
+		
+		ReviewDTO dto = new ReviewDTO();
+		dto.setId(id);
+		dto.setTitle(title);
+		dto.setContent(content);
+		dto.setCode(code);
+		
+		service.insertReview(dto);
+		
+		return "리뷰등록완료";
+	}
+	
+	
+	
+	
+	
 
 }

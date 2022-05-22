@@ -12,8 +12,6 @@ import com.banabook.web.domain.review.mapper.ReviewDAO;
 @Service
 public class ReviewService {
 
-	@Autowired
-	private SqlSession sqlSession; 
 	
 	@Autowired
 	ReviewDAO reviewDAO;
@@ -24,7 +22,7 @@ public class ReviewService {
 	}
 	
 	public void insertReview(ReviewDTO rDTO) {
-		sqlSession.selectList("com.banabook.web.domain.review.mapper.ReviewDAO.insertReview");
+		reviewDAO.insertReview(rDTO);
 	}
 	
 }
