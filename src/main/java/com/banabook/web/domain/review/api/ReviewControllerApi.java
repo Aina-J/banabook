@@ -38,59 +38,41 @@ public class ReviewControllerApi {
 			,@PathVariable("code") String code
 			) {
 		List<ReviewDTO> reviewList = service.selectReviewList(code);
+		System.out.println("--------여기 List사이즈------------" + reviewList.size());
 		
-		
-		Paging paging = new Paging(reviewList.size());
-		System.out.println("paging은 : " + paging);
-		
-		paging.paging(Integer.parseInt(req.getParameter("page")));
-		
-		List<ReviewDTO> resultList = new ArrayList();
-		for(int i = paging.getBeginRow() - 1; i < paging.getEndRow(); i++) {
-			resultList.add(reviewList.get(i));
-		}
 		
 		Map map = new HashMap();
-		map.put("beginPage", paging.getBeginPage());
-		map.put("endPage", paging.getEndPage());
-		map.put("section", paging.getSection());
-		map.put("next", paging.isNext());
-		map.put("pre", paging.isPrev());
-		map.put("code", code);
-		map.put("data", resultList);
 		
-		System.out.println("--------여기 List사이즈------------" + reviewList.size());
-		System.out.println("-----------여기 코드--------------" + code);
+		if(reviewList.size() == 0) {
+	        map.put("data", "0");
+	        return map;
+	        
+		} else {
+			
+			Paging paging = new Paging(reviewList.size());
+			System.out.println("paging은 : " + paging);
+			
+			paging.paging(Integer.parseInt(req.getParameter("page")));
+			
+			List<ReviewDTO> resultList = new ArrayList();
+			for(int i = paging.getBeginRow() - 1; i < paging.getEndRow(); i++) {
+				resultList.add(reviewList.get(i));
+			}
 		
-		return map;
+	    	map.put("beginPage", paging.getBeginPage());
+	    	map.put("endPage", paging.getEndPage());
+	    	map.put("section", paging.getSection());
+	    	map.put("next", paging.isNext());
+	    	map.put("pre", paging.isPrev());
+	    	map.put("code", code);
+	    	map.put("data", resultList);
+	    	return map;
+	    }
+		
+		
 		
 	}
 	
-	
-	// 리뷰 작성 메서드
-	@RequestMapping(value="/reviewInsertApi/{code}", method=RequestMethod.POST)
-	public @ResponseBody String insertReview(
-			HttpServletRequest req,
-			Model model
-			,@PathVariable("code") String code
-			,@RequestParam("title") String title
-			,@RequestParam("content") String content
-			) {
-		
-		HttpSession session = req.getSession();
-		String id = (String) session.getAttribute("id");
-		
-		
-		ReviewDTO dto = new ReviewDTO();
-		dto.setId(id);
-		dto.setTitle(title);
-		dto.setContent(content);
-		dto.setCode(code);
-		
-		service.insertReview(dto);
-		
-		return "리뷰등록완료";
-	}
 	
 	
 	
