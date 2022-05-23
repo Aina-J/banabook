@@ -15,6 +15,6 @@
 		</div>
 		
 		<hr style="border: solid 1px #173153; margin: 10px 0;">
-		<a href="${contextPath}/seller/mypage">BANABOOK 관리자</a>
+		<a href="${contextPath}/member/logOut">관리자 로그아웃</a>
 	</div>
 </div>

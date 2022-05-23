@@ -54,16 +54,16 @@
     <div class="item_page">
       <div class="item_sec">
       
-   		<c:if test="${item.pre}">
-   			<a href="javascript:void(0)"><img class="arrow_b_r" src="${contextPath}/resources/img/arrow_b_l.png" alt="페이지왼쪽화살표"></a>
+   		<c:if test="${members.pre}">
+   			<a href="http://localhost:8080/web/seller_info_admin?page=${members.beginPage - 1}"><img class="arrow_b_r" src="${contextPath}/resources/img/arrow_b_l.png" alt="페이지왼쪽화살표"></a>
    		</c:if>
-      	<c:forEach var="item" begin="${members.beginPage}" end="${members.endPage}">
-      		<c:set var="i" value="${i+1 }"></c:set>
-				<a href="http://localhost:8080/web/seller_info_admin?page=${i }">${i }</a>
+   		
+      	<c:forEach var="item" varStatus="i" begin="${members.beginPage}" end="${members.endPage}">
+			<a href="http://localhost:8080/web/seller_info_admin?page=${i.index }">${i.index }</a>
       	</c:forEach>
       	
-   		<c:if test="${item.next}">
-   			<a href="javascript:void(0)"><img class="arrow_b_r" src="${contextPath}/resources/img/arrow_b_r.png" alt="페이지오른쪽화살표"></a>
+   		<c:if test="${members.next}">
+   			<a href="http://localhost:8080/web/seller_info_admin?page=${members.endPage + 1}"><img class="arrow_b_r" src="${contextPath}/resources/img/arrow_b_r.png" alt="페이지오른쪽화살표"></a>
    		</c:if>
    		
       </div>
