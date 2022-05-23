@@ -135,7 +135,7 @@ public class MemberControllerApi {
 		    	map.put("next", paging.isNext());
 		    	map.put("pre", paging.isPrev());
 		    	map.put("id", id);
-		    	map.put("data",  resultReviewList);
+		    	map.put("data", resultReviewList);
 		    	return map;
 		    }
 		}
