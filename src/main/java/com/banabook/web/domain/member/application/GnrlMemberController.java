@@ -21,7 +21,7 @@ public class GnrlMemberController {
 	GnrlMemberService service;
 	
 	// 회원 가입 진행
-	@RequestMapping(value="/joinConfirm", method=RequestMethod.GET)
+	@RequestMapping(value="/joinConfirm", method=RequestMethod.POST)
 	public String insertMember(
 			Model model,
 			@RequestParam("id") String id,

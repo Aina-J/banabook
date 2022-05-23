@@ -52,7 +52,7 @@ $(document).ready(function(){
 	
 	<hr>
 	
-	<form method="GET" id="join_form">
+	<form method="post" id="join_form">
 	<div>아이디</div>
 	<input class="sec" type="text" name="id"><br>
 	
