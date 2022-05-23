@@ -48,7 +48,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 			from tb_member m, tb_product p, tb_review r
 			where m.id = p.id
 			and p.code = r.code
-			and m.id = #{id};
+			and m.id = #{id}
 	 ]]>      
 	</select> 
   
