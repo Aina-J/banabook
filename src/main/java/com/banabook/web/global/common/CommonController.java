@@ -56,9 +56,9 @@ public class CommonController {
 	public String sellerMain(Model model,
 			HttpServletRequest request) {
 		HttpSession session = request.getSession();
-		String Auth = (String) session.getAttribute("authority_id");
+		int Auth = (Integer) session.getAttribute("authority_id");
 		
-		if(Auth == "20") {
+		if(Auth == 20) {
 			model.addAttribute("message", "seller");
 			return "seller_main.view";
 		} else {
