@@ -26,4 +26,8 @@ public interface ReviewDAO {
 	
 	/* 회원 탈퇴를 할 경우 본인/관리자가 작성한 리뷰를 전체 삭제 */
 	public int deleteAllReview(String id) throws DataAccessException;
+
+	/* 판매자 ID에 해당하는(판매자가 올린 모든 상품에 대한) 모든 리뷰 리스트로 뽑기 */
+	public List<ReviewDTO> selectAllListforSel(String id) throws DataAccessException;
+
 }
