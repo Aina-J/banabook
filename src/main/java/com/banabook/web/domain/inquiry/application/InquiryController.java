@@ -1,5 +1,8 @@
 package com.banabook.web.domain.inquiry.application;
 
+import java.util.List;
+import java.util.Locale;
+
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
@@ -7,10 +10,15 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 
+import com.banabook.web.domain.inquiry.domain.InquiryDTO;
 import com.banabook.web.domain.inquiry.service.InquiryService;
+import com.banabook.web.domain.product.domain.ProductDTO;
 import com.banabook.web.domain.product.service.ProductService;
 
 @Controller
@@ -47,7 +55,7 @@ public class InquiryController {
 	
 	// 문의 게시글 작성
 	
-	@PostMapping(value="/meminsert/{code}")
+	@RequestMapping(value="/meminsert/{code}")
 	public String inquiryReg(
 			Model model,	
 			HttpServletRequest request,  
@@ -80,11 +88,8 @@ public class InquiryController {
 	
 	
 	// 판매자용 문의게시글 답글 작성
-
-	@PostMapping(value="/selinsert/{code}")
-	public String inquiryReg(Model model, InquiryDTO dto,  HttpServletRequest request) {
 	
-	@PostMapping(value="/selinsert/{code}")
+	@RequestMapping(value="/selinsert/{code}")
 	public String inquiryReply(Model model, HttpServletRequest request,
 		@RequestParam Integer inquiry_id, @PathVariable("code") String code,
 		@RequestParam String title, 	  @RequestParam String content,
