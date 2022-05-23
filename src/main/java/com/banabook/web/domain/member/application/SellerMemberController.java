@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import com.banabook.web.domain.inquiry.domain.InquiryDTO;
 import com.banabook.web.domain.member.domain.MemberDTO;
 import com.banabook.web.domain.member.service.SellerMemberService;
 import com.banabook.web.domain.product.domain.ProductDTO;
@@ -27,6 +28,11 @@ public class SellerMemberController {
 	@Autowired
 	ProductService productService;
 	
+	@RequestMapping(value="/main", method=RequestMethod.GET)
+	public String main(Model model) {
+		return "seller_main.view";
+	}
+	
 	@RequestMapping(value="/joinConfirm", method=RequestMethod.POST)
 	public String insertSeller(
 			Model model,
@@ -40,18 +46,27 @@ public class SellerMemberController {
 			@RequestParam("birth") String birth
 			) {
 		
-		MemberDTO dto = new MemberDTO();
-		dto.setId(id);
-		dto.setPassword(password);
-		dto.setCom_name(com_name);
-		dto.setCr_no(cr_no);
-		dto.setName(name);
-		dto.setTel(tel);
-		dto.setAddress(address);
-		dto.setBirth(birth);
+		int confirm = 0;
+		try {
+			MemberDTO dto = new MemberDTO();
+			dto.setId(id);
+			dto.setPassword(password);
+			dto.setCom_name(com_name);
+			dto.setCr_no(cr_no);
+			dto.setName(name);
+			dto.setTel(tel);
+			dto.setAddress(address);
+			dto.setBirth(birth);
 
-		int confirm = service.insertSellerMember(dto);
-		System.out.println("MESSAGE : 판매자 회원가입 성공" + confirm);
+			confirm = service.insertSellerMember(dto);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		if(confirm == 1) {
+			System.out.println("MESSAGE : 판매자 회원가입 성공 / 등록된 회원 수 : " + confirm);
+		} else {
+			System.out.println("MESSAGE : 판매자 회원가입 실패 / 등록된 회원 수 : " + confirm);
+		}
 		
 		return "seller_main.view";
 	}
@@ -114,9 +129,43 @@ public class SellerMemberController {
 	
 	@RequestMapping(value="/manageInquiry", method=RequestMethod.GET)
 	public String manageInquiry(Model model,
-			HttpServletRequest request) {
+		HttpServletRequest request) {
 		HttpSession session = request.getSession();
 		String id = (String) session.getAttribute("id");
+		model.addAttribute("id", id);
+		return "seller_qna_list.view";
+	}
+	
+	@RequestMapping(value="/answerInquiry", method=RequestMethod.POST)
+	public String answerInquiry(
+			Model model,
+			HttpServletRequest request,
+			@RequestParam("title") String title,
+			@RequestParam("content") String content,
+			@RequestParam("pi_id") String pi_id,
+			@RequestParam("code") String code
+			) {
+		HttpSession session = request.getSession();
+		String id = (String) session.getAttribute("id");
+		int confirm = 0;
+		try {
+			InquiryDTO dto = new InquiryDTO();
+			dto.setId(id);
+			dto.setTitle(title);
+			dto.setContent(content);
+			dto.setPi_id(pi_id);
+			dto.setCode(code);
+
+			confirm = service.insertSellerAnswerInquiry(dto);
+			if(confirm == 1) {
+				System.out.println("MESSAGE : 문의 답변등록 성공 / 등록된 답변 수 : " + confirm);
+			} else {
+				System.out.println("MESSAGE : 문의 답변등록 실패 / 등록된 답변 : " + confirm);
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		
 		model.addAttribute("id", id);
 		return "seller_qna_list.view";
 	}

@@ -61,7 +61,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		]]>      
      </select> 
 	
-	<select id="checkInquiryforSeller" parameterType="String" resultType="String">
+	<select id="checkInquiryforSeller" parameterType="String" resultType="inquiryDTO">
     	<![CDATA[
 		with tmp (inquiry_id, id, code, title, content, write_date, pi_id, name) as (
 		select i.inquiry_id, i.id, i.code, i.title, i.content, i.write_date, i.pi_id, p.name
