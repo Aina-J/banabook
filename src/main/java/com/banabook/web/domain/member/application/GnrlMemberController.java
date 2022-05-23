@@ -1,5 +1,7 @@
 package com.banabook.web.domain.member.application;
 
+import java.util.List;
+
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
@@ -12,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import com.banabook.web.domain.member.domain.MemberDTO;
 import com.banabook.web.domain.member.service.GnrlMemberService;
+import com.banabook.web.domain.review.domain.ReviewDTO;
 
 @Controller
 @RequestMapping("/general/*")
@@ -71,7 +74,13 @@ public class GnrlMemberController {
 		
 		HttpSession session = request.getSession();
 		String id = (String) session.getAttribute("id");
+		
+		MemberDTO dto = service.selectMemberToID(id);
+		
 		model.addAttribute("id", id);
+		model.addAttribute("dto", dto);
+		
+		
 		return "my_page_edit.view";
 	}
 	
