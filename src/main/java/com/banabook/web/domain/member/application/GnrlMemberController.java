@@ -109,20 +109,11 @@ public class GnrlMemberController {
 	}
 	
 	// 회원이 작성한 문의 게시글 리스트 출력
-	@RequestMapping(value="/loadInquiry", method=RequestMethod.GET)
+	@RequestMapping(value="/loadInquiry.do", method=RequestMethod.GET)
 	public String loadInquiry(
 			Model model,
 			HttpServletRequest request
 			) {
-		HttpSession session = request.getSession();
-		String id = (String) session.getAttribute("id");
-		
-		// 로그인 정보 없을시 로그인 화면으로 이동
-		if(id == "" || id == null ) {
-			return "login.view";
-		} else {
-		model.addAttribute(id);
 		return "qna_list.view";
-		}
 	}
 }

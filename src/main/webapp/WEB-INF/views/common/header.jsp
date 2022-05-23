@@ -20,8 +20,8 @@
 	   		<li><a href="${contextPath}/join/joinMenu">JOIN</a></li>
 		</c:if>
 	   	<li><a href="${contextPath}/general/mypage.do">MY PAGE</a></li>
-	   	<li><a href="#">CART</a></li>
+	   	<!-- <li><a href="#">CART</a></li> -->
 	   	<li><a href="${contextPath}/memOrder/orderView.do">ORDER</a></li>
-	   	<li><a href="#">Q & A</a></li>
+	   	<li><a href="${contextPath}/general/loadInquiry.do">Q & A</a></li>
 	</ul>
 </div>

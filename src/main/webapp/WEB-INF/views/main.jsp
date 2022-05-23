@@ -120,11 +120,11 @@
      
      		 <div class="best_item_ul">
     
-       		 <c:forEach var="bestSeller" items="${ bestSellerList }" begin="0" end="3">
+       		 <c:forEach var="item" items="${ product }">
           		<ul>
-            	 <li><img src="${ bestSeller.representative }" alt="베스트셀러"></li>
-             	 <li>${ bestSeller.name }</li>
-              	 <li>${ bestSeller.price }</li>
+            	 <li><img src="${ item.representative }" alt="베스트셀러"></li>
+             	 <li>${ item.name }</li>
+              	 <li>${ item.price }</li>
             	</ul>
          	</c:forEach>
        		</div>

@@ -1,11 +1,5 @@
 package com.banabook.web.domain.inquiry.application;
 
-import java.text.SimpleDateFormat;
-import java.sql.Date;
-import java.util.List;
-import java.util.Locale;
-
-import javax.inject.Inject;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
@@ -13,18 +7,10 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.ResponseBody;
 
-import com.banabook.web.domain.inquiry.domain.InquiryDTO;
-import com.banabook.web.domain.inquiry.mapper.InquiryDAO;
 import com.banabook.web.domain.inquiry.service.InquiryService;
-import com.banabook.web.domain.product.domain.ProductDTO;
 import com.banabook.web.domain.product.service.ProductService;
 
 @Controller
@@ -40,24 +26,24 @@ public class InquiryController {
 	ProductService pservice;
 	
 	// 상품 상세페이지 이동
-//	@RequestMapping(value = "/inquiry", method = RequestMethod.GET)
-//	public String inquiry(
-//			Locale locale, Model model, 
-//			@RequestParam("code") String code) throws Exception {
-//		List qna_list = inquiryService.selectProctDetailPage(code);
-//		model.addAttribute("qna_list", qna_list);
-//		  
-//		  return "qna_list";
-//	}
-//	
-//	// 문의 게시글로 이동
-//	@RequestMapping(value = "/inquiryView", method = RequestMethod.GET)
-//	public InquiryDTO inquiryView(
-//			Locale locale, Model model, 
-//			@RequestParam("inquiry_id") int inquiry_id) throws Exception {
-//		InquiryDTO dto = inquiryService.selectToInquiry_id(inquiry_id);
-//		return dto;
-//	}
+	@RequestMapping(value = "/inquiry", method = RequestMethod.GET)
+	public String inquiry(
+			Locale locale, Model model, 
+			@RequestParam("code") String code) throws Exception {
+		List qna_list = inquiryService.selectProctDetailPage(code);
+		model.addAttribute("qna_list", qna_list);
+		  
+		  return "qna_list";
+	}
+	
+	// 문의 게시글로 이동
+	@RequestMapping(value = "/inquiryView", method = RequestMethod.GET)
+	public InquiryDTO inquiryView(
+			Locale locale, Model model, 
+			@RequestParam("inquiry_id") int inquiry_id) throws Exception {
+		InquiryDTO dto = inquiryService.selectToInquiry_id(inquiry_id);
+		return dto;
+	}
 	
 	// 문의 게시글 작성
 	
@@ -95,8 +81,8 @@ public class InquiryController {
 	
 	// 판매자용 문의게시글 답글 작성
 
-//	@PostMapping(value="/selinsert/{code}")
-//	public String inquiryReg(Model model, InquiryDTO dto,  HttpServletRequest request) {
+	@PostMapping(value="/selinsert/{code}")
+	public String inquiryReg(Model model, InquiryDTO dto,  HttpServletRequest request) {
 	
 	@PostMapping(value="/selinsert/{code}")
 	public String inquiryReply(Model model, HttpServletRequest request,

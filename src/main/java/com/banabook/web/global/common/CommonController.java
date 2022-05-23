@@ -1,6 +1,7 @@
 package com.banabook.web.global.common;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -16,6 +17,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.banabook.web.domain.member.domain.MemberDTO;
 import com.banabook.web.domain.member.service.AdminMemberService;
+import com.banabook.web.domain.product.service.ProductService;
 import com.banabook.web.global.common.bestseller.service.BestSellerService;
 
 @Controller
@@ -27,22 +29,28 @@ public class CommonController {
 	@Autowired
 	AdminMemberService adminMemberService;
 	
+	@Autowired
+	ProductService productService;
+	
 	@RequestMapping("/main")
 	   public String main(Model model, HttpServletRequest request) {
 		HttpSession session = request.getSession();
 		String id = (String) session.getAttribute("id");
-		System.out.println(id);
 		model.addAttribute("id", id);
 		
-	      return "main.view";
+		// 메인 베스트 아이템 출력 시작
+		List list = productService.selectCodeProduct("novel").subList(0, 4);
+		model.addAttribute("product", list);
+		
+	    return "main.view";
 	}
 	
-	@RequestMapping("/main") 
-	public String BestSellerforMain(Model model) {	
-		List list = bestSellerService.getBestSellerforMain();
-		model.addAttribute("bestSellerList", list);
-		return "main.view"; 
-	}
+//	@RequestMapping("/maintest") 
+//	public String BestSellerforMain(Model model) {	
+//		List list = bestSellerService.getBestSellerforMain();
+//		model.addAttribute("bestSellerList", list);
+//		return "main.view"; 
+//	}
 
 	@RequestMapping("/seller_main") 
 	public String sellerMain(Model model) {	
