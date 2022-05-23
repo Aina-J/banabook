@@ -34,7 +34,9 @@
   					data: JSON.stringify(data),
   					success : function(data){
   						console.log(data);
-  						if(data == 'main.view' || data == "seller_main.view") {
+  						if(data == 'main') {
+  							document.location.href='${contextPath}/' + data;
+  						} else if( data == "seller_main") {
   							document.location.href='${contextPath}/' + data;
   						} else {
   							alert('아이디 또는 비밀번호가 틀립니다.');

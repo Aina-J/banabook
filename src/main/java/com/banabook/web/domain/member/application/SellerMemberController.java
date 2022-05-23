@@ -53,7 +53,7 @@ public class SellerMemberController {
 		int confirm = service.insertSellerMember(dto);
 		System.out.println("MESSAGE : 판매자 회원가입 성공" + confirm);
 		
-		return "main.view";
+		return "seller_main.view";
 	}
 	
 	@RequestMapping(value="/mypage", method=RequestMethod.GET)

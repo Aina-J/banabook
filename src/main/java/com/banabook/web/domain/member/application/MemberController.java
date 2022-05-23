@@ -36,29 +36,16 @@ public class MemberController {
 			session.setAttribute("name", dbDTO.getName());
 			
 			if(auID == 30) {
-				return "main.view";
+				return "main";
 			} else if(auID == 20) {
-				return "seller_main.view";
+				return "seller_main";
 			} else if(auID == 10) {
-				return "main.view";
+				return "main";
 			}
 		} else {
 			return "Invalidated";
 		}
-		
-		
-		
-		session.setAttribute("id", dto.getId());
-		session.setAttribute("authority_id", dto.getAuthority_id());
-		session.setAttribute("name", dto.getName());
-		int Authority = dto.getAuthority_id();
-		if(Authority == 30) {
-			return "main.view";
-		} else if(Authority == 20) {
-			return "seller_main.view";
-		} else {
-			return "main.view";
-		}
+		return  "Invalidated";
 	}
 
 	@RequestMapping(value="/logOut")

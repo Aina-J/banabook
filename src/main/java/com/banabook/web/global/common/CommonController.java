@@ -28,12 +28,17 @@ public class CommonController {
 		
 	      return "main.view";
 	}
-
+	
 	@RequestMapping("/maintest") 
 	public String BestSellerforMain(Model model) {	
 		List list = bestSellerService.getBestSellerforMain();
 		model.addAttribute("bestSellerList", list);
 		return "main.view"; 
+	}
+
+	@RequestMapping("/seller_main") 
+	public String sellerMain(Model model) {	
+		return "seller_main.view"; 
 	}	
 	
 	
