@@ -37,7 +37,7 @@ public class CommonController {
 	      return "main.view";
 	}
 	
-	@RequestMapping("/maintest") 
+	@RequestMapping("/main") 
 	public String BestSellerforMain(Model model) {	
 		List list = bestSellerService.getBestSellerforMain();
 		model.addAttribute("bestSellerList", list);
