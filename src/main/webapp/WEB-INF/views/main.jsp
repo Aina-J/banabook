@@ -130,7 +130,7 @@
      		 <div class="best_item_ul">
     
        		 <c:forEach var="item" items="${ product }">
-          		<ul>
+          		<ul onclick="location.href='${contextPath}/product/detail?code=${item.code}'">
             	 <li><img src="${ item.representative }" alt="베스트셀러"></li>
              	 <li>${ item.name }</li>
               	 <li>${ item.price }</li>
