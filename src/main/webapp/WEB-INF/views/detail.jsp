@@ -206,20 +206,7 @@
 		document.querySelector(".review_sec .content" + title).style.display = "block";
 	}
 	
-	/* 리뷰 등록하기 버튼을 누르면 DB에 저장되는 기능 */
-    $(".reivew_sec #btn_insert").click(function () {
 
-      if ( $("input[name='title']").val() == "" || $("input[name='title']").val() == null) {
-        alert('제목을 입력해주세요.');
-        return;
-      } else if ($("input[name='content']").val() == "" || $("input[name='content']").val() == null) {
-        alert('내용을 입력해주세요.');
-        return;
-      } else {
-        $("#review_form").attr("action", "/web/review/insert/${dto.code}");
-        $("#review_form").submit();
-      }
-    })
 </script>
 
 <div class="thum">
@@ -287,7 +274,7 @@
 	      </div>
 	
 	      <div class="edit_bt_review">
-	        <input id="btn_insert" value="리뷰 등록하기"></input>
+	        <input type='button' id="btn_insert" value="리뷰 등록하기"></input>
 	      </div>
 	
 	    </form>
@@ -321,7 +308,7 @@
 	      </div>
 	
 	      <div class="edit_bt_inquiry">
-	        <input id="btn_insert" value="문의 등록하기"></input>
+	        <input type='button' id="btn_insert" value="문의 등록하기"></input>
 	      </div>
 	
 	    </form>
@@ -485,18 +472,33 @@
 	}
 	
 	/* inquriy 등록하기 버튼을 누르면 DB에 저장되는 기능 */
-    $(".inquiry_sec #btn_insert").click(function () {
+    $(".inquiry #btn_insert").click(function () {
 
-      if ( $("input[name='title']").val() == "" || $("input[name='title']").val() == null) {
+      if ( $(".inquiry input[name='title']").val() == "" || $(".inquiry input[name='title']").val() == null) {
         alert('제목을 입력해주세요.');
         return;
-      } else if ($("input[name='content']").val() == "" || $("input[name='content']").val() == null) {
+      } else if ($(".inquiry input[name='content']").val() == "" || $(".inquiry input[name='content']").val() == null) {
         alert('내용을 입력해주세요.');
         return;
       } else {
-        $("#inquiry_form").attr("action", "/web/review/insert/${dto.code}");
+        $("#inquiry_form").attr("action", "/web/qna/meminsert/${dto.code}");
         $("#inquiry_form").submit();
       }
     })
 
+    
+    	/* 리뷰 등록하기 버튼을 누르면 DB에 저장되는 기능 */
+    $(".review #btn_insert").click(function () {
+
+      if ( $(".review input[name='title']").val() == "" || $(".review input[name='title']").val() == null) {
+        alert('제목을 입력해주세요.');
+        return;
+      } else if ($(".review input[name='content']").val() == "" || $(".review input[name='content']").val() == null) {
+        alert('내용을 입력해주세요.');
+        return;
+      } else {
+        $("#review_form").attr("action", "/web/review/insert/${dto.code}");
+        $("#review_form").submit();
+      }
+    })
   </script>

@@ -37,32 +37,17 @@
 		<put-attribute name="footer" value="/WEB-INF/views/common/footer.jsp" />
 	</definition>
 	
+	<!--  	관리자 전용 레이아웃 -->
+	<definition name="tilesLayout5" template="/WEB-INF/views/common/tilesLayout3.jsp">
+		<put-attribute name="title" value="관리자 || BANABOOK" />
+		<put-attribute name="header" value="/WEB-INF/views/common/header2.jsp" />
+		<put-attribute name="contents" value="/WEB-INF/views/seller_info_admin.jsp" />
+		<put-attribute name="footer" value="/WEB-INF/views/common/footer.jsp" />
+	</definition>
+	
 	<definition name="main.view" extends="tilesLayout">		
 		<put-attribute name="title" value="메인 | BANABOOK" />
 		<put-attribute name="contents" value="/WEB-INF/views/main.jsp" />
-	</definition>
-	
-	<!-- 	판메자 매인 페이지 -->
-	<definition name="seller_main.view" extends="tilesLayout3">		
-		<put-attribute name="title" value="판매자 메인 | BANABOOK" />
-		<put-attribute name="contents" value="/WEB-INF/views/main.jsp" />
-	</definition>
-	
-	<!-- 	판매자 마이페이지 -->
-	<definition name="seller_mypage.view" extends="tilesLayout4">		
-		<put-attribute name="title" value="판매자 메인페이지 | BANABOOK" />
-		<put-attribute name="content" value="/WEB-INF/views/my_page_seller.jsp" />
-	</definition>
-	
-	<!-- 	판매자 상품관리 페이지 -->
-	<definition name="seller_manageProduct.view" extends="tilesLayout4">		
-		<put-attribute name="title" value="판매자 상품등록 | BANABOOK" />
-		<put-attribute name="content" value="/WEB-INF/views/item_seller.jsp" />
-	</definition>
-	
-	<definition name="seller_qna_list.view" extends="tilesLayout4">		
-		<put-attribute name="title" value="판매자 문의관리 | BANABOOK" />
-		<put-attribute name="content" value="/WEB-INF/views/seller_qna_list.jsp" />
 	</definition>
 	
 	<definition name="detail.view" extends="tilesLayout">		
@@ -122,6 +107,34 @@
 	<definition name="join_menu.view" extends="tilesLayout2">		
 		<put-attribute name="title" value="주문내역 | BANABOOK" />
 		<put-attribute name="content" value="/WEB-INF/views/join_menu.jsp" />
+	</definition>
+	
+	<definition name="seller_info_admin.view" extends="tilesLayout5">		
+		<put-attribute name="title" value="회원관리 | BANABOOK" />
+		<put-attribute name="content" value="/WEB-INF/views/seller_info_admin.jsp" />
+	</definition>
+	
+	<!-- 	판메자 매인 페이지 -->
+	<definition name="seller_main.view" extends="tilesLayout3">		
+		<put-attribute name="title" value="판매자 메인 | BANABOOK" />
+		<put-attribute name="contents" value="/WEB-INF/views/main.jsp" />
+	</definition>
+	
+	<!-- 	판매자 마이페이지 -->
+	<definition name="seller_mypage.view" extends="tilesLayout4">		
+		<put-attribute name="title" value="판매자 메인페이지 | BANABOOK" />
+		<put-attribute name="content" value="/WEB-INF/views/my_page_seller.jsp" />
+	</definition>
+	
+	<!-- 	판매자 상품관리 페이지 -->
+	<definition name="seller_manageProduct.view" extends="tilesLayout4">		
+		<put-attribute name="title" value="판매자 상품등록 | BANABOOK" />
+		<put-attribute name="content" value="/WEB-INF/views/item_seller.jsp" />
+	</definition>
+	
+	<definition name="seller_qna_list.view" extends="tilesLayout4">		
+		<put-attribute name="title" value="판매자 문의관리 | BANABOOK" />
+		<put-attribute name="content" value="/WEB-INF/views/seller_qna_list.jsp" />
 	</definition>
 	
 		<!-- 김나영 @ 22-05-17 나중에 작업할 코드입니다. -->
