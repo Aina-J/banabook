@@ -41,5 +41,15 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
     	delete from tb_review where id = #{id}
     	]]>      
      </delete>     
+     
+     	<select id="selectAllListforSel" parameterType="String">
+     	<![CDATA[
+     	select m.id, m.authority_id, p.code, p.name, r.id as mem_id, r.title, r.content, r.write_date
+			from tb_member m, tb_product p, tb_review r
+			where m.id = p.id
+			and p.code = r.code
+			and m.id = #{id};
+	 ]]>      
+	</select> 
   
 </mapper>
