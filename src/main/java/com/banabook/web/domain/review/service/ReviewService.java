@@ -25,4 +25,7 @@ public class ReviewService {
 		reviewDAO.insertReview(rDTO);
 	}
 	
+	public List<ReviewDTO> selectAllListforSel(String id) {
+		return reviewDAO.selectAllListforSel(id);
+	}
 }

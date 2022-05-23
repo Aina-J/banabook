@@ -3,6 +3,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <c:set var="contextPath" value="${ pageContext.request.contextPath}" />
 <link rel="stylesheet" href="${contextPath}/resources/css/qna_list.css">
+<link rel="stylesheet" href="${contextPath}/resources/css/qna_seller.css">
 <link rel="stylesheet" href="${contextPath}/resources/css/list_page.css">
 <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
 <script>
@@ -22,7 +23,7 @@
 	    	  data = page;
 	      }
 	      let url = "http://localhost:8080/web/memberApi/sellerInquiry/${id}?page="+data;
-	      api(url, "GET", null, fnSucc);
+	      api(url, "POST", null, fnSucc);
 	   }
    	
 	
@@ -81,7 +82,7 @@
 	    	            	if(matched){
 	    	            		html += "   <td>답변완료</td>";
 	    	            	} else{
-	    	            		html += "   <td>답변대기중</td>";
+	    	            		html += "   <td><button type=\"button\" class=\"uploadBtn\" onclick=\"openAnswerForm(" + data.data[i].inquiry_id + ","+ data.data[i].code +")>답변하기</button></td>";
 	    	            	}
 
 	            } else if((data.data[i].pi_id)!=0){
@@ -126,8 +127,51 @@
     	    }
     	    document.querySelector(".content" + num).style.display = "table-cell";
 	   	}
+    /* 답변하기 클릭하면 문의 답변 보여주는 기능 */
+   	function openAnswerForm(pi_id, code){
+  	  // 돔 비우기
+        $('.write_sec').html("");
+        // 돔 만들기
+        	html += "	<hr style=\"border: solid 1px #173153;\">	";
+		   	html += "		<div>답변하기</div>	";
+			html += "	</div>	";
+			html += "	<hr style=\"border: solid 1px #173153; margin: 50px 0;\"> 	";
+			html += "	<div class=\"seller_answer\">	";
+			html += "  	<div>판매자 답변</div><br>	";
+			html += "  	<div>	";
+			html += "  	<form type=\"GET\" id=\"upload\">	";
+			html += "    	<input type=\"text\" name=\"title\" ";
+			html += "			placeholder=\"판매자 답변 제목을 입력해 주세요.\">	";
+			html += "    	<input type=\"text\" name=\"content\" ";
+			html += "			placeholder=\"판매자 답변 내용을 입력해 주세요.\">	";
+			html += "    	<input type=\"hidden\" name=\"pi_id\" value=" + pi_id + ">	";
+			html += "    	<input type=\"hidden\" name=\"code\" value=" + code + ">	";
+			html += "    	<input class=\"upload\" value=\"등록\">	";
+			html += "  	</form>	";
+			html += "  	</div>	";
+         $('.write_sec').append(html);
+   	}
     
-    
+//    	$(document).ready(function(){
+
+   		//문의 답변 버튼(답변등록 기능 작동)
+   		$(".upload").click(function(){
+   			
+   			if(	$("input[name='title']").val() == "" || $("input[name='title']").val() == null ||
+   				$("input[name='content']").val() == "" || $("input[name='content']").val() == null){
+   				alert('모든 내용을 입력해주세요.');
+   				return;
+   			} else if($("input[name='pi_id']").val() == "" || $("input[name='pi_id']").val() == null){
+   				alert('해당 글이 존재하지 않습니다.');
+   				return;
+   			} else if($("input[name='code']").val() == "" || $("input[name='code']").val() == null){
+   				alert('해당 글이 존재하지 않습니다.');
+   				return;
+   			}else  {
+   	 		$("#upload").attr("action", "/web/seller/answerInquiry/");
+   	 		$("#upload").submit();
+   			} 
+   		})
 </script>
 
 <div class="mypage">
@@ -153,4 +197,6 @@
 	<div id="paging">
 	</div>
     </div>
-  </div>
+    <div class="write_sec">
+    </div>
+</div>

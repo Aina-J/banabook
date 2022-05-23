@@ -24,6 +24,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import com.banabook.web.domain.inquiry.domain.InquiryDTO;
 import com.banabook.web.domain.inquiry.mapper.InquiryDAO;
 import com.banabook.web.domain.inquiry.service.InquiryService;
+import com.banabook.web.domain.product.domain.ProductDTO;
 import com.banabook.web.domain.product.service.ProductService;
 
 @Controller
@@ -61,16 +62,18 @@ public class InquiryController {
 	// 문의 게시글 작성
 	
 	@PostMapping(value="/meminsert/{code}")
-	public String inquiryReg(Model model,	HttpServletRequest request,  
-	  @RequestParam Integer inquiry_id, 	@PathVariable("code") String code,
-	  @RequestParam String title, 			@RequestParam String content,
-	  @RequestParam String pi_id)	 {
+	public String inquiryReg(
+			Model model,	
+			HttpServletRequest request,  
+			@PathVariable("code") String code,
+			@RequestParam String title, 			
+			@RequestParam String content
+			)	 {
 			
 			HttpSession session = request.getSession();
 			String id = (String) session.getAttribute("id");
 	
 			InquiryDTO dto = new InquiryDTO();
-			dto.setInquiry_id(inquiry_id);
 			dto.setId(id);
 			dto.setCode(code);
 			dto.setTitle(title);
@@ -81,6 +84,10 @@ public class InquiryController {
 			logger.info("문의글이 등록됩니다");
 			logger.info(title);
 			logger.info(code);
+			
+			ProductDTO pdto = pservice.selectCodeProductOne(code);
+			
+			model.addAttribute("dto", pdto);
 			
 			return "detail.view";	
 	}	
