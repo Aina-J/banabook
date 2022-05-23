@@ -50,17 +50,19 @@ public class GnrlMemberController {
 		return "main.view";
 	}
 	// 회원 마이페이지 진입
-		@RequestMapping(value="/mypage", method=RequestMethod.GET)
+		@RequestMapping(value="/mypage.do", method=RequestMethod.GET)
 		public String enterMypage(Model model, HttpServletRequest request) {
-			HttpSession session = request.getSession();
-			String id = (String) session.getAttribute("id");
+//			HttpSession session = request.getSession();
+//			String id = (String) session.getAttribute("id");
+//			
+//			// 로그인 정보 없을시 로그인 화면으로 이동
+//			if(id == "" || id == null ) {
+//				return "login.view";
+//			} else {
+//				return "my_page.view";
+//			}
 			
-			// 로그인 정보 없을시 로그인 화면으로 이동
-			if(id == "" || id == null ) {
-				return "login.view";
-			} else {
 			return "my_page.view";
-			}
 		}
 		
 	// 회원 수정페이지 진입
