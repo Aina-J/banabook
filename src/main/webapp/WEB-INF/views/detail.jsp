@@ -104,7 +104,7 @@
 			html += "		<tr>";
 			html += "			<th>No.</th>";
 			html += "			<th>문의제목</th>";
-/* 			html += "			<th>답변여부</th>"; */
+ 			html += "			<th>작성자</th>"; 
 			html += "		</tr>";
 			html += "	</thead>";
 			html += "	<tbody>";
@@ -118,7 +118,7 @@
 				}else{
 					html += "			<td class=\"title" + i + "\""+"><a href=\"javascript:void(0)\" onclick=\"openContent('" + i + "')\"> ㄴ" + data.data[i].title + "</a></td>";
 				}
-/* 				html += "			<td>" + data.data[i].title + "</td>"; */
+ 				html += "			<td>" + data.data[i].id + "</td>"; 
 				html += "		</tr>";
 				html += "		<tr class=\"content content" + i +"\""+">";
 				html += "			<td colspan='3'>" + "내용 : " + data.data[i].content + "</td>";
@@ -156,70 +156,6 @@
 	        html += "</div>";
 			
 		    $('.inquiry_sec').append(html); 
-		      /* console.log("ajax Success!");
-		      console.log(JSON.stringify(data));
-		      let html = "";
-		      if(data.data[0] == 0) {
-		    	  // 돔 비우기
-		          $('.inquiry_sec').html("");
-		          // 돔 만들기
-		             	html += "<tr>";
-		            	html += "   <td>1</td>";
-		             	html += "   <td onclick=\"openContentForm()\" > 등록된 문의가 없습니다. </a></td>";
-		 	        	html += "   <td> X </td>";
-		             	html += " </tr>";
-		           $('.inquiry_sec').append(html);
-		      } else if(data.data[0] != 0 || data != null) {
-		         // 돔 비우기
-		         $('.inquiry_sec').html("");
-		         // 돔 만들기
-		         var length = data.data.length;
-		         for(let i = 0; i < data.data.length; i++) {
-		            html += "<tr>";
-		           	html += "   <td>" + (i + 1) + "</td>";
-			            if((data.data[i].pi_id)==0){
-		            		html += "   <td onclick=\"openContentForm("+i+")\" >" + data.data[i].title + "</a></td>";
-			            	let original = data.data[i].inquiry_id;
-			            	var matched = false;
-			            	for(let j = 0; j < data.data.length; j++){
-			            		if(original == data.data[j].pi_id){
-			            			var matched = true;
-			            		}
-			            	}
-			    	            	if(matched){
-			    	            		html += "   <td>답변완료</td>";
-			    	            	} else{
-			    	            		html += "   <td>답변대기중</td>";
-			    	            	}
-
-			            } else if((data.data[i].pi_id)!=0){
-			            	html += "   <td onclick=\"openContentForm("+i+")\" >ㄴ " + data.data[i].title + "</a></td>";
-			        		html += "   <td></td>";
-			            }
-		            html += " </tr>";
-			    	html += "   <td class=\"content"+ i +"\" style=\"display:none;\" colspan=\"3\"> 게시글 내용 :  " + data.data[i].content + "</td>";
-		          }
-/* 		         	$('.inquiry_sec').append(html); 
-		         	
-		             html += "<div class='item_page'>";
-		             html += "<div class='item_sec' style='width:780px;'>";
-		          if(data.pre) {
-		        	 // 이전 버튼 만들기
-		             html += "<a href='javascript:void(0)' onclick=ajaxInquiryList(\"" + (data.beginPage - 1) + ");openContentForm()><img class='arrow_b_r' src='http://localhost:8080/web/resources/images/arrow_b_l.png' alt='페이지왼쪽화살표'></a>";
-		          } 
-		          for(let i = data.beginPage; i <= data.endPage; i++) {
-		        	 // 페이징 버튼 만들기, 버튼 클릭하면 page=? 파라미터 추가해서 다시 ajax 호출
-		        	  html += "<a href='javascript:void(0)' onclick=ajaxInquiryList(\"" + i + "\")>" + i + "</a>";             
-		          }
-		          if(data.next) {
-		        	 // 다음 버튼 만들기
-		             html += "<a href='javascript:void(0)' onclick=ajaxInquiryList(\"" + (data.endPage + 1) + ");openContentForm()><img class='arrow_b_r' src='http://localhost:8080/web/resources/images/arrow_b_r.png' alt='페이지오른쪽화살표'></a>";
-		          }
-		          html += " </div> ";
-		       	  html += " </div> ";
-		          
-		          $('.inquiry_sec').append(html);
-		      	} */
 		}
 	}
 	//inquriy 관련//////////////////////////////////////////////////////////////////////////////////
