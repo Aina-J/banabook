@@ -1,7 +1,10 @@
 package com.banabook.web.global.common;
 
-import java.net.http.HttpRequest;
+import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
+import java.util.Optional;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
@@ -11,6 +14,8 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import com.banabook.web.domain.member.domain.MemberDTO;
+import com.banabook.web.domain.member.service.AdminMemberService;
 import com.banabook.web.global.common.bestseller.service.BestSellerService;
 
 @Controller
@@ -18,6 +23,9 @@ public class CommonController {
 
 	@Autowired
 	BestSellerService bestSellerService;
+	
+	@Autowired
+	AdminMemberService adminMemberService;
 	
 	@RequestMapping("/main")
 	   public String main(Model model, HttpServletRequest request) {
@@ -40,6 +48,36 @@ public class CommonController {
 	public String sellerMain(Model model) {	
 		return "seller_main.view"; 
 	}	
+	
+	@RequestMapping("/seller_info_admin") 
+	public String admin(Model model, HttpServletRequest req) {
+		int page = Integer.valueOf(Optional
+				.ofNullable(req.getParameter("page"))
+				.orElse("1"));
+		
+		List<MemberDTO> list = adminMemberService.selectAllSellerInfo();
+		System.out.println("size----------------------------------------" + list.size());
+		List<MemberDTO> resultList = new ArrayList();
+		Map map = new HashMap();
+		Paging paging = null;
+		if(0 < list.size()) {
+			paging = new Paging(list.size());
+			paging.paging(page);
+			System.out.println("beginRow--------------------------------" + paging.getBeginRow());
+			System.out.println("EndRow----------------------------------" + paging.getEndRow());
+			for(int i = paging.getBeginRow() - 1; i < paging.getEndRow(); i++) {
+				resultList.add(list.get(i));
+			}
+			map.put("beginPage", paging.getBeginPage());
+			map.put("endPage", paging.getEndPage());
+			map.put("section", paging.getSection());
+			map.put("next", paging.isNext());
+			map.put("pre", paging.isPrev());
+			map.put("data", resultList);
+			model.addAttribute("members", map);
+		}
+		return "seller_info_admin.view"; 
+	}
 	
 	
 	@RequestMapping("/login/loginForm")
