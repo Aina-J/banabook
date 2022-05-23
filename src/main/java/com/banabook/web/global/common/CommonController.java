@@ -1,6 +1,10 @@
 package com.banabook.web.global.common;
 
+import java.net.http.HttpRequest;
 import java.util.List;
+
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -16,7 +20,12 @@ public class CommonController {
 	BestSellerService bestSellerService;
 	
 	@RequestMapping("/main")
-	   public String main(Model model) {
+	   public String main(Model model, HttpServletRequest request) {
+		HttpSession session = request.getSession();
+		String id = (String) session.getAttribute("id");
+		System.out.println(id);
+		model.addAttribute("id", id);
+		
 	      return "main.view";
 	}
 

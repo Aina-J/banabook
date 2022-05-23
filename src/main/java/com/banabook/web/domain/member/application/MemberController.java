@@ -45,5 +45,10 @@ public class MemberController {
 		}
 	}
 
-
+	@RequestMapping(value="/logOut")
+	public String loginConfirm(HttpServletRequest request, Model model) {
+		request.getSession().invalidate();
+		return "main.view";
+	}
+	
 }

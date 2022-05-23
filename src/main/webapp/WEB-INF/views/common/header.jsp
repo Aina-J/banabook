@@ -10,7 +10,12 @@
 </div>
 <div class="navi_sec">
 	<ul>
-	   	<li><a href="${contextPath}/login/loginForm">LOGIN</a></li>
+		<c:if test="${empty id || id eq ''}">
+		   	<li><a href="${contextPath}/login/loginForm">LOGIN</a></li>
+		</c:if>
+		<c:if test="${not empty id}">
+			<li><a href="${contextPath}/member/logOut">LOGOUT</a></li>
+		</c:if>
 	   	<li><a href="${contextPath}/join/joinMenu">JOIN</a></li>
 	   	<li><a href="${contextPath}/general/mypage">MY PAGE</a></li>
 	   	<li><a href="#">CART</a></li>
