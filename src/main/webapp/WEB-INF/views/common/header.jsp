@@ -6,7 +6,15 @@
 <link rel="stylesheet" href="${contextPath}/resources/css/header.css">
 
 <div class="logo_sec">
-	<a href="${contextPath}/main"><img class="logo" src="${contextPath}/resources/img/logo.png" alt="로고"></a>
+ 	<c:if test="${ sessionScope.authority_id eq 20 }">
+		<a href="${contextPath}/seller_main"><img class="logo" src="${contextPath}/resources/img/logo.png" alt="로고"></a>
+	</c:if>
+	<c:if test="${ sessionScope.authority_id eq 30 }"> 
+		<a href="${contextPath}/main"><img class="logo" src="${contextPath}/resources/img/logo.png" alt="로고"></a>
+ 	</c:if>
+	<c:if test="${ sessionScope.authority_id eq null }">
+		<a href="${contextPath}/main"><img class="logo" src="${contextPath}/resources/img/logo.png" alt="로고"></a>
+	</c:if> 
 </div>
 <div class="navi_sec">
 	<ul>
