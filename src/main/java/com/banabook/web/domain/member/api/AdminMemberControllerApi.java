@@ -34,6 +34,8 @@ public class AdminMemberControllerApi {
 	ProductService productService;
 	@Autowired
 	SellerMemberService sellerService;
+	@Autowired
+	AdminMemberService adminMemberService;
 	
 	/* 관리자페이지에서 판매자승인리스트 조회 */
 	@RequestMapping(value="/sellerInfo", method=RequestMethod.GET)
@@ -84,9 +86,33 @@ public class AdminMemberControllerApi {
 		dto.setEntry(entry);
 
 		int confirm = sellerService.updateSellerMember(dto);
-		System.out.println("MESSAGE : 판매자 입점승인 변경 성공" + confirm);
 		
-		return "main.view";
+		
+		int page = 1;
+		System.out.println("MESSAGE : 판매자 입점승인 변경 성공" + confirm);
+		List<MemberDTO> list = adminMemberService.selectAllSellerInfo();
+		System.out.println("size----------------------------------------" + list.size());
+		List<MemberDTO> resultList = new ArrayList();
+		Map map = new HashMap();
+		Paging paging = null;
+		if(0 < list.size()) {
+			paging = new Paging(list.size());
+			paging.paging(page);
+			System.out.println("beginRow--------------------------------" + paging.getBeginRow());
+			System.out.println("EndRow----------------------------------" + paging.getEndRow());
+			for(int i = paging.getBeginRow() - 1; i < paging.getEndRow(); i++) {
+				resultList.add(list.get(i));
+			}
+			map.put("beginPage", paging.getBeginPage());
+			map.put("endPage", paging.getEndPage());
+			map.put("section", paging.getSection());
+			map.put("next", paging.isNext());
+			map.put("pre", paging.isPrev());
+			map.put("data", resultList);
+			model.addAttribute("members", map);
+		}
+		
+		return "seller_info_admin.view";
 	}
 	
 }

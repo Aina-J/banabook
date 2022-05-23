@@ -68,7 +68,7 @@ public class SellerMemberController {
 			System.out.println("MESSAGE : 판매자 회원가입 실패 / 등록된 회원 수 : " + confirm);
 		}
 		
-		return "seller_main.view";
+		return "main.view";
 	}
 	
 	@RequestMapping(value="/mypage", method=RequestMethod.GET)
