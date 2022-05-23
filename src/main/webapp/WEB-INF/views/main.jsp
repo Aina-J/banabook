@@ -9,6 +9,7 @@
 <script>
    $(function() {
       init();
+      sellerCheck();
    })
    
    function init() {
@@ -18,6 +19,14 @@
       }
    }
    
+	function sellerCheck(){
+		if("${message}" == "seller"){
+			console.log("판매자 메인 진입")
+		} else if("${message}" == "not-seller"){
+			alert('판매자가 아닙니다. 판매자로 로그인 해주세요.');
+		}
+	}
+	
    function ajaxProductList(cate) {
       let url = "http://localhost:8080/web/productApi/main/" + cate;
       api(url, "get", null, fnSucc);
