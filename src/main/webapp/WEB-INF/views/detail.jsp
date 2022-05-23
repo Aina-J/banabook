@@ -91,7 +91,7 @@
 			// 돔 비우기
 			$('.review_sec').html("");
 			// 돔 만들기
-			html += "<h2>review</h2>";
+			html += "<h2>Review</h2>";
 			html += "<table> ";
 			html += "	<thead> ";
 			html += "		<tr>";
@@ -300,9 +300,6 @@
 	<!-- 자바스크립트에서 append해줍니다. -->
     </div>
     
-    
-
-
 
 	<!-- inquiry 작성 form -->
 	  <div class="inquiry">

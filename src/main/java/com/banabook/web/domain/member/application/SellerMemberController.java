@@ -122,9 +122,13 @@ public class SellerMemberController {
 			
 	}
 	
-	@RequestMapping(value="/manageReview", method=RequestMethod.POST)
-	public String manageReview(Model model) {
-		return "main.view";
+	@RequestMapping(value="/manageReview", method=RequestMethod.GET)
+	public String manageReview(Model model, HttpServletRequest request) {
+			HttpSession session = request.getSession();
+			String id = (String) session.getAttribute("id");
+			model.addAttribute("id", id);
+			return "seller_review_list.view";
+		
 	}
 	
 	@RequestMapping(value="/manageInquiry", method=RequestMethod.GET)
