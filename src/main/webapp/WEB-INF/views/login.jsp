@@ -12,11 +12,7 @@
   });
 
   function bind() {
-    $('input[name=login]:first').off('click').on('click', e => {
-      console.log(sha256($('input[name=pwd]').val()));
-      
-      /**************************************/
-      console.log($('input[name=id]').val());
+    $('input[name=login]').off('click').on('click', e => {
       let id = $('input[name=id]').val();
       let pw = $('input[name=pwd]').val();
       if(id == '' || pw == ''){
@@ -37,14 +33,17 @@
   					contentType: "application/json",
   					data: JSON.stringify(data),
   					success : function(data){
-  						console.log("login 확인");
-  						document.location.href='${contextPath}/main';
+  						console.log(data);
+  						if(data == 'main.view' || data == "seller_main.view") {
+  							document.location.href='${contextPath}/' + data;
+  						} else {
+  							alert('아이디 또는 비밀번호가 틀립니다.');
+  						}
   					},
   					fail : function(data){
   						console.log("fail, ", data);
   					},
   					complete: function(data){
-  						console.log("comp", data);
   					}
   				})
   			});

@@ -1,19 +1,15 @@
 package com.banabook.web.domain.member.application;
 
-import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.request;
-
-import java.sql.Date;
-
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpRequest;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.banabook.web.domain.member.domain.MemberDTO;
 import com.banabook.web.domain.member.service.MemberService;
@@ -27,11 +23,31 @@ public class MemberController {
 	
 	@RequestMapping(value="/loginConfirm", 
 			method=RequestMethod.POST)
-	public String loginConfirm(@RequestBody MemberDTO dto, HttpServletRequest request) {
+	public @ResponseBody String loginConfirm(@RequestBody MemberDTO dto, HttpServletRequest request) {
 		HttpSession session = request.getSession();
-		System.out.println("login확인 아이디 : " + dto.getId());
-		System.out.println("login확인 비밀번호 : " + dto.getPassword());
-		dto = service.getMemberInfoToid(dto.getId());
+		MemberDTO dbDTO = service.getMemberInfoToid(dto.getId());
+		System.out.println(dbDTO.getPassword().equals(dto.getPassword()));
+		if(dbDTO.getPassword().equals(dto.getPassword())) {
+			int auID = dbDTO.getAuthority_id();
+			System.out.println(auID);
+			
+			session.setAttribute("id", dto.getId());
+			session.setAttribute("authority_id", auID);
+			session.setAttribute("name", dbDTO.getName());
+			
+			if(auID == 30) {
+				return "main.view";
+			} else if(auID == 20) {
+				return "seller_main.view";
+			} else if(auID == 10) {
+				return "main.view";
+			}
+		} else {
+			return "Invalidated";
+		}
+		
+		
+		
 		session.setAttribute("id", dto.getId());
 		session.setAttribute("authority_id", dto.getAuthority_id());
 		session.setAttribute("name", dto.getName());

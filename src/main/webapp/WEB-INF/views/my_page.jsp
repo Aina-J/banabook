@@ -17,7 +17,7 @@
     </div>
 
     <div class="my_menu">
-      <a href="${contextPath}/memOrder/orderView">주문내역</a>
+      <a href="${contextPath}/memOrder/orderView.do">주문내역</a>
       <a href="${contextPath}/general/loadInquiry">문의내역</a>
     </div>
 
