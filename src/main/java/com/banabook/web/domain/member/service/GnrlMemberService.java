@@ -25,4 +25,11 @@ public class GnrlMemberService {
 		return memberDAO.updateMember(memberDTO);
 	}
 
+	public MemberDTO selectMemberToID(String id) {
+		return memberDAO.selectMemberToID(id);
+		
+	}
+	
+	
+	
 }

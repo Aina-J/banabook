@@ -56,11 +56,9 @@ public class CommonController {
 			HttpServletRequest request) {
 		HttpSession session = request.getSession();
 		int Auth = (Integer) session.getAttribute("authority_id");
-		
 		// 메인 베스트 아이템 출력 시작
 		List list = productService.selectCodeProduct("novel").subList(0, 4);
 		model.addAttribute("product", list);
-		
 		if(Auth == 20) {
 			model.addAttribute("message", "seller");
 			return "seller_main.view";
