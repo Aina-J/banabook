@@ -40,7 +40,7 @@ public class MemberController {
 			} else if(auID == 20) {
 				return "seller_main";
 			} else if(auID == 10) {
-				return "main";
+				return "admin";
 			}
 		} else {
 			return "Invalidated";
