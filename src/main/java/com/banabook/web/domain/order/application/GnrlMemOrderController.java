@@ -21,7 +21,7 @@ public class GnrlMemOrderController {
 	@Autowired
 	OrderService service;
 	
-	@RequestMapping(value="/orderView", 
+	@RequestMapping(value="/orderView.do", 
 			method=RequestMethod.GET)
 	public String orderView(Model model, HttpServletRequest request, HttpServletResponse response) {
 		HttpSession session = request.getSession();
