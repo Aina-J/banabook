@@ -274,7 +274,9 @@
 	      </div>
 	
 	      <div class="edit_bt_review">
+
 	        <input type='button' id="btn_insert" value="리뷰 등록하기"></input>
+
 	      </div>
 	
 	    </form>
