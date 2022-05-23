@@ -16,7 +16,9 @@
 		<c:if test="${not empty id}">
 			<li><a href="${contextPath}/member/logOut">LOGOUT</a></li>
 		</c:if>
-	   	<li><a href="${contextPath}/join/joinMenu">JOIN</a></li>
+		<c:if test="${empty id || id eq ''}">
+	   		<li><a href="${contextPath}/join/joinMenu">JOIN</a></li>
+		</c:if>
 	   	<li><a href="${contextPath}/general/mypage.do">MY PAGE</a></li>
 	   	<li><a href="#">CART</a></li>
 	   	<li><a href="${contextPath}/memOrder/orderView.do">ORDER</a></li>
