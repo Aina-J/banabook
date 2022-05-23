@@ -21,8 +21,8 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	
 	<update id="updateSellerMember" parameterType="memberDTO">
 		<![CDATA[
-		UPDATE tb_member SET name=#{name}, password=#{password}, tel=#{tel}, address=#{address}, com_name=#{com_name}
-		where id=#{id}
+		UPDATE tb_member SET entry = #{entry}
+		where id = #{id}
       	]]>
 	</update>
 

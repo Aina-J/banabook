@@ -25,4 +25,8 @@ public class SellerMemberService {
 		return inquiryDAO.insertSellerAnswerInquiry(dto);
 	}
 
+	public int updateSellerMember(MemberDTO dto) {
+		return sellerDAO.updateSellerMember(dto);
+	}
+	
 }

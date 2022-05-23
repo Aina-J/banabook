@@ -19,6 +19,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import com.banabook.web.domain.inquiry.domain.InquiryDTO;
 import com.banabook.web.domain.member.domain.MemberDTO;
 import com.banabook.web.domain.member.service.AdminMemberService;
+import com.banabook.web.domain.member.service.SellerMemberService;
 import com.banabook.web.domain.product.domain.ProductDTO;
 import com.banabook.web.domain.product.service.ProductService;
 import com.banabook.web.global.common.Paging;
@@ -31,6 +32,8 @@ public class AdminMemberControllerApi {
 	AdminMemberService service;
 	@Autowired
 	ProductService productService;
+	@Autowired
+	SellerMemberService sellerService;
 	
 	/* 관리자페이지에서 판매자승인리스트 조회 */
 	@RequestMapping(value="/sellerInfo", method=RequestMethod.GET)
@@ -80,8 +83,8 @@ public class AdminMemberControllerApi {
 		dto.setId(id);
 		dto.setEntry(entry);
 
-		int confirm = service.updateSellerAprvl(dto);
-		System.out.println("MESSAGE : 판매자 회원가입 성공" + confirm);
+		int confirm = sellerService.updateSellerMember(dto);
+		System.out.println("MESSAGE : 판매자 입점승인 변경 성공" + confirm);
 		
 		return "main.view";
 	}

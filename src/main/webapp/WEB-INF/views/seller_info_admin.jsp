@@ -12,7 +12,7 @@
 
   <hr style="border: solid 1px #173153;">
 
-  <div class="table_wrap">
+ <div class="table_wrap">
     <table>
     	<thead>
           <tr>
@@ -25,24 +25,29 @@
         </thead>
       <tbody>
           <c:forEach var="item" items="${members.data}">
-	        <tr>
-	          <td>${item.id}</td>
-	          <td>${item.address}</td>
-	          <td>${item.com_name}</td>
-	          <td>
-	            <label><input type="radio" name="chk_info" value="o"> 승인</label>
-	            <label><input type="radio" name="chk_info" value="x"> 미승인</label>
-	          </td>
-	          <!-- 등록버튼 -->
-	          <td>
-	            <input style="width:60px; height: 30px; 
-	            cursor: pointer;
-	            background-color: #173153; 
-	            border: #173153; 
-	            border-radius: 5px; 
-	            color: #fff;" type="submit" value="확인">
-	          </td>
-	        </tr>
+	        <form method="post" action="${contextPath}/adminApi/sellerAprvl">
+		        <tr>
+		          <td>${item.id}</td>
+		          <td>${item.address}</td>
+		          <td>${item.com_name}</td>
+		          <td>
+		            <label>
+		            <input type="radio" name="entry" value="1" <c:if test="${item.entry eq 1 }"> checked </c:if>> 승인</label>
+		            <label>
+		            <input type="radio" name="entry" value="0" <c:if test="${item.entry eq 0 }"> checked </c:if>> 미승인</label>
+		            <input type="hidden" name="id" value="${item.id}">
+		          </td>
+		          <!-- 등록버튼 -->
+		          <td>
+		            <input style="width:60px; height: 30px; 
+		            cursor: pointer;
+		            background-color: #173153; 
+		            border: #173153; 
+		            border-radius: 5px; 
+		            color: #fff;" type="submit" value="확인">
+		          </td>
+		        </tr>
+	        </form>
       	</c:forEach>
       	</tbody>
     </table>
