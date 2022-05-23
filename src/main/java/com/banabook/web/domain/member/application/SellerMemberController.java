@@ -136,7 +136,7 @@ public class SellerMemberController {
 		return "seller_qna_list.view";
 	}
 	
-	@RequestMapping(value="/answerInquiry", method=RequestMethod.POST)
+	@RequestMapping(value="/answerInquiry", method=RequestMethod.GET)
 	public String answerInquiry(
 			Model model,
 			HttpServletRequest request,
