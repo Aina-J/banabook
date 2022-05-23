@@ -25,20 +25,18 @@ import com.banabook.web.global.common.Paging;
 @RestController
 @RequestMapping("/memberApi")
 public class MemberControllerApi {
-	
 	@Autowired
 	InquiryService service;
-
+	
 	@Autowired
 	ReviewService reviewService;
-
+	
 	@RequestMapping(value="/inquiry/{id}", method=RequestMethod.GET)
 	public Map goListPage(
 			HttpServletRequest req
 			,Model model
 			,@PathVariable("id") String id
 			) {
-			
 		System.out.println("page : " + req.getParameter("page"));
 		List<InquiryDTO> InquiryList = service.selectAllInquiryPosts(id);
 		if(InquiryList.size() == 0) {
@@ -62,42 +60,45 @@ public class MemberControllerApi {
 				map.put("pre", paging.isPrev());
 				map.put("data", resultList);
 			
+
 			return map;
 		}
+		
 	}
 
-	@RequestMapping(value="/sellerInquiry/{id}", method=RequestMethod.GET)
+	@RequestMapping(value="/sellerInquiry/{id}", method=RequestMethod.POST)
 	public Map sellerInquiry(
 			HttpServletRequest req
 			,Model model
 			,@PathVariable("id") String id
 			) {
-			
+		System.out.println("판매자 문의 등록 아이디 : " + id);
 		System.out.println("page : " + req.getParameter("page"));
-		List<InquiryDTO> InquiryList = service.checkInquiryforSeller(id);
-		if(InquiryList.size() == 0) {
-			Map map = new HashMap();
-			map.put("data", "0");
-			return map;
-		} else {
-				Paging paging = new Paging(InquiryList.size());
-				paging.paging(Integer.parseInt(req.getParameter("page")));
 			
-				List<InquiryDTO> resultList = new ArrayList();
-				for(int i = paging.getBeginRow() - 1 ; i < paging.getEndRow() ; i++) {
-					resultList.add(InquiryList.get(i));
-				}
+		Map map = new HashMap();
+		
+			List<InquiryDTO> InquiryList = service.checkInquiryforSeller(id);
+			System.out.println("판매자 문의 등록 아이디 : " + InquiryList.size() );
+			if(InquiryList.size() == 0) {
+				map.put("data", "0");
+				return map;
+			} else {
+					Paging paging = new Paging(InquiryList.size());
+					paging.paging(Integer.parseInt(req.getParameter("page")));
 				
-				Map map = new HashMap();
-				map.put("beginPage", paging.getBeginPage());
-				map.put("endPage", paging.getEndPage());
-				map.put("section", paging.getSection());
-				map.put("next", paging.isNext());
-				map.put("pre", paging.isPrev());
-				map.put("data", resultList);
-
-			return map;
-		}
+					List<InquiryDTO> resultList = new ArrayList();
+					for(int i = paging.getBeginRow() - 1 ; i < paging.getEndRow() ; i++) {
+						resultList.add(InquiryList.get(i));
+					}
+					
+					map.put("beginPage", paging.getBeginPage());
+					map.put("endPage", paging.getEndPage());
+					map.put("section", paging.getSection());
+					map.put("next", paging.isNext());
+					map.put("pre", paging.isPrev());
+					map.put("data", resultList);
+			}
+		return map;
 	}
 	
 	//  판매자가 본인이 판매한 상품에 달린 리뷰를 전부 조회
