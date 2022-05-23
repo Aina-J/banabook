@@ -27,18 +27,12 @@ public class CommonController {
 	@Autowired
 	AdminMemberService adminMemberService;
 	
-	@RequestMapping("/main")
-	   public String main(Model model, HttpServletRequest request) {
+	@RequestMapping("/main") 
+	public String BestSellerforMain(Model model, HttpServletRequest request) {	
 		HttpSession session = request.getSession();
 		String id = (String) session.getAttribute("id");
 		System.out.println(id);
 		model.addAttribute("id", id);
-		
-	      return "main.view";
-	}
-	
-	@RequestMapping("/main") 
-	public String BestSellerforMain(Model model) {	
 		List list = bestSellerService.getBestSellerforMain();
 		model.addAttribute("bestSellerList", list);
 		return "main.view"; 
