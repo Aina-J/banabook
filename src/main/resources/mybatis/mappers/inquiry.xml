@@ -9,9 +9,9 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
     	<![CDATA[
     	select * from
 		(with tmp (inquiry_id, id, code, title, content, write_date, pi_id) as 
-		(select inquiry_id, id, code, title, content, write_date, pi_id from tb_inquiry where pi_id = 0 
+		(select inquiry_id, id, code, title, content, to_char(write_date, 'YYYY-MM-DD'), pi_id from tb_inquiry where pi_id = 0 
 		and code=#{code} union all 
-		select b.inquiry_id, b.id, b.code, b.title, b.content, b.write_date, b.pi_id from tmp t, tb_inquiry b 
+		select b.inquiry_id, b.id, b.code, b.title, b.content, to_char(b.write_date, 'YYYY-MM-DD'), b.pi_id from tmp t, tb_inquiry b 
 		where b.pi_id = t.inquiry_id)
 		search depth first by pi_id set p_sort
 		select rownum num, tmp.* from tmp order by p_sort) 
