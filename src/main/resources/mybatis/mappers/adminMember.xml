@@ -11,5 +11,12 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		where id = #{id}
       	]]>      
 	</update> 
+	
+	<select id="selectAllSellerInfo" resultType="memberDTO">
+     	<![CDATA[
+        select id, authority_id, password, name, tel, address,
+		com_name, cr_no, entry from tb_member where authority_id = 20 
+      	]]>
+	</select>
   
 </mapper>
