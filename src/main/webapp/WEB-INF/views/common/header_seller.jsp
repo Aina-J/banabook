@@ -15,7 +15,9 @@
         <div class="seller_user">
           <span>${id}</span> 님 반갑습니다.
         </div>
-
+		<c:if test="${not empty id}">
+			<li><a href="${contextPath}/member/logOut">LOGOUT</a></li>
+		</c:if>
         <hr style="border: solid 1px #173153; margin: 10px 0;">
         <a href="${contextPath}/seller/mypage">판매자 관리센터</a>
       </div>
