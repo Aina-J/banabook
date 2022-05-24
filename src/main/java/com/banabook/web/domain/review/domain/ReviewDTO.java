@@ -9,7 +9,21 @@ public class ReviewDTO {
 	private String title;
 	private String content;
 	private String write_date;
+	private String name;//판매상품 이름
+	private String mem_id;//상품 산 사람 id
 	
+	public String getName() {
+		return name;
+	}
+	public void setName(String name) {
+		this.name = name;
+	}
+	public String getMem_id() {
+		return mem_id;
+	}
+	public void setMem_id(String mem_id) {
+		this.mem_id = mem_id;
+	}
 	public String getReview_id() {
 		return review_id;
 	}

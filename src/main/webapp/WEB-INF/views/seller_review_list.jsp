@@ -7,7 +7,6 @@
 <link rel="stylesheet" href="${contextPath}/resources/css/list_page.css">
 <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
 <script>
-
    	$(function() {
 		init();
    	})
@@ -22,7 +21,7 @@
 	      } else {
 	    	  data = page;
 	      }
-	      let url = "http://localhost:8080/web/memberApi/sellerReview/{id}?page="+data;
+	      let url = "http://localhost:8080/web/memberApi/sellerReview/${id}?page="+data;
 	      api(url, "GET", null, fnSucc);
 	   }
    
@@ -69,6 +68,20 @@
          for(let i = 0; i < data.data.length; i++) {
             html += "<tr class=\"count\">";
            	html += "   <td>" + (i + 1) + "</td>";
+	            if((data.data[i].pi_id)==0){
+            		html += "   <td onclick=\"openContentForm("+i+")\" >" + data.data[i].title + "</a></td>";
+	            	let original = data.data[i].inquiry_id;
+	            	var matched = false;
+	            	for(let j = 0; j < data.data.length; j++){
+	            		if(original == data.data[j].pi_id){
+	            			var matched = true;
+	            		}
+	            	}	
+
+	            } else if((data.data[i].pi_id)!=0){
+	            	html += "   <td onclick=\"openContentForm("+i+")\" > " + data.data[i].title + "</a></td>";
+	        		html += "   <td></td>";
+	            }
             html += " </tr>";
 	    	html += "   <td class=\"content"+ i +"\" style=\"display:none;\" colspan=\"3\"> 게시글 내용 :  " + data.data[i].content + "</td>";
           }
